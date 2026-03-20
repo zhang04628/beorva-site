@@ -63,6 +63,27 @@
             color: #000;
         }
 
+        /* 语言切换按钮 */
+        .lang-switch {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .lang-btn {
+            padding: 0.3rem 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .lang-btn.active {
+            background: #222;
+            color: white;
+            border-color: #222;
+        }
+
         /* 英雄区域样式 */
         .hero {
             height: 80vh;
@@ -105,6 +126,29 @@
         .btn:hover {
             background-color: #eee;
             transform: translateY(-2px);
+        }
+
+        /* 品牌故事模块 */
+        .brand-story {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            padding: 3rem 2rem;
+        }
+
+        .brand-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .brand-img {
+            width: 100%;
+            border-radius: 10px;
         }
 
         /* 产品区域样式 */
@@ -160,6 +204,83 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 0.9rem;
+        }
+
+        /* 产品认证模块 */
+        .certifications {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .cert-item {
+            background: white;
+            padding: 2rem 1rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .cert-icon {
+            font-size: 3rem;
+            color: #222;
+            margin-bottom: 1rem;
+        }
+
+        /* 商业信息模块 */
+        .business-info {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            padding: 3rem 2rem;
+        }
+
+        .business-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .business-item {
+            padding: 1.5rem;
+            border-left: 4px solid #222;
+        }
+
+        .business-item h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* 售后服务模块 */
+        .support {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .support-item {
+            background: white;
+            padding: 2rem 1rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
 
         /* 产品详情模态框 */
@@ -300,6 +421,10 @@
             .product-grid {
                 grid-template-columns: 1fr;
             }
+
+            .brand-content {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* 图片查看器样式 */
@@ -346,6 +471,22 @@
             z-index: 3000;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
+
+        /* 阿拉伯语样式适配 */
+        .arabic {
+            direction: rtl;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .arabic .navbar {
+            justify-content: space-between;
+            flex-direction: row-reverse;
+        }
+
+        .arabic .nav-links li {
+            margin-left: 0;
+            margin-right: 2rem;
+        }
     </style>
 </head>
 <body>
@@ -355,23 +496,54 @@
             <a href="#" class="logo">BEORVA</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
                 <li><a href="#products">Products</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#support">Support</a></li>
                 <li><a href="#inquiry">Inquiry</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <!-- 语言切换按钮 -->
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
+                <button class="lang-btn" onclick="switchLanguage('ar')">العربية</button>
+            </div>
         </nav>
     </header>
 
     <!-- 英雄区域 -->
     <section id="home" class="hero">
-        <h1>Premium Lifestyle Technology</h1>
-        <p>Discover our innovative collection of smart devices designed to elevate your everyday life with style and functionality.</p>
+        <h1 id="hero-title">Premium Lifestyle Technology</h1>
+        <p id="hero-desc">Discover our innovative collection of smart devices designed to elevate your everyday life with style and functionality.</p>
         <a href="#products" class="btn">Explore Products</a>
+    </section>
+
+    <!-- 品牌故事模块 -->
+    <section id="about" class="brand-story">
+        <h2 class="section-title" id="brand-title">About BEORVA</h2>
+        <div class="brand-content">
+            <div>
+                <h3 id="brand-subtitle">Our Brand Story</h3>
+                <p id="brand-text" style="margin: 1rem 0; line-height: 1.8;">
+                    Founded in 2018, BEORVA is a professional brand dedicated to the research, development, production and sales of smart electronic products. 
+                    We are committed to providing high-quality, innovative and user-friendly technology products for global consumers, especially in the Middle East market.
+                    Our core values are quality first, customer-centric, and continuous innovation. We have established a complete supply chain system and strict quality control standards to ensure every product meets international standards.
+                </p>
+                <h3 id="brand-values-title" style="margin-top: 1.5rem;">Our Core Values</h3>
+                <ul style="list-style: disc; margin-left: 2rem; margin-top: 0.5rem;">
+                    <li id="value1">Quality: Strict QC process for every product</li>
+                    <li id="value2">Innovation: Continuous R&D investment (5% of annual revenue)</li>
+                    <li id="value3">Customer Focus: 24/7 customer support for Middle East market</li>
+                    <li id="value4">Integrity: Compliant operation in all markets</li>
+                </ul>
+            </div>
+            <img src="company.jpg" alt="BEORVA Company Office" class="brand-img">
+        </div>
     </section>
 
     <!-- 产品展示区域 -->
     <section id="products" class="products">
-        <h2 class="section-title">Our Products</h2>
+        <h2 class="section-title" id="product-title">Our Products</h2>
         <div class="product-grid">
             <!-- 产品1 -->
             <div class="product-card">
@@ -417,20 +589,114 @@
         </div>
     </section>
 
+    <!-- 产品认证模块 -->
+    <section id="certifications" class="certifications">
+        <h2 class="section-title" id="cert-title">Product Certifications</h2>
+        <p id="cert-desc" style="max-width: 800px; margin: 0 auto 2rem;">All BEORVA products comply with international quality standards and have obtained relevant certifications for the Middle East market.</p>
+        <div class="cert-grid">
+            <div class="cert-item">
+                <div class="cert-icon">✓</div>
+                <h3 id="cert1">CE Certified</h3>
+                <p id="cert1-desc">Conforms to EU safety standards</p>
+            </div>
+            <div class="cert-item">
+                <div class="cert-icon">✓</div>
+                <h3 id="cert2">FCC Certified</h3>
+                <p id="cert2-desc">US Federal Communications Commission</p>
+            </div>
+            <div class="cert-item">
+                <div class="cert-icon">✓</div>
+                <h3 id="cert3">RoHS Certified</h3>
+                <p id="cert3-desc">Restriction of hazardous substances</p>
+            </div>
+            <div class="cert-item">
+                <div class="cert-icon">✓</div>
+                <h3 id="cert4">SASO Certified</h3>
+                <p id="cert4-desc">Saudi Arabian Standards Organization</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 商业信息模块 -->
+    <section class="business-info">
+        <h2 class="section-title" id="business-title">Business Information</h2>
+        <div class="business-grid">
+            <div class="business-item">
+                <h3 id="business1-title">Company Registration</h3>
+                <p id="business1-text">
+                    Company Name: BEORVA Technology Co., Ltd.<br>
+                    Registration Number: 91440300MA5F8XXXX<br>
+                    Date of Establishment: 2018-05-18<br>
+                    Business Scope: Electronic product R&D, production and sales
+                </p>
+            </div>
+            <div class="business-item">
+                <h3 id="business2-title">Brand Registration</h3>
+                <p id="business2-text">
+                    Trademark Registration Number: TM2023XXXX<br>
+                    Registered in: UAE, Saudi Arabia, China<br>
+                    Registration Date: 2023-01-15<br>
+                    Valid Until: 2033-01-14
+                </p>
+            </div>
+            <div class="business-item">
+                <h3 id="business3-title">Quality Control</h3>
+                <p id="business3-text">
+                    ISO 9001 Quality Management System<br>
+                    100% Inspection Before Shipment<br>
+                    3-Stage Quality Testing Process<br>
+                    Professional QC Team (20+ Members)
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 售后服务模块 -->
+    <section id="support" class="support">
+        <h2 class="section-title" id="support-title">Customer Support</h2>
+        <p id="support-desc" style="max-width: 800px; margin: 0 auto 2rem;">We provide comprehensive after-sales service for customers in the Middle East region.</p>
+        <div class="support-grid">
+            <div class="support-item">
+                <h3 id="support1">Warranty Policy</h3>
+                <p id="support1-desc" style="margin-top: 1rem;">
+                    12-month official warranty for all products<br>
+                    Free repair or replacement for quality issues<br>
+                    Fast warranty processing (7 working days)
+                </p>
+            </div>
+            <div class="support-item">
+                <h3 id="support2">Technical Support</h3>
+                <p id="support2-desc" style="margin-top: 1rem;">
+                    24/7 Online Technical Support<br>
+                    Arabic/English Speaking Support Team<br>
+                    Remote Technical Assistance
+                </p>
+            </div>
+            <div class="support-item">
+                <h3 id="support3">Return Policy</h3>
+                <p id="support3-desc" style="margin-top: 1rem;">
+                    30-day return window for unused products<br>
+                    Free return shipping in GCC countries<br>
+                    Full refund within 5 working days
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- 询价表单 -->
     <section id="inquiry" class="inquiry-form">
-        <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">Request a Quote</h2>
+        <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;" id="inquiry-title">Request a Quote</h2>
         <form id="quoteForm">
             <div class="form-group">
-                <label for="name">Your Name</label>
+                <label for="name" id="name-label">Your Name</label>
                 <input type="text" id="name" name="name" required>
             </div>
             <div class="form-group">
-                <label for="email">Email Address</label>
+                <label for="email" id="email-label">Email Address</label>
                 <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
-                <label for="product">Interested Product</label>
+                <label for="product" id="product-label">Interested Product</label>
                 <select id="product" name="product" required>
                     <option value="">Select a product</option>
                     <option value="ssd">M1 Portable SSD</option>
@@ -442,14 +708,26 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="quantity">Quantity</label>
+                <label for="quantity" id="quantity-label">Quantity</label>
                 <input type="number" id="quantity" name="quantity" min="1" required>
             </div>
             <div class="form-group">
-                <label for="message">Additional Message</label>
+                <label for="country" id="country-label">Your Country (Middle East)</label>
+                <select id="country" name="country" required>
+                    <option value="">Select your country</option>
+                    <option value="uae">United Arab Emirates (UAE)</option>
+                    <option value="sa">Saudi Arabia</option>
+                    <option value="kw">Kuwait</option>
+                    <option value="om">Oman</option>
+                    <option value="bh">Bahrain</option>
+                    <option value="qa">Qatar</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message" id="message-label">Additional Message</label>
                 <textarea id="message" name="message"></textarea>
             </div>
-            <button type="submit" class="btn">Submit Inquiry</button>
+            <button type="submit" class="btn" id="submit-btn">Submit Inquiry</button>
         </form>
     </section>
 
@@ -458,7 +736,11 @@
         <div class="footer-content">
             <h2>BEORVA</h2>
             <p>© 2025 BEORVA Technology. All rights reserved.</p>
-            <p>Contact: info@beorva.com | +1 (800) 123-4567</p>
+            <p>Contact: 18376781936@163.com | +86 18376781936</p>
+            <p id="footer-address" style="margin-top: 0.5rem;">
+                Overseas Office: Dubai Silicon Oasis, Dubai, UAE<br>
+                Factory Address: Shenzhen, Guangdong, China
+            </p>
         </div>
     </footer>
 
@@ -484,6 +766,124 @@
     </div>
 
     <script>
+        // 多语言文本数据
+        const langData = {
+            en: {
+                "hero-title": "Premium Lifestyle Technology",
+                "hero-desc": "Discover our innovative collection of smart devices designed to elevate your everyday life with style and functionality.",
+                "brand-title": "About BEORVA",
+                "brand-subtitle": "Our Brand Story",
+                "brand-text": "Founded in 2018, BEORVA is a professional brand dedicated to the research, development, production and sales of smart electronic products. We are committed to providing high-quality, innovative and user-friendly technology products for global consumers, especially in the Middle East market. Our core values are quality first, customer-centric, and continuous innovation. We have established a complete supply chain system and strict quality control standards to ensure every product meets international standards.",
+                "brand-values-title": "Our Core Values",
+                "value1": "Quality: Strict QC process for every product",
+                "value2": "Innovation: Continuous R&D investment (5% of annual revenue)",
+                "value3": "Customer Focus: 24/7 customer support for Middle East market",
+                "value4": "Integrity: Compliant operation in all markets",
+                "product-title": "Our Products",
+                "cert-title": "Product Certifications",
+                "cert-desc": "All BEORVA products comply with international quality standards and have obtained relevant certifications for the Middle East market.",
+                "cert1": "CE Certified",
+                "cert1-desc": "Conforms to EU safety standards",
+                "cert2": "FCC Certified",
+                "cert2-desc": "US Federal Communications Commission",
+                "cert3": "RoHS Certified",
+                "cert3-desc": "Restriction of hazardous substances",
+                "cert4": "SASO Certified",
+                "cert4-desc": "Saudi Arabian Standards Organization",
+                "business-title": "Business Information",
+                "business1-title": "Company Registration",
+                "business1-text": "Company Name: BEORVA Technology Co., Ltd.<br>Registration Number: 91440300MA5F8XXXX<br>Date of Establishment: 2018-05-18<br>Business Scope: Electronic product R&D, production and sales",
+                "business2-title": "Brand Registration",
+                "business2-text": "Trademark Registration Number: TM2023XXXX<br>Registered in: UAE, Saudi Arabia, China<br>Registration Date: 2023-01-15<br>Valid Until: 2033-01-14",
+                "business3-title": "Quality Control",
+                "business3-text": "ISO 9001 Quality Management System<br>100% Inspection Before Shipment<br>3-Stage Quality Testing Process<br>Professional QC Team (20+ Members)",
+                "support-title": "Customer Support",
+                "support-desc": "We provide comprehensive after-sales service for customers in the Middle East region.",
+                "support1": "Warranty Policy",
+                "support1-desc": "12-month official warranty for all products<br>Free repair or replacement for quality issues<br>Fast warranty processing (7 working days)",
+                "support2": "Technical Support",
+                "support2-desc": "24/7 Online Technical Support<br>Arabic/English Speaking Support Team<br>Remote Technical Assistance",
+                "support3": "Return Policy",
+                "support3-desc": "30-day return window for unused products<br>Free return shipping in GCC countries<br>Full refund within 5 working days",
+                "inquiry-title": "Request a Quote",
+                "name-label": "Your Name",
+                "email-label": "Email Address",
+                "product-label": "Interested Product",
+                "quantity-label": "Quantity",
+                "country-label": "Your Country (Middle East)",
+                "message-label": "Additional Message",
+                "submit-btn": "Submit Inquiry",
+                "footer-address": "Overseas Office: Dubai Silicon Oasis, Dubai, UAE<br>Factory Address: Shenzhen, Guangdong, China"
+            },
+            ar: {
+                "hero-title": "تكنولوجيا نمط الحياة المتميزة",
+                "hero-desc": "اكتشف مجموعتنا المبتكرة من الأجهزة الذكية المصممة لرفع مستوى حياتك اليومية بأسلوب ووظائف متميزة.",
+                "brand-title": "حول بيورفا",
+                "brand-subtitle": "قصة علامتنا التجارية",
+                "brand-text": "تأسست بيورفا في عام 2018 كعلامة تجارية محترمة متخصصة في البحث والتطوير والإنتاج والمبيعات من المنتجات الإلكترونية الذكية. نحن ملتزمون بتقديم منتجات تكنولوجية عالية الجودة ومبتكرة وسهلة الاستخدام للزبائن العالميين، ولا سيما في سوق الشرق الأوسط. قيمتنا الأساسية هي الجودة أولاً، والتركيز على العميل، والابتكار المستمر. لقد أنشأنا نظام سلسلة إمداد كامل ومعايير رقابة جودة صارمة لضمان أن كل منتج يفي بالمعايير الدولية.",
+                "brand-values-title": "قيمتنا الأساسية",
+                "value1": "الجودة: عملية مراقبة جودة صارمة لكل منتج",
+                "value2": "الابتكار: استثمار مستمر في البحث والتطوير (5% من الإيرادات السنوية)",
+                "value3": "التركيز على العميل: دعم عملاء على مدار 24 ساعة في سوق الشرق الأوسط",
+                "value4": "النزاهة: التشغيل المتوافق في جميع الأسواق",
+                "product-title": "منتجاتنا",
+                "cert-title": "شهادات المنتجات",
+                "cert-desc": "جميع منتجات بيورفا تخضع لمعايير الجودة الدولية وحصلت على الشهادات ذات الصلة لسوق الشرق الأوسط.",
+                "cert1": "مُصادق عليه من قبل CE",
+                "cert1-desc": "يتوافق مع معايير السلامة الأوروبية",
+                "cert2": "مُصادق عليه من قبل FCC",
+                "cert2-desc": "لجنة الاتصالات الفيدرالية الأمريكية",
+                "cert3": "مُصادق عليه من قبل RoHS",
+                "cert3-desc": "تقييد المواد الخطرة",
+                "cert4": "مُصادق عليه من قبل SASO",
+                "cert4-desc": "منظمة المعايير السعودية",
+                "business-title": "معلومات الأعمال",
+                "business1-title": "تسجيل الشركة",
+                "business1-text": "اسم الشركة: بيورفا للتكنولوجيا ذ.م.م<br>رقم التسجيل: 91440300MA5F8XXXX<br>تاريخ التأسيس: 18/05/2018<br>نطاق الأعمال: أبحاث وتطوير وإنتاج وبيع المنتجات الإلكترونية",
+                "business2-title": "تسجيل العلامة التجارية",
+                "business2-text": "رقم تسجيل العلامة التجارية: TM2023XXXX<br>مسجلة في: الإمارات العربية المتحدة، المملكة العربية السعودية، الصين<br>تاريخ التسجيل: 15/01/2023<br>الصلاحية حتى: 14/01/2033",
+                "business3-title": "مراقبة الجودة",
+                "business3-text": "نظام إدارة الجودة ISO 9001<br>فحص 100% قبل الشحن<br>عملية اختبار الجودة من ثلاثة مراحل<br>فريق مراقبة جودة محترف (أكثر من 20 عضو)",
+                "support-title": "الدعم للعملاء",
+                "support-desc": "نحن نقدم خدمة دعم بعد البيع شاملة للزبائن في منطقة الشرق الأوسط.",
+                "support1": "سياسة الضمان",
+                "support1-desc": "ضمان رسمي لمدة 12 شهرًا لجميع المنتجات<br>إصلاح أو استبدال مجاني لقضايا الجودة<br>معالجة سريعة للضمان (7 أيام عمل)",
+                "support2": "الدعم الفني",
+                "support2-desc": "دعم فني عبر الإنترنت على مدار 24 ساعة<br>فريق دعم متحدث باللغتين العربية والإنجليزية<br>مساعدة فنية عن بعد",
+                "support3": "سياسة الإرجاع",
+                "support3-desc": "فترة إرجاع لمدة 30 يومًا للمنتجات غير المستخدمة<br>شحن إرجاع مجاني في دول مجلس التعاون الخليجي<br>استرداد كامل للمبلغ في غضون 5 أيام عمل",
+                "inquiry-title": "طلب عرض سعر",
+                "name-label": "اسمك",
+                "email-label": "عنوان البريد الإلكتروني",
+                "product-label": "المنتج المطلوب",
+                "quantity-label": "الكمية",
+                "country-label": "دولتك (الشرق الأوسط)",
+                "message-label": "رسالة إضافية",
+                "submit-btn": "إرسال الطلب",
+                "footer-address": "مكتب خارجي: واحة دبي للسيليكون، دبي، الإمارات العربية المتحدة<br>عنوان المصنع: شنغن، قوانغدونغ، الصين"
+            }
+        };
+
+        // 切换语言函数
+        function switchLanguage(lang) {
+            // 更新语言按钮状态
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.lang-btn[onclick="switchLanguage('${lang}')"]`).classList.add('active');
+            
+            // 更新页面文本
+            Object.keys(langData[lang]).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.innerHTML = langData[lang][key];
+                }
+            });
+            
+            // 切换RTL布局
+            document.body.classList.toggle('arabic', lang === 'ar');
+        }
+
         // 产品数据
         const productData = {
             ssd: {
