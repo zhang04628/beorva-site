@@ -3,75 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BEORVA Official | Premium Consumer Technology & Educational Play</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>BEORVA Official | Premium Tech & Educational Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* 🎨 商务质造色系定义 (专业、干净、有质感) */
         :root { 
-            --primary: #004a2d;      /* 深邃绿 (代表可靠、匠心) */
-            --accent: #c1a35f;       /* 奢华金 (代表品质、轻奢) */
-            --text-main: #222;       /* 深黑 (主体文字) */
-            --text-second: #666;    /* 灰 (辅助文字) */
-            --bg-main: #ffffff;      /* 纯白主背景 */
-            --bg-second: #fdfdfd;   /* 极浅灰辅助背景 */
+            --primary-dark: #1a1a1a; 
+            --accent-green: #005a32; /* 商务深绿 */
+            --accent-gold: #b8934d; 
+            --light-bg: #f8f9fa;
         }
 
-        html { scroll-behavior: smooth; color: var(--text-main); font-weight: 300; }
-        body { font-family: 'Poppins', sans-serif; margin: 0; line-height: 1.8; background-color: var(--bg-main); }
-        .container { max-width: 1200px; margin: auto; padding: 0 40px; }
+        body { font-family: 'Inter', sans-serif; margin: 0; background: #fff; color: #333; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
         
-        /* 导航栏 (正规商务风格) */
-        header { padding: 25px 0; border-bottom: 1px solid #f0f0f0; background: #fff; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.03); }
+        /* 导航 */
+        header { border-bottom: 1px solid #eee; padding: 20px 0; background: #fff; position: sticky; top: 0; z-index: 100; }
         .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 700; font-size: 28px; color: var(--primary); text-decoration: none; letter-spacing: 1px; }
-        .nav-links a { margin-left: 30px; text-decoration: none; color: #444; font-size: 14px; font-weight: 400; transition: 0.3s; }
-        .nav-links a:hover { color: var(--accent); }
-        .back-btn { display: none; cursor: pointer; color: var(--primary); font-weight: 600; font-size: 15px; }
+        .logo { font-size: 24px; font-weight: 700; color: var(--accent-green); text-decoration: none; letter-spacing: 1px; }
+        .nav-links a { margin-left: 25px; text-decoration: none; color: #666; font-size: 14px; font-weight: 500; }
+        .back-btn { display: none; cursor: pointer; color: var(--accent-green); font-weight: 600; font-size: 14px; }
 
-        /* 核心版块：关于我们 (放大、移上) */
-        .heritage-section { padding: 100px 0; background: var(--bg-second); border-bottom: 1px solid #f0f0f0; }
-        .heritage-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; }
-        .heritage-text h2 { color: var(--primary); font-size: 42px; margin-bottom: 25px; line-height: 1.3; font-weight: 700; }
-        .heritage-text p { color: #555; font-size: 18px; line-height: 1.9; margin-bottom: 20px; text-align: justify; font-weight: 300; }
-        .heritage-text strong { color: var(--accent); font-weight: 600; }
-        .heritage-badge { text-align: center; background: #fff; padding: 50px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
-        .heritage-badge span { font-size: 72px; font-weight: 700; color: var(--primary); display: block; }
-        .heritage-badge p { font-size: 18px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
+        /* 首页 Hero */
+        .hero { padding: 100px 0 60px; text-align: center; }
+        .hero h1 { font-size: 44px; color: var(--primary-dark); margin-bottom: 20px; font-weight: 700; }
+        .hero p { font-size: 18px; color: #666; max-width: 800px; margin: 0 auto; font-weight: 300; }
 
-        /* 产品展示网格 (去科幻，极简现代) */
-        #home-page { display: block; padding: 100px 0; }
-        .section-title { font-size: 34px; margin-bottom: 60px; text-align: center; color: #111; position: relative; font-weight: 600; }
-        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background: var(--accent); margin: 15px auto; }
+        /* 🌟 仿 Closeli 引导卡片 (槽位在此) */
+        .about-preview { background: var(--light-bg); padding: 80px 0; margin: 40px 0; }
+        .about-card { display: flex; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 25px rgba(0,0,0,0.05); align-items: center; }
         
+        /* 图片槽位：请将你的公司图命名为 company.jpg */
+        .about-img { flex: 1; min-height: 450px; background: #eee url('company.jpg') center/cover no-repeat; } 
+        
+        .about-content { flex: 1.2; padding: 60px; }
+        .about-content h2 { font-size: 32px; margin-bottom: 20px; color: var(--primary-dark); }
+        .about-content p { font-size: 16px; color: #555; margin-bottom: 30px; text-align: justify; }
+        .btn-more { display: inline-block; padding: 12px 35px; border: 1px solid #ddd; color: #444; text-decoration: none; border-radius: 25px; font-size: 14px; transition: 0.3s; font-weight: 500; }
+        .btn-more:hover { background: var(--accent-green); color: #fff; border-color: var(--accent-green); }
+
+        /* 产品展示 */
+        .section-title { font-size: 28px; font-weight: 700; margin: 80px 0 40px; text-align: center; color: var(--primary-dark); }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
-        .card { background: #fff; border: 1px solid #f0f0f0; border-radius: 15px; padding: 40px; text-align: center; cursor: pointer; transition: 0.4s; position: relative; }
-        .card:hover { border-color: #ddd; transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.07); }
-        .card img { width: 100%; height: 280px; object-fit: contain; margin-bottom: 25px; transition: 0.4s; }
-        .card:hover img { transform: scale(1.03); }
-        .card h3 { margin: 10px 0; font-size: 22px; color: #222; font-weight: 600; }
-        .card p { color: #888; font-size: 15px; margin-bottom: 20px; }
-        .view-link { color: var(--accent); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+        .card { border: 1px solid #f0f0f0; padding: 40px; text-align: center; transition: 0.3s; cursor: pointer; border-radius: 12px; }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.06); border-color: #e0e0e0; }
+        .card img { width: 100%; height: 280px; object-fit: contain; margin-bottom: 25px; }
+        .card h3 { font-size: 22px; margin: 15px 0; color: #111; }
+        .card p { font-size: 15px; color: #888; margin-bottom: 0; }
 
-        /* 详情页 (全屏现代商务风) */
-        #detail-page { display: none; padding: 80px 0; animation: fadeInSpecs 0.6s ease-out; background: var(--bg-second); }
-        @keyframes fadeInSpecs { from { opacity: 0; } to { opacity: 1; } }
-        .detail-flex { display: flex; gap: 80px; flex-wrap: wrap; align-items: flex-start; }
-        .detail-img { flex: 1; min-width: 350px; text-align: center; }
-        .detail-img img { width: 100%; max-width: 500px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .detail-info { flex: 1.2; min-width: 350px; background: #fff; padding: 50px; border-radius: 15px; border: 1px solid #f0f0f0; }
-        .detail-info h2 { font-size: 36px; color: #111; margin-top: 0; font-weight: 700; border-left: 5px solid var(--accent); padding-left: 15px; }
-        .specs-table { width: 100%; border-collapse: collapse; margin-top: 40px; }
-        .specs-table td { padding: 18px 20px; border-bottom: 1px solid #f5f5f5; font-size: 15px; color: #555; }
-        .specs-table .label { font-weight: 600; color: #333; width: 170px; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* 页脚 (干净正规) */
-        footer { background: #111; color: #aaa; padding: 100px 0 50px; margin-top: 100px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px; text-align: left; }
-        .footer-item h4 { color: #fff; margin-bottom: 25px; font-size: 18px; font-weight: 600; }
-        .footer-item p { font-size: 14px; line-height: 1.8; color: #999; }
-        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 30px; text-align: center; font-size: 13px; margin-top: 50px; color: #555; }
+        /* 详情页 & 关于页 */
+        #detail-page, #about-page { display: none; padding: 80px 0; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
-        @media (max-width: 768px) { .heritage-grid { grid-template-columns: 1fr; gap: 40px; } .heritage-text h2 { font-size: 32px; } .detail-flex { grid-template-columns: 1fr; } }
+        .detail-flex { display: flex; gap: 60px; flex-wrap: wrap; }
+        .detail-img-box { flex: 1; text-align: center; background: #fafafa; padding: 50px; border-radius: 12px; }
+        .detail-img-box img { max-width: 100%; border-radius: 8px; }
+        .detail-info-box { flex: 1.2; padding: 20px; }
+        .detail-info-box h2 { font-size: 36px; margin-bottom: 20px; color: var(--primary-dark); border-left: 6px solid var(--accent-gold); padding-left: 20px; }
+        
+        .specs-table { width: 100%; border-collapse: collapse; margin-top: 40px; }
+        .specs-table td { padding: 20px; border-bottom: 1px solid #eee; font-size: 15px; color: #444; }
+        .label { font-weight: 600; color: #999; width: 180px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* 页脚 */
+        footer { background: #111; color: #999; padding: 100px 0 50px; margin-top: 100px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px; }
+        .footer-item h4 { font-size: 16px; margin-bottom: 30px; color: #fff; font-weight: 600; letter-spacing: 1px; }
+        .footer-item p { font-size: 14px; line-height: 2; }
+        .footer-bottom { border-top: 1px solid #222; padding-top: 30px; text-align: center; font-size: 13px; margin-top: 60px; color: #444; }
     </style>
 </head>
 <body>
@@ -81,68 +79,60 @@
         <div class="nav-wrapper">
             <a href="javascript:void(0)" onclick="showHome()" class="logo">BEORVA</a>
             <div class="nav-links">
-                <span class="back-btn" onclick="showHome()">← Back</span>
-                <a href="javascript:void(0)" onclick="showHome()">Products</a>
-                <a href="#about-beorva">About Us</a>
-                <a href="mailto:18376781936@163.com">Contact</a>
+                <span class="back-btn" onclick="showHome()">← BACK TO OVERVIEW</span>
+                <a href="javascript:void(0)" onclick="showHome()">Home</a>
+                <a href="javascript:void(0)" onclick="showAboutFull()">About Us</a>
+                <a href="mailto:info@beorva.com">Contact</a>
             </div>
         </div>
     </header>
 
     <div id="home-page">
-        <section class="heritage-section">
-            <div class="container heritage-grid">
-                <div class="heritage-text">
-                    <h2>Legacy of Industrial Mastery, Focus on Future Play</h2>
-                    <p>The **BEORVA** brand represents a new generation of high-quality cross-border products operated by **Bei Rong Hua** Co., Ltd. Backed by **15+ years of Deep Industrial Mastery** and professional OEM/ODM experience for Fortune 500 companies, we have built a reputation for reliable quality and exceptional value.</p>
-                    <p>Officially established as a premium brand label on **September 30, 2024**, BEORVA bridges the gap between massive manufacturing power and sophisticated consumer aesthetics. From 2000MB/s SSDs to STEAM-certified magnetic play sets, we ensure every product exceeds GCC, National 3C, and RoHS safety standards.</p>
-                </div>
-                <div class="heritage-badge">
-                    <span>15+</span>
-                    <p>Years Precision Manufacturing</p>
+        <section class="hero">
+            <h1>Tech-Driven Life, Smart-Inspired Play</h1>
+            <p>Empowering global users with 15 years of manufacturing precision in high-speed storage and STEAM-certified educational toys.</p>
+        </section>
+
+        <section class="about-preview">
+            <div class="about-card">
+                <div class="about-img"></div> <div class="about-content">
+                    <h2>Our Legacy & Expertise</h2>
+                    <p>Established on September 30, 2024, by **Bei Rong Hua Co., Ltd**, BEORVA bridges the gap between massive industrial capability and premium consumer needs. Our team brings over **15 years** of supply chain mastery...</p>
+                    <a href="javascript:void(0)" onclick="showAboutFull()" class="btn-more">LEARN MORE</a>
                 </div>
             </div>
         </section>
 
-        <h2 class="section-title">Consumer Technology & Storage Systems</h2>
+        <h2 class="section-title">Consumer Technology</h2>
         <div class="grid">
             <div class="card" onclick="showDetail('m1')">
                 <img src="ssd1.jpg" alt="M1 SSD">
                 <h3>M1 Portable SSD</h3>
-                <p>Extreme Speed 2000MB/s</p>
-                <span class="view-link">Explore Details ›</span>
+                <p>High-Speed 2000MB/s Data Logic</p>
             </div>
             <div class="card" onclick="showDetail('otg')">
-                <img src="usb1.jpg" alt="Mini OTG">
-                <h3>Crystal Mini OTG Drive</h3>
+                <img src="usb1.jpg" alt="OTG Drive">
+                <h3>Crystal Mini OTG</h3>
                 <p>Dual Interface: USB 3.2 + Type-C</p>
-                <span class="view-link">Explore Details ›</span>
             </div>
             <div class="card" onclick="showDetail('hub')">
-                <img src="hub1.jpg" alt="12-in-1 Hub">
-                <h3>12-in-1 Power Station</h3>
-                <p>Cross-border Optimized Dock</p>
-                <span class="view-link">Explore Details ›</span>
+                <img src="hub1.jpg" alt="Hub">
+                <h3>12-in-1 Power Hub</h3>
+                <p>Pro-Station with 10cm Reinforced Cable</p>
             </div>
         </div>
 
-        <h2 class="section-title">Star-Start: Educational Play & Discover</h2>
+        <h2 class="section-title">Educational Discovery</h2>
         <div class="grid">
             <div class="card" onclick="showDetail('magtoy')">
                 <img src="toy1.jpg" alt="Magnetic Kit">
-                <h3>Magnetic Sticks</h3>
-                <p>STEAM Certified Play</p>
-                <span class="view-link">Explore Details ›</span>
+                <h3>Magnetic Discovery Sticks</h3>
+                <p>STEAM Certified Intelligence Play</p>
             </div>
             <div class="card">
-                <img src="https://via.placeholder.com/400?text=Mind+Puzzle" alt="Toy 2">
-                <h3>Future Mind Puzzle</h3>
-                <p>Coming Soon</p>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/400?text=Logic+Bot" alt="Toy 3">
-                <h3>Logic Build System</h3>
-                <p>Coming Soon</p>
+                <img src="https://via.placeholder.com/400?text=Mind+Puzzle" alt="Coming Soon">
+                <h3>Logic Mind Puzzle</h3>
+                <p>Release Scheduled for Q3 2026</p>
             </div>
         </div>
     </div>
@@ -150,59 +140,69 @@
     <div id="detail-page">
         <div class="detail-flex" id="detail-content"></div>
     </div>
+
+    <div id="about-page">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h2 style="font-size: 42px; color: var(--accent-green); margin-bottom: 40px;">Deeply Rooted in Quality</h2>
+            <p style="font-size: 18px; line-height: 2.2; color: #444;">
+                <strong>BEORVA (Be-Ori-R-Va)</strong> stands for User-centric selection, Oriental craftsmanship, and the Glory of China's intelligent manufacturing. Our brand is the culmination of **15+ years of dedicated service** in global supply chain management.
+            </p>
+            <p style="font-size: 18px; line-height: 2.2; color: #444;">
+                <strong>Manufacturing Power:</strong> We operate **3 exclusive smart factories** and **12 international standard production lines**, ensuring that every product—from mecha-textured SSDs to magnetic toys—meets the highest QC standards.
+            </p>
+            <p style="font-size: 18px; line-height: 2.2; color: #444;">
+                <strong>Strategic Direction:</strong> Our vision combines high-performance **Computing Technology** with **Intelligent Play**. We believe that future toys should not only be fun but also serve as the first step in a child's STEAM (Science, Technology, Engineering, Art, Mathematics) journey, utilizing the same precision we apply to our data storage products.
+            </p>
+            <p style="font-size: 18px; line-height: 2.2; color: #444;">
+                Fully compliant with **GCC, National 3C, and RoHS** safety requirements, BEORVA is committed to providing the Saudi Arabian and global markets with products that are safe, innovative, and reliable.
+            </p>
+        </div>
+    </div>
 </div>
 
 <footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-item" id="about-beorva">
-                <h4>FOUNDATION & LEGACY</h4>
-                <p>Operated by Bei Rong Hua Co., Ltd (est. 2024), the founding team brings **15+ years** of supply chain mastery in 3C and toys. We operate 3 smart factories and 12 international production lines.</p>
-            </div>
-            <div class="footer-item">
-                <h4>GLOBAL STANDARDS</h4>
-                <p>Certified CE, RoHS, and fully GCC compliant for Saudi & Middle Eastern markets. Three Rounds of Independent Third-Party QC.</p>
-            </div>
-            <div class="footer-item">
-                <h4>CONNECT HQ</h4>
-                <p>
-                    <strong>Email:</strong> 18376781936@163.com<br>
-                    <strong>Address:</strong> Room 1001, 10th Floor, No. 26, Lane 1289, Gongyuan East Road, Qingpu District, Shanghai, China<br>
-                    <strong>Owner:</strong> Bei Rong Hua
-                </p>
-            </div>
+    <div class="container footer-grid">
+        <div class="footer-item">
+            <h4>HEADQUARTERS</h4>
+            <p>Room 1001, 10th Floor, No. 26, Lane 1289, Gongyuan East Road, Qingpu District, Shanghai, China</p>
         </div>
-        <div class="footer-bottom">
-            &copy; 2026 BEORVA (Bei Rong Hua Co., Ltd). All Rights Reserved. Recipient of Kapok Design Award.
+        <div class="footer-item">
+            <h4>CERTIFICATION</h4>
+            <p>Certified by National 3C, RoHS, and GCC. All toys use ABS safety materials.</p>
+        </div>
+        <div class="footer-item">
+            <h4>CONNECT</h4>
+            <p>Email: info@beorva.com<br>Brand Owner: Bei Rong Hua</p>
         </div>
     </div>
+    <div class="footer-bottom">&copy; 2026 BEORVA (Bei Rong Hua Co., Ltd). All Rights Reserved.</div>
 </footer>
 
 <script>
     const products = {
         'm1': {
-            name: "BEORVA M1 Portable SSD",
+            name: "M1 Portable SSD",
             img: "ssd1.jpg",
-            desc: "The M1 series defines high-speed portable storage. Featuring an aerospace-grade mecha-texture aluminum shell and built-in lanyard hook, it deliversspeeds up to 2000MB/s for data-intensive professionals.",
-            specs: [["Model","BEORVA M1"],["Read Speed","1800 - 2000 MB/s"],["Write Speed","1500 - 1800 MB/s"],["Interface","Type-C + USB-A Dual Connector"],["Material","Aero-grade Aluminum Alloy"]]
+            desc: "Ultra-high speed up to 2000MB/s. Aerospace-grade aluminum with mecha-texture design.",
+            specs: [["Model","BEORVA M1"],["Performance","2000MB/s Read/Write"],["Interface","Dual Type-C + USB-A"],["Build","Shock-resistant Alloy"]]
         },
         'otg': {
             name: "Crystal Mini OTG Drive",
             img: "usb1.jpg",
-            desc: "Designed for seamless cross-platform data management, this drive features a premium zinc-alloy body and dual **USB + Type-C** interface with OTG support. Powered by advanced UDP technology for extreme durability.",
-            specs: [["Model","Crystal X1"],["Interface","Dual USB 3.2 + Type-C (OTG Support)"],["Type","High-Speed OTG Flash Drive"],["Protection","UDP Waterproof/Shockproof"],["Material","Durable Zinc Alloy"]]
+            desc: "Dual-port versatility with **USB 3.2 and Type-C** support. Professional storage for mobile and desktop environments.",
+            specs: [["Model","Crystal X1"],["Connectivity","Universal USB 3.2 & Type-C"],["Speed","Read 150MB/s, Write 120MB/s"],["Hardware","Original Grade A Flash"]]
         },
         'hub': {
-            name: "12-in-1 Power Station",
+            name: "12-in-1 Power Hub",
             img: "hub1.jpg",
-            desc: "The professional docking solution for power workstations. Supports 12 simultaneous ports with high-speed 5Gbps transfer and dedicated external power input. Fully optimized for cross-border export.",
-            specs: [["Model","LXSN701C"],["Ports","12-in-1 Multi-function Dock"],["Speed","5Gbps (5000Mbps)"],["Cable","10 cm Reinforced"],["Power","Supports External Power Input"],["Certifications","CE / RoHS / FCC Certified"]]
+            desc: "High-efficiency command center. Features a specialized **10cm reinforced cable** for stable data flow.",
+            specs: [["Model","LXSN701C"],["Output","12-in-1 Professional Hub"],["Cable","10cm Reinforced Length"],["Speed","5Gbps Transmission"]]
         },
         'magtoy': {
             name: "Magnetic Discovery Sticks",
             img: "toy1.jpg",
-            desc: "STEAM-certified educational play system designed to nurture cognitive development, motor skills, and creative spatial reasoning in a safe and intuitive way.",
-            specs: [["Material","Food-grade ABS, BPA-Free"],["Category","STEAM Educational Play"],["Ages","3-6 / 7-14 Years Focus"],["Training","Motor Skills, Spatial Logic, Sensory"],["Safety","GB6675, EN71, GCC Certified"]]
+            desc: "STEAM-certified educational play system. Cultivates spatial logic and motor skills through magnetic connection.",
+            specs: [["Material","High-quality ABS"],["Age Range","0-2 / 3-6 / 7-14"],["Training","Cognitive, Sensory, Coordination"],["Safety","National 3C Certified"]]
         }
     };
 
@@ -210,23 +210,25 @@
         const p = products[id];
         let specsHtml = p.specs.map(s => `<tr><td class="label">${s[0]}</td><td>${s[1]}</td></tr>`).join('');
         document.getElementById('detail-content').innerHTML = `
-            <div class="detail-img"><img src="${p.img}"></div>
-            <div class="detail-info">
+            <div class="detail-img-box"><img src="${p.img}"></div>
+            <div class="detail-info-box">
                 <h2>${p.name}</h2>
-                <p style="color:#666; margin-bottom:40px; font-size:16px;">${p.desc}</p>
+                <p style="color:#666; font-size:17px; margin-bottom:30px;">${p.desc}</p>
                 <table class="specs-table">${specsHtml}</table>
             </div>
         `;
-        document.getElementById('home-page').style.display = 'none';
-        document.getElementById('detail-page').style.display = 'block';
-        document.querySelector('.back-btn').style.display = 'inline';
-        window.scrollTo(0,0);
+        togglePage('detail-page');
     }
 
-    function showHome() {
-        document.getElementById('home-page').style.display = 'block';
-        document.getElementById('detail-page').style.display = 'none';
-        document.querySelector('.back-btn').style.display = 'none';
+    function showAboutFull() { togglePage('about-page'); }
+    function showHome() { togglePage('home-page'); }
+
+    function togglePage(pageId) {
+        ['home-page', 'detail-page', 'about-page'].forEach(id => {
+            document.getElementById(id).style.display = (id === pageId) ? 'block' : 'none';
+        });
+        document.querySelector('.back-btn').style.display = (pageId === 'home-page') ? 'none' : 'inline';
+        window.scrollTo(0,0);
     }
 </script>
 </body>
