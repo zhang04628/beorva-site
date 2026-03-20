@@ -3,136 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BEORVA Official | Quality Electronics & Toys</title>
+    <title>BEORVA Official | Premium Innovation</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #004a2d; --accent: #c1a35f; --text: #333; --light: #f9f9f9; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Poppins', sans-serif; margin: 0; color: var(--text); line-height: 1.6; }
-        .container { max-width: 1200px; margin: auto; padding: 0 20px; }
+        :root { --primary: #004a2d; --accent: #c1a35f; --text: #333; }
+        body { font-family: 'Poppins', sans-serif; margin: 0; color: var(--text); background: #fff; }
+        .container { max-width: 1100px; margin: auto; padding: 0 20px; }
         
-        /* Navigation */
-        header { background: #fff; padding: 20px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 700; font-size: 24px; color: var(--primary); text-decoration: none; letter-spacing: 1px; }
-        .nav-links { display: flex; gap: 25px; list-style: none; margin: 0; }
-        .nav-links a { text-decoration: none; color: var(--text); font-size: 14px; }
+        /* 导航栏 */
+        header { padding: 20px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 700; font-size: 24px; color: var(--primary); text-decoration: none; }
+        .back-btn { display: none; cursor: pointer; color: var(--accent); font-weight: 600; }
 
-        /* Hero */
-        .hero { background: var(--light); padding: 80px 0; text-align: center; }
-        .hero h1 { font-size: 36px; color: var(--primary); margin-bottom: 20px; }
-        .hero p { max-width: 800px; margin: auto; font-size: 16px; color: #666; }
-
-        /* Section Styling */
-        .section-padding { padding: 60px 0; border-bottom: 1px solid #eee; }
-        .section-title { font-size: 26px; color: var(--primary); margin-bottom: 40px; border-left: 4px solid var(--accent); padding-left: 15px; }
+        /* 首页布局 */
+        #home-page { display: block; padding: 60px 0; }
+        .section-title { font-size: 28px; margin-bottom: 40px; text-align: center; color: var(--primary); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 60px; }
         
-        /* Grid Display */
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin-bottom: 50px; }
-        .product-item { background: #fff; border: 1px solid #eee; border-radius: 8px; overflow: hidden; text-align: center; padding: 20px; }
-        .product-item img { width: 100%; height: 200px; object-fit: contain; margin-bottom: 15px; }
-        .product-item h4 { margin: 10px 0; font-size: 16px; color: #222; }
+        .card { border: 1px solid #eee; border-radius: 12px; padding: 20px; text-align: center; cursor: pointer; transition: 0.3s; }
+        .card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .card img { width: 100%; height: 250px; object-fit: contain; margin-bottom: 15px; }
+        .card h3 { margin: 10px 0; font-size: 18px; }
 
-        /* Technical Description */
-        .detail-flex { display: flex; gap: 50px; align-items: center; margin-top: 40px; flex-wrap: wrap; }
+        /* 详情页布局 (默认隐藏) */
+        #detail-page { display: none; padding: 60px 0; animation: fadeIn 0.4s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        .detail-flex { display: flex; gap: 50px; flex-wrap: wrap; align-items: flex-start; }
         .detail-img { flex: 1; min-width: 300px; }
-        .detail-img img { width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .detail-text { flex: 1.2; min-width: 300px; }
-        .detail-text h3 { color: var(--primary); margin-top: 0; font-size: 22px; }
-        .specs { list-style: none; padding: 0; }
-        .specs li { margin-bottom: 10px; padding-left: 18px; position: relative; font-size: 14px; }
-        .specs li::before { content: "›"; color: var(--accent); position: absolute; left: 0; font-weight: bold; }
+        .detail-img img { width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .detail-info { flex: 1.2; min-width: 300px; }
+        .detail-info h2 { font-size: 32px; color: var(--primary); margin-top: 0; }
+        
+        .specs-table { width: 100%; border-collapse: collapse; margin-top: 30px; }
+        .specs-table td { padding: 12px 10px; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
+        .specs-table .label { font-weight: 600; color: #888; width: 150px; }
 
-        /* About Section */
-        .about-bg { background: var(--primary); color: white; padding: 70px 0; }
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .about-bg h3 { color: var(--accent); margin-top: 0; }
-
-        footer { background: #111; color: #777; padding: 40px 0; font-size: 13px; text-align: center; }
-        .footer-info { margin-bottom: 20px; color: #999; }
+        /* 页脚 */
+        footer { background: #111; color: #666; padding: 50px 0; margin-top: 80px; text-align: center; font-size: 13px; }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="container nav-wrapper">
-        <a href="#" class="logo">BEORVA</a>
-        <ul class="nav-links">
-            <li><a href="#storage">Storage Solutions</a></li>
-            <li><a href="#toys">Educational Toys</a></li>
-            <li><a href="#about">Our Factory</a></li>
-        </ul>
-    </div>
-</header>
-
-<section class="hero">
-    <div class="container">
-        <h1>Reliable Quality for Modern Living</h1>
-        <p>BEORVA focuses on high-performance digital storage and durable educational products. Backed by over 15 years of manufacturing experience, we ensure every product meets international export standards.</p>
-    </div>
-</section>
-
-<section id="storage" class="section-padding">
-    <div class="container">
-        <h2 class="section-title">Data Storage & Tech</h2>
-        <div class="product-grid">
-            <div class="product-item"><img src="usb1.jpg" alt="USB Drive"><h4>Dual Interface Flash Drive</h4></div>
-            <div class="product-item"><img src="usb2.jpg" alt="Mini USB"><h4>Mini OTG Storage</h4></div>
-            <div class="product-item"><img src="https://via.placeholder.com/400x400?text=SSD+Drive" alt="SSD"><h4>Portable SSD</h4></div>
-            <div class="product-item"><img src="https://via.placeholder.com/400x400?text=USB+Hub" alt="Hub"><h4>High-Speed Hub</h4></div>
+<div class="container">
+    <header>
+        <a href="index.html" class="logo">BEORVA</a>
+        <div id="nav-right">
+            <span class="back-btn" onclick="showHome()">← Back to List</span>
         </div>
+    </header>
 
-        <div class="detail-flex">
-            <div class="detail-img"><img src="usb1.jpg"></div>
-            <div class="detail-text">
-                <h3>Dual-Port Flash Storage</h3>
-                <p>Designed for cross-platform data management, featuring high-speed transmission and a durable zinc-alloy casing for efficient heat dissipation.</p>
-                <ul class="specs">
-                    <li>Interface: USB 3.2 Gen 1 & Type-C Dual Connector</li>
-                    <li>Read Speed: Up to 150MB/s | Write Speed: Up to 120MB/s</li>
-                    <li>Chipset: Tier-1 Original Flash memory for data stability</li>
-                    <li>Protection: Waterproof, dustproof, and anti-static design</li>
-                </ul>
+    <div id="home-page">
+        <h2 class="section-title">High-Performance Technology</h2>
+        <div class="grid">
+            <div class="card" onclick="showDetail('m1')">
+                <img src="ssd1.jpg" alt="BEORVA M1">
+                <h3>BEORVA M1 Portable SSD</h3>
+                <p style="color:#888; font-size:14px;">2000MB/s Mecha Flagship</p>
+                <span style="color:var(--accent); font-weight:600;">View Details ›</span>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x400?text=Tech+Product+2" alt="TBD">
+                <h3>Next-Gen Storage</h3>
+                <p>Coming Soon</p>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x400?text=Tech+Product+3" alt="TBD">
+                <h3>High-Speed Link</h3>
+                <p>Coming Soon</p>
             </div>
         </div>
-    </div>
-</section>
 
-<section id="toys" class="section-padding" style="background: #fafafa;">
-    <div class="container">
-        <h2 class="section-title">Educational Products</h2>
-        <div class="product-grid">
-            <div class="product-item"><img src="https://via.placeholder.com/400x400?text=Educational+Toy+1" alt="Toy 1"><h4>Logic Development Kit</h4></div>
-            <div class="product-item"><img src="https://via.placeholder.com/400x400?text=Educational+Toy+2" alt="Toy 2"><h4>Creative Building Set</h4></div>
-            <div class="product-item"><img src="https://via.placeholder.com/400x400?text=Educational+Toy+3" alt="Toy 3"><h4>Scientific Discovery Kit</h4></div>
-            <div class="product-item"><img src="https://via.placeholder.com/400x400?text=Educational+Toy+4" alt="Toy 4"><h4>Interactive Learning Tool</h4></div>
+        <h2 class="section-title">Educational Learning</h2>
+        <div class="grid">
+            <div class="card"><img src="https://via.placeholder.com/400x400?text=Toy+1" alt="TBD"><h3>Logic Builder</h3></div>
+            <div class="card"><img src="https://via.placeholder.com/400x400?text=Toy+2" alt="TBD"><h3>Creative Set</h3></div>
+            <div class="card"><img src="https://via.placeholder.com/400x400?text=Toy+3" alt="TBD"><h3>Science Discovery</h3></div>
         </div>
-        <p style="text-align: center; color: #888;">All toys are made from non-toxic, BPA-free materials and comply with EN71 and GCC safety requirements.</p>
     </div>
-</section>
 
-<section class="about-bg" id="about">
-    <div class="container about-grid">
-        <div>
-            <h3>Manufacturing Excellence</h3>
-            <p>Owned and operated by <strong>Bei Rong Hua</strong>, we manage three modern production facilities. Our core team has over 15 years of experience in supply chain management and quality control for the global market.</p>
-        </div>
-        <div>
-            <h3>Global Standards</h3>
-            <p>Our products are certified under CE, RoHS, and CCC. We maintain strict quality inspections to ensure all items meet the safety regulations required for international markets, including the Middle East.</p>
-        </div>
+    <div id="detail-page">
+        <div class="detail-flex" id="detail-content">
+            </div>
     </div>
-</section>
+</div>
 
 <footer>
     <div class="container">
-        <div class="footer-info">
-            Headquarters: Room 1001, 10th Floor, No. 26, Gongyuan East Road, Shanghai, China<br>
-            Contact: info@beorva.com | Brand Owner: Bei Rong Hua
-        </div>
+        <p>Shanghai Office: Room 1001, No. 26, Gongyuan East Road, Qingpu District, Shanghai, China</p>
+        <p>Owned by Bei Rong Hua | 15+ Years Industrial Excellence</p>
         <p>&copy; 2026 BEORVA. All Rights Reserved.</p>
     </div>
 </footer>
+
+<script>
+    // 产品数据库
+    const products = {
+        'm1': {
+            name: "BEORVA M1 Portable SSD",
+            img: "ssd1.jpg",
+            desc: "The BEORVA M1 is a high-speed mobile solid-state drive featuring a premium aluminum alloy casing with a rugged mecha texture and a portable integrated lanyard hook.",
+            specs: [
+                ["Model", "BEORVA M1"],
+                ["Dimensions", "85 × 50 × 12 mm"],
+                ["Weight", "Approx. 100g"],
+                ["Material", "Aluminum Alloy (Mecha Texture)"],
+                ["Read Speed", "1800 - 2000 MB/s"],
+                ["Write Speed", "1500 - 1800 MB/s"],
+                ["Interface", "Type-C + USB-A Dual Port"],
+                ["Capacity", "512GB / 1TB"],
+                ["System", "Windows, Mac OS 10.X+, Android (OTG Support)"]
+            ]
+        }
+    };
+
+    function showDetail(id) {
+        const p = products[id];
+        if(!p) return;
+
+        let specsHtml = p.specs.map(s => `<tr><td class="label">${s[0]}</td><td>${s[1]}</td></tr>`).join('');
+        
+        document.getElementById('detail-content').innerHTML = `
+            <div class="detail-img"><img src="${p.img}"></div>
+            <div class="detail-info">
+                <h2>${p.name}</h2>
+                <p style="color:#666; margin-bottom:30px;">${p.desc}</p>
+                <table class="specs-table">${specsHtml}</table>
+            </div>
+        `;
+
+        document.getElementById('home-page').style.display = 'none';
+        document.getElementById('detail-page').style.display = 'block';
+        document.querySelector('.back-btn').style.display = 'inline';
+        window.scrollTo(0,0);
+    }
+
+    function showHome() {
+        document.getElementById('home-page').style.display = 'block';
+        document.getElementById('detail-page').style.display = 'none';
+        document.querySelector('.back-btn').style.display = 'none';
+    }
+</script>
 
 </body>
 </html>
