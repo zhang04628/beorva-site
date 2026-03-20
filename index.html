@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BEORVA Official | Premium Innovation</title>
+    <title>BEORVA Official | Tech Innovation & Quality Play</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root { --primary: #004a2d; --accent: #c1a35f; --text: #333; }
         body { font-family: 'Poppins', sans-serif; margin: 0; color: var(--text); background: #fff; }
         .container { max-width: 1100px; margin: auto; padding: 0 20px; }
         
-        /* 导航栏 */
         header { padding: 20px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-weight: 700; font-size: 24px; color: var(--primary); text-decoration: none; }
-        .back-btn { display: none; cursor: pointer; color: var(--accent); font-weight: 600; text-decoration: none; }
+        .back-btn { display: none; cursor: pointer; color: var(--accent); font-weight: 600; }
 
-        /* 首页布局 */
         #home-page { display: block; padding: 60px 0; }
         .section-title { font-size: 28px; margin-bottom: 40px; text-align: center; color: var(--primary); }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 60px; }
@@ -25,7 +23,6 @@
         .card img { width: 100%; height: 250px; object-fit: contain; margin-bottom: 15px; }
         .card h3 { margin: 10px 0; font-size: 18px; }
 
-        /* 详情页布局 */
         #detail-page { display: none; padding: 60px 0; animation: fadeIn 0.4s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
@@ -37,9 +34,10 @@
         
         .specs-table { width: 100%; border-collapse: collapse; margin-top: 30px; }
         .specs-table td { padding: 12px 10px; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
-        .specs-table .label { font-weight: 600; color: #888; width: 150px; }
+        .specs-table .label { font-weight: 600; color: #888; width: 160px; }
 
-        footer { background: #111; color: #666; padding: 50px 0; margin-top: 80px; text-align: center; font-size: 13px; }
+        footer { background: #111; color: #888; padding: 60px 0; margin-top: 80px; text-align: center; font-size: 13px; line-height: 2; }
+        footer strong { color: #fff; }
     </style>
 </head>
 <body>
@@ -47,38 +45,37 @@
 <div class="container">
     <header>
         <a href="javascript:void(0)" onclick="showHome()" class="logo">BEORVA</a>
-        <div id="nav-right">
-            <span class="back-btn" onclick="showHome()">← Back to Products</span>
-        </div>
+        <span class="back-btn" onclick="showHome()">← Back to Products</span>
     </header>
 
     <div id="home-page">
-        <h2 class="section-title">Data Storage & Technology</h2>
+        <h2 class="section-title">Core Technology</h2>
         <div class="grid">
             <div class="card" onclick="showDetail('m1')">
-                <img src="ssd1.jpg" alt="BEORVA M1">
+                <img src="ssd1.jpg" alt="M1 SSD">
                 <h3>BEORVA M1 Portable SSD</h3>
-                <p style="color:#888; font-size:14px;">2000MB/s Mecha Design</p>
-                <span style="color:var(--accent); font-weight:600;">View Details ›</span>
+                <p style="color:#888; font-size:14px;">2000MB/s Extreme Speed</p>
+                <span style="color:var(--accent); font-weight:600;">Explore ›</span>
             </div>
             <div class="card" onclick="showDetail('otg')">
-                <img src="usb1.jpg" alt="BEORVA Mini OTG">
-                <h3>BEORVA Mini OTG Flash Drive</h3>
-                <p style="color:#888; font-size:14px;">Dual Type-C Interface | Metal Body</p>
-                <span style="color:var(--accent); font-weight:600;">View Details ›</span>
+                <img src="usb1.jpg" alt="Mini OTG">
+                <h3>BEORVA Mini OTG Drive</h3>
+                <p style="color:#888; font-size:14px;">Zinc Alloy Dual Interface</p>
+                <span style="color:var(--accent); font-weight:600;">Explore ›</span>
             </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/400x400?text=Coming+Soon" alt="TBD">
-                <h3>High-Speed Link Hub</h3>
-                <p>New Arrival Soon</p>
+            <div class="card" onclick="showDetail('hub')">
+                <img src="hub1.jpg" alt="12-in-1 Hub">
+                <h3>BEORVA 12-in-1 Hub</h3>
+                <p style="color:#888; font-size:14px;">5Gbps Multi-function Dock</p>
+                <span style="color:var(--accent); font-weight:600;">Explore ›</span>
             </div>
         </div>
 
-        <h2 class="section-title">Educational Discovery</h2>
+        <h2 class="section-title">Smart Toys</h2>
         <div class="grid">
-            <div class="card"><img src="https://via.placeholder.com/400x400?text=Toy+1" alt="TBD"><h3>Logic Builder</h3></div>
-            <div class="card"><img src="https://via.placeholder.com/400x400?text=Toy+2" alt="TBD"><h3>Creative Set</h3></div>
-            <div class="card"><img src="https://via.placeholder.com/400x400?text=Toy+3" alt="TBD"><h3>Science Kit</h3></div>
+            <div class="card"><img src="https://via.placeholder.com/400x400?text=Toy+1" alt="TBD"><h3>Logic Discovery</h3></div>
+            <div class="card"><img src="https://via.placeholder.com/400x400?text=Toy+2" alt="TBD"><h3>Creative Builder</h3></div>
+            <div class="card"><img src="https://via.placeholder.com/400x400?text=Toy+3" alt="TBD"><h3>Active Play</h3></div>
         </div>
     </div>
 
@@ -89,9 +86,10 @@
 
 <footer>
     <div class="container">
-        <p>Shanghai Office: Room 1001, No. 26, Gongyuan East Road, Qingpu District, Shanghai, China</p>
-        <p>Global Standards: National 3C, RoHS, and GCC Safety Compliant</p>
-        <p>&copy; 2026 BEORVA. All Rights Reserved.</p>
+        <strong>BEORVA Electronic Technology Co., Ltd.</strong><br>
+        Address: Room 1001, 10th Floor, No. 26, Lane 1289, Gongyuan East Road, Qingpu District, Shanghai, China<br>
+        Email: 18376781936@163.com | Owner: Bei Rong Hua<br>
+        &copy; 2026 BEORVA. Certified National 3C, RoHS & GCC Compliant.
     </div>
 </footer>
 
@@ -100,29 +98,26 @@
         'm1': {
             name: "BEORVA M1 Portable SSD",
             img: "ssd1.jpg",
-            desc: "The BEORVA M1 is a professional-grade mobile solid-state drive featuring a premium aluminum alloy casing with a rugged mecha texture. Built for speed and extreme durability.",
-            specs: [
-                ["Model", "BEORVA M1"],
-                ["Dimensions", "85 × 50 × 12 mm"],
-                ["Material", "Aluminum Alloy (Mecha Texture)"],
-                ["Read Speed", "1800 - 2000 MB/s"],
-                ["Write Speed", "1500 - 1800 MB/s"],
-                ["Interface", "Type-C + USB-A Dual Port"],
-                ["Capacity", "512GB / 1TB"]
-            ]
+            desc: "Ultra-fast mobile storage with a premium mecha-textured aluminum shell and lanyard hook.",
+            specs: [["Model","BEORVA M1"],["Read Speed","1800-2000 MB/s"],["Write Speed","1500-1800 MB/s"],["Interface","Type-C + USB-A"],["Material","Aluminum Alloy"]]
         },
         'otg': {
             name: "BEORVA Mini OTG Flash Drive",
             img: "usb1.jpg",
-            desc: "A compact, high-performance flash drive designed for seamless data transfer between mobile phones and computers. Featuring a durable zinc-alloy body and advanced UDP packaging for water and shock resistance.",
+            desc: "Durable zinc-alloy dual-interface drive with UDP technology for extreme water and shock resistance.",
+            specs: [["Model","BEORVA OTG-X1"],["Durability","UDP Waterproof/Anti-shock"],["Material","Zinc Alloy"],["Interface","Type-C OTG Support"],["Systems","Android, iOS, Windows, Mac"]]
+        },
+        'hub': {
+            name: "BEORVA 12-in-1 Station",
+            img: "hub1.jpg",
+            desc: "A powerful multi-functional Type-C docking station supporting 12 simultaneous connections for professional workstations.",
             specs: [
-                ["Model", "BEORVA OTG-X1"],
-                ["Interface", "Type-C (OTG Support)"],
-                ["Material", "Zinc Alloy (Anti-fingerprint)"],
-                ["Key Feature", "UDP Integrated Packaging"],
-                ["Durability", "Waterproof, Anti-shock, Dustproof"],
-                ["Capacity", "Up to 1TB Options"],
-                ["System", "Windows, MacOS, Android (Plug & Play)"]
+                ["Model", "BEORVA-LXSN701C"],
+                ["Interface", "Type-C 12-in-1 Expansion"],
+                ["Transfer Rate", "5Gbps (5000Mbps)"],
+                ["Cable Length", "18 cm"],
+                ["Power", "Supports external power input"],
+                ["Type", "Cross-border export optimized"]
             ]
         }
     };
