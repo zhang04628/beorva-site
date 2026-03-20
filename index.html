@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BEORVA Official | Global Premium Design & Supply</title>
+    <title>BEORVA Official | Tech Innovation & Educational Toys</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root { --primary: #004a2d; --accent: #c1a35f; --text: #333; --light: #f9f9f9; }
@@ -28,25 +28,30 @@
         .category-header { text-align: left; margin-bottom: 40px; border-left: 5px solid var(--accent); padding-left: 15px; }
         .category-header h2 { margin: 0; font-size: 28px; color: var(--primary); }
         
-        /* Image Grid - 4 Images per row */
+        /* Image Grid */
         .image-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .img-slot { background: #eee; border-radius: 10px; overflow: hidden; aspect-ratio: 1 / 1; transition: 0.3s; position: relative; border: 1px solid #eee; }
-        .img-slot:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .img-slot img { width: 100%; height: 100%; object-fit: cover; }
-        .img-label { position: absolute; bottom: 0; width: 100%; background: rgba(0,0,0,0.6); color: #fff; font-size: 12px; padding: 5px 0; text-align: center; opacity: 0; transition: 0.3s; }
-        .img-slot:hover .img-label { opacity: 1; }
+        .img-slot { background: #fff; border-radius: 10px; overflow: hidden; transition: 0.3s; border: 1px solid #eee; text-decoration: none; color: inherit; display: block;}
+        .img-slot:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-color: var(--accent); }
+        .img-slot img { width: 100%; height: 250px; object-fit: contain; background: #fff; }
+        .img-desc { padding: 15px; text-align: center; background: #fff; }
+        .img-desc h4 { margin: 0; font-size: 16px; color: var(--primary); }
+        .img-desc span { font-size: 12px; color: #999; }
 
-        /* Brand Heritage */
+        /* Detail Area */
+        .detail-area { background: #fff; padding: 60px 0; }
+        .detail-card { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 60px; }
+        .detail-text h3 { font-size: 24px; color: var(--primary); margin-top: 0; }
+        .specs-list { list-style: none; padding: 0; font-size: 14px; }
+        .specs-list li { margin-bottom: 8px; padding-left: 20px; position: relative; }
+        .specs-list li::before { content: "•"; color: var(--accent); position: absolute; left: 0; font-weight: bold; }
+
+        /* Heritage */
         .heritage { background: var(--primary); color: white; padding: 80px 0; }
-        .heritage-content { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
-        .heritage h3 { color: var(--accent); font-size: 24px; }
+        .heritage h3 { color: var(--accent); }
 
-        /* Footer */
         footer { background: #111; color: #888; padding: 60px 0 20px; font-size: 13px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
         .footer-bottom { text-align: center; margin-top: 40px; border-top: 1px solid #222; padding-top: 20px; }
-
-        @media (max-width: 768px) { .heritage-content { grid-template-columns: 1fr; } .hero h1 { font-size: 30px; } }
     </style>
 </head>
 <body>
@@ -55,32 +60,66 @@
     <div class="container nav-wrapper">
         <a href="#" class="logo">BEORVA</a>
         <ul class="nav-links">
-            <li><a href="#digital">3C Digital</a></li>
-            <li><a href="#toys">Educational Toys</a></li>
-            <li><a href="#home">Home Essentials</a></li>
-            <li><a href="#about">Our Story</a></li>
+            <li><a href="#tech">Computer Tech</a></li>
+            <li><a href="#toys">Smart Toys</a></li>
+            <li><a href="#about">About Us</a></li>
         </ul>
     </div>
 </header>
 
 <section class="hero">
     <div class="container">
-        <h1>Global Standard, Original Design</h1>
-        <p>A 2024 New-Gen Premium Brand backed by a 15-year world-class industrial supply chain. We deliver high-end aesthetics and uncompromising quality to global consumers.</p>
+        <h1>Tech-Driven Life, Smart-Inspired Play</h1>
+        <p>Combining 15 years of manufacturing excellence with modern design. We specialize in high-performance storage solutions and STEAM-certified educational toys.</p>
     </div>
 </section>
 
-<section id="digital" class="category-section">
+<section id="tech" class="category-section">
     <div class="container">
         <div class="category-header">
-            <h2>Elite Series: 3C Digital</h2>
-            <p>Aerospace-grade materials meet Tier-1 storage performance.</p>
+            <h2>Elite Series: Professional Tech</h2>
+            <p>Reliable performance for both mobile and desktop environments.</p>
         </div>
         <div class="image-grid">
-            <div class="img-slot"><img src="usb1.jpg" alt="Crystal USB 1"><div class="img-label">Elite Edition A1</div></div>
-            <div class="img-slot"><img src="usb2.jpg" alt="Crystal USB 2"><div class="img-label">Elite Edition A2</div></div>
-            <div class="img-slot"><img src="usb3.jpg" alt="Crystal USB 3"><div class="img-label">Elite Edition A3</div></div>
-            <div class="img-slot"><img src="usb4.jpg" alt="Crystal USB 4"><div class="img-label">Elite Edition A4</div></div>
+            <a href="#usb-detail-1" class="img-slot">
+                <img src="usb1.jpg" alt="Crystal Series USB">
+                <div class="img-desc"><h4>Crystal Series Pro</h4><span>USB 3.2 + Type-C Dual Interface</span></div>
+            </a>
+            <a href="#usb-detail-2" class="img-slot">
+                <img src="usb2.jpg" alt="Mini OTG USB">
+                <div class="img-desc"><h4>Mini OTG Flash Drive</h4><span>Capacity up to 2TB</span></div>
+            </a>
+            <div class="img-slot"><img src="https://via.placeholder.com/400x400?text=Tech+Slot+3" alt="TBD"><div class="img-desc"><h4>Next Gen SSD</h4><span>Coming Soon</span></div></div>
+            <div class="img-slot"><img src="https://via.placeholder.com/400x400?text=Tech+Slot+4" alt="TBD"><div class="img-desc"><h4>High-Speed Hub</h4><span>Coming Soon</span></div></div>
+        </div>
+
+        <div class="detail-area" id="usb-detail-1">
+            <div class="detail-card">
+                <img src="usb1.jpg" style="max-width: 100%; border-radius: 10px;">
+                <div class="detail-text">
+                    <h3>Crystal Series: Professional Storage</h3>
+                    <p>The BEORVA Crystal Series is engineered for reliability. Featuring a sleek metal casing and dual-port versatility, it bridges the gap between your smartphone and workstation.</p>
+                    <ul class="specs-list">
+                        <li><strong>High Performance:</strong> Read 150MB/s, Write 120MB/s for instant transfers.</li>
+                        <li><strong>Grade A Flash:</strong> Powered by original Grade A flash memory chips for long-term data safety.</li>
+                        <li><strong>Rugged Build:</strong> Waterproof, dustproof, and shockproof architecture.</li>
+                        <li><strong>Universal Link:</strong> Seamless USB 3.2 and Type-C integration.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="detail-card" id="usb-detail-2">
+                <div class="detail-text">
+                    <h3>Mini OTG: Mobile Storage Revolution</h3>
+                    <p>Unlock massive storage on the go. Our Mini OTG series provides massive capacity in a thumb-sized form factor, perfect for modern cross-border operations.</p>
+                    <ul class="specs-list">
+                        <li><strong>Massive Capacity:</strong> Available in 512GB, 1TB, and 2TB options.</li>
+                        <li><strong>Dual Interface:</strong> Optimized for mobile phones and computers.</li>
+                        <li><strong>Compact Design:</strong> Durable zinc-alloy body for heat dissipation.</li>
+                        <li><strong>Plug & Play:</strong> No driver required for mainstream OS and mobile devices.</li>
+                    </ul>
+                </div>
+                <img src="usb2.jpg" style="max-width: 100%; border-radius: 10px;">
+            </div>
         </div>
     </div>
 </section>
@@ -88,67 +127,33 @@
 <section id="toys" class="category-section" style="background: #fcfcfc;">
     <div class="container">
         <div class="category-header">
-            <h2>Star-Start Series: Educational Toys</h2>
-            <p>STEAM-based innovation for the next generation. Food-grade safety.</p>
+            <h2>Star-Start Series: Educational Play</h2>
+            <p>Certified STEAM toys designed for logic, art, and safety.</p>
         </div>
         <div class="image-grid">
-            <div class="img-slot"><img src="toy1.jpg" alt="STEAM Toy 1"><div class="img-label">Discovery Pro</div></div>
-            <div class="img-slot"><img src="toy2.jpg" alt="STEAM Toy 2"><div class="img-label">Logic Builder</div></div>
-            <div class="img-slot"><img src="toy3.jpg" alt="STEAM Toy 3"><div class="img-label">Creative Spark</div></div>
-            <div class="img-slot"><img src="toy4.jpg" alt="STEAM Toy 4"><div class="img-label">Future Mind</div></div>
-        </div>
-    </div>
-</section>
-
-<section id="home" class="category-section">
-    <div class="container">
-        <div class="category-header">
-            <h2>Minimalist Series: Home Essentials</h2>
-            <p>Harmony between geometric design and functional durability.</p>
-        </div>
-        <div class="image-grid">
-            <div class="img-slot"><img src="home1.jpg" alt="Home Decor 1"><div class="img-label">Pure Life V1</div></div>
-            <div class="img-slot"><img src="home2.jpg" alt="Home Decor 2"><div class="img-label">Pure Life V2</div></div>
-            <div class="img-slot"><img src="home3.jpg" alt="Home Decor 3"><div class="img-label">Pure Life V3</div></div>
-            <div class="img-slot"><img src="home4.jpg" alt="Home Decor 4"><div class="img-label">Pure Life V4</div></div>
+            <div class="img-slot"><img src="https://via.placeholder.com/400x400?text=Toy+1" alt="Toy 1"><div class="img-desc"><h4>Logic Builder Kit</h4><span>STEAM Certified</span></div></div>
+            <div class="img-slot"><img src="https://via.placeholder.com/400x400?text=Toy+2" alt="Toy 2"><div class="img-desc"><h4>Creative Art Set</h4><span>BPA-Free Materials</span></div></div>
+            <div class="img-slot"><img src="https://via.placeholder.com/400x400?text=Toy+3" alt="Toy 3"><div class="img-desc"><h4>Space Discovery</h4><span>Age 3+ Focus</span></div></div>
+            <div class="img-slot"><img src="https://via.placeholder.com/400x400?text=Toy+4" alt="Toy 4"><div class="img-desc"><h4>Future Mind Puzzle</h4><span>Interactive Play</span></div></div>
         </div>
     </div>
 </section>
 
 <section class="heritage" id="about">
     <div class="container">
-        <div class="heritage-content">
-            <div>
-                <h3>Brand Heritage</h3>
-                <p>BEORVA (Be-Ori-R-Va) was officially established in 2024 by <strong>Bei Rong Hua</strong>. Our mission is to bridge the gap between "Industrial Power" and "Consumer Aesthetics".</p>
-            </div>
-            <div>
-                <h3>Global Supply Chain</h3>
-                <p>Sharing 15 years of manufacturing excellence, our 3 smart factories and 12 production lines ensure every BEORVA product meets stringent international standards (CE, RoHS, CCC, GCC).</p>
-            </div>
-        </div>
+        <h3>15 Years of Precision</h3>
+        <p>Owned and operated by <strong>Bei Rong Hua</strong>. BEORVA specializes in high-standard electronics and toys. With 3 smart factories and 12 production lines, we ensure every product meets global safety and quality certifications.</p>
     </div>
 </section>
 
 <footer>
     <div class="container">
         <div class="footer-grid">
-            <div>
-                <h4 style="color:white">BEORVA</h4>
-                <p>Premium Consumer Brand<br>Original Design DNA</p>
-            </div>
-            <div>
-                <h4 style="color:white">Compliance</h4>
-                <p>National 3C Certified<br>GCC Standard Compliant<br>RoHS Quality Assured</p>
-            </div>
-            <div>
-                <h4 style="color:white">Global HQ</h4>
-                <p>Room 1001, 10th Floor, No. 26, Gongyuan East Road, Qingpu District, Shanghai, China</p>
-            </div>
+            <div><h4 style="color:white">BEORVA</h4><p>Innovation & Play</p></div>
+            <div><h4 style="color:white">Global HQ</h4><p>Room 1001, 10th Floor, No. 26, Gongyuan East Road, Shanghai, China</p></div>
+            <div><h4 style="color:white">Compliance</h4><p>RoHS, CE, and GCC Certified</p></div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 BEORVA Official. Designed for Excellence.</p>
-        </div>
+        <div class="footer-bottom"><p>&copy; 2026 BEORVA Official. All Rights Reserved.</p></div>
     </div>
 </footer>
 
