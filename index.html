@@ -1,124 +1,75 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BEORVA Official | Industrial Excellence</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>BEORVA Official | Premium Industrial Manufacturing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root { 
             --primary-dark: #0f0f0f;  
             --accent-green: #002b1b; 
             --accent-gold: #b8934d;  
-            --bg-body: #f7f7f7;     /* 高级暮色灰 */
+            --bg-body: #f0f2f5;     /* 高级工业冷灰色 */
             --bg-card: #ffffff;      
-        }
-
-        * {
-            box-sizing: border-box;
         }
 
         body { font-family: 'Inter', sans-serif; margin: 0; background-color: var(--bg-body); color: #1a1a1a; line-height: 1.6; }
         .container { max-width: 1200px; margin: auto; padding: 0 25px; }
         
-        /* 导航 */
-        header { padding: 20px 0; background: rgba(255,255,255,0.98); border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); }
+        /* 1. 恢复：右上角导航栏 */
+        header { padding: 25px 0; background: rgba(255,255,255,0.98); border-bottom: 1px solid #ddd; position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); }
         .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 800; font-size: 26px; color: var(--accent-green); text-decoration: none; letter-spacing: 1px; }
-        .back-btn { display: none; cursor: pointer; color: var(--accent-gold); font-weight: 700; font-size: 14px; text-transform: uppercase; transition: opacity 0.3s; }
-        .back-btn:hover { opacity: 0.8; }
+        .logo { font-weight: 800; font-size: 28px; color: var(--accent-green); text-decoration: none; letter-spacing: 2px; }
+        .nav-links a { margin-left: 30px; text-decoration: none; color: #333; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent-gold); }
+        .back-btn { display: none; cursor: pointer; color: var(--accent-gold); font-weight: 700; font-size: 14px; text-transform: uppercase; }
 
-        /* 英雄区 */
-        .hero { text-align: center; padding: 100px 0 60px; }
-        .hero h1 { font-size: 48px; font-weight: 800; margin-bottom: 20px; color: var(--primary-dark); letter-spacing: -1px; }
-        .hero p { color: #666; font-size: 18px; max-width: 700px; margin: auto; font-weight: 300; }
+        .hero { text-align: center; padding: 120px 0 80px; }
+        .hero h1 { font-size: 52px; font-weight: 800; margin-bottom: 20px; color: var(--primary-dark); }
+        .hero p { color: #666; font-size: 18px; max-width: 800px; margin: auto; font-weight: 300; }
 
-        /* 品牌卡片 */
-        .brand-story { background: #fff; border: 1px solid #eee; display: flex; flex-wrap: wrap; margin-bottom: 80px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
-        .story-img { flex: 1; min-height: 400px; background: #eee url('https://via.placeholder.com/800x600/f0f0f0/cccccc?text=BEORVA+Factory') center/cover no-repeat; }
-        .story-content { flex: 1.2; padding: 60px; }
-        .story-content h2 { font-size: 32px; margin-bottom: 20px; font-weight: 700; }
-        .story-content p { color: #555; font-size: 16px; margin-bottom: 20px; line-height: 1.8; }
-        .story-content .brand-tag { 
-            display: inline-block; 
-            background: var(--accent-green); 
-            color: #fff; 
-            padding: 6px 14px; 
-            border-radius: 20px; 
-            font-size: 12px; 
-            font-weight: 600;
-            margin-right: 8px;
-            margin-bottom: 8px;
-        }
+        /* 2. 品牌来历：加回浓缩精华文案 */
+        .brand-story { background: #fff; border: 1px solid #eee; display: flex; flex-wrap: wrap; margin-bottom: 80px; border-radius: 4px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.04); }
+        .story-img { flex: 1; min-height: 480px; background: #eee url('company.jpg') center/cover no-repeat; }
+        .story-content { flex: 1.2; padding: 70px; }
+        .story-content h2 { font-size: 36px; margin-bottom: 25px; font-weight: 700; color: var(--primary-dark); }
+        .story-content p { color: #444; font-size: 16px; margin-bottom: 20px; text-align: justify; }
+        .story-content strong { color: var(--accent-gold); }
 
-        /* 产品列表 */
-        .section-title { font-size: 28px; font-weight: 700; margin: 60px 0 30px; text-align: center; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { background: #fff; border: 1px solid #eee; padding: 30px; border-radius: 12px; transition: 0.3s; cursor: pointer; text-align: center; overflow: hidden; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
-        .card img { width: 100%; height: 260px; object-fit: contain; margin-bottom: 20px; border-radius: 8px; background: #fafafa; }
-        .card h3 { font-size: 20px; margin-bottom: 10px; font-weight: 600; }
+        .section-title { font-size: 32px; font-weight: 700; margin: 100px 0 50px; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        .card { background: #fff; border: 1px solid #eee; padding: 35px; border-radius: 4px; transition: 0.4s; cursor: pointer; text-align: center; }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 45px rgba(0,0,0,0.08); border-color: var(--accent-gold); }
+        .card img { width: 100%; height: 280px; object-fit: contain; margin-bottom: 25px; }
+        .card h3 { font-size: 22px; margin-bottom: 12px; font-weight: 700; }
         .card .btn-view { color: var(--accent-gold); font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* 🔥 产品详情页布局 */
-        #detail-page { display: none; padding: 60px 0; background: #fff; min-height: 80vh; animation: fadeIn 0.4s ease; border-radius: 12px; margin: 40px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .detail-container { display: flex; flex-direction: row; gap: 60px; align-items: flex-start; }
+        /* 3. 产品详情页布局：修复图文并茂 */
+        #detail-page { display: none; padding: 100px 0; background: #fff; min-height: 80vh; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .detail-container { display: flex; flex-direction: row; gap: 80px; align-items: flex-start; }
         .detail-left { flex: 1; position: sticky; top: 120px; }
-        .detail-left img { width: 100%; height: auto; border-radius: 12px; border: 1px solid #f0f0f0; background: #fcfcfc; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .detail-left img { width: 100%; height: auto; border-radius: 4px; border: 1px solid #f0f0f0; background: #fcfcfc; }
+        .detail-right { flex: 1.3; }
+        .detail-right h2 { font-size: 42px; color: var(--primary-dark); margin-top: 0; margin-bottom: 30px; border-left: 8px solid var(--accent-gold); padding-left: 25px; line-height: 1.1; }
+        .detail-right .desc { font-size: 18px; color: #555; margin-bottom: 50px; line-height: 2; text-align: justify; }
         
-        .detail-right { flex: 1.2; }
-        .detail-right h2 { font-size: 38px; color: var(--primary-dark); margin-top: 0; margin-bottom: 20px; border-left: 6px solid var(--accent-gold); padding-left: 20px; line-height: 1.2; font-weight: 700; }
-        .detail-right .desc { font-size: 17px; color: #666; margin-bottom: 40px; line-height: 1.8; }
+        .specs-table { width: 100%; border-collapse: collapse; background: #fcfcfc; border: 1px solid #eee; }
+        .specs-table td { padding: 22px; border-bottom: 1px solid #eee; font-size: 15px; }
+        .specs-table .label { font-weight: 700; color: #999; width: 180px; text-transform: uppercase; letter-spacing: 1.5px; }
+        .specs-table .val { color: #222; font-weight: 600; }
 
-        /* 功能亮点 */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-        .feature-item {
-            background: #fafafa;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid var(--accent-gold);
-        }
-        .feature-item h4 {
-            margin: 0 0 8px 0;
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--primary-dark);
-        }
-        .feature-item p {
-            margin: 0;
-            font-size: 14px;
-            color: #666;
-            line-height: 1.6;
-        }
+        /* 4. 恢复：页脚地址与品牌信息 */
+        footer { background: #000; color: #888; padding: 100px 0 50px; margin-top: 120px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; }
+        .footer-item h4 { color: #fff; margin-bottom: 25px; font-size: 18px; font-weight: 700; text-transform: uppercase; }
+        .footer-item p { font-size: 14px; line-height: 1.8; margin: 0; }
+        .footer-bottom { border-top: 1px solid #111; padding-top: 40px; text-align: center; font-size: 12px; margin-top: 60px; color: #444; }
         
-        /* 规格参数表 */
-        .specs-table { width: 100%; border-collapse: collapse; background: #fafafa; border-radius: 12px; overflow: hidden; }
-        .specs-table td { padding: 18px 20px; border-bottom: 1px solid #eee; font-size: 15px; }
-        .specs-table tr:last-child td { border-bottom: none; }
-        .specs-table .label { font-weight: 700; color: #888; width: 160px; text-transform: uppercase; letter-spacing: 1px; }
-        .specs-table .val { color: #333; font-weight: 500; }
-
-        footer { background: #000; color: #777; padding: 80px 0 40px; margin-top: 100px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-        .footer-item h4 { color: #fff; margin-bottom: 20px; font-size: 16px; }
-        
-        /* 手机端适配 */
-        @media (max-width: 900px) {
+        @media (max-width: 950px) {
             .detail-container { flex-direction: column; }
             .detail-left { position: static; }
-            .features-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 36px; }
-            .story-content { padding: 40px 30px; }
-            .brand-story { flex-direction: column; }
-            .story-img { min-height: 250px; }
         }
     </style>
 </head>
@@ -128,37 +79,38 @@
     <header>
         <div class="nav-wrapper">
             <a href="javascript:void(0)" onclick="showHome()" class="logo">BEORVA</a>
-            <span class="back-btn" onclick="showHome()">← Back to Overview</span>
+            <div class="nav-links" id="nav-links">
+                <a href="javascript:void(0)" onclick="showHome()">Overview</a>
+                <a href="#about-section">Factory & Brand</a>
+                <a href="mailto:info@beorva.com">Inquiry</a>
+            </div>
+            <span class="back-btn" id="back-btn" onclick="showHome()">← Back To Index</span>
         </div>
     </header>
 
     <div id="home-page">
         <section class="hero">
-            <h1>Industrial Precision & Smart Play.</h1>
-            <p>20 years of manufacturing excellence in Digital Storage & Intellectual Play.</p>
+            <h1>Industrial Legacy. <br>Refined Engineering.</h1>
+            <p>Direct from our 20,000㎡ manufacturing base. Bridging 15 years of ODM/OEM mastery with advanced Intellectual Play & 3C Technology.</p>
         </section>
 
-        <section class="brand-story">
+        <section class="brand-story" id="about-section">
             <div class="story-img"></div>
             <div class="story-content">
-                <h2>BEORVA Heritage</h2>
-                <p>Founded in Guangdong, BEORVA bridges oriental craftsmanship with global industrial standards. With 20 years of industry experience and 20,000㎡ of production space, we deliver "Quality Manufacturing" directly to global partners.</p>
-                <p>We operate 10+ assembly lines with 200+ skilled workers, maintaining 500W+ annual inventory capacity. We have long-term partnerships with world-class retailers like Target, Walmart and Tesco.</p>
-                <div style="margin-top: 20px;">
-                    <span class="brand-tag">20+ Years Experience</span>
-                    <span class="brand-tag">20000㎡ Factory</span>
-                    <span class="brand-tag">Global Certification</span>
-                </div>
-                <p style="margin-top: 20px; font-size: 14px; color: #888;">
-                    <strong>Be:</strong> User Selection | <strong>Ori:</strong> Craftsmanship | <strong>R:</strong> Glory | <strong>Va:</strong> Brilliance.
-                </p>
+                <h2>The Heritage of <strong>BEORVA</strong></h2>
+                <p>Founded by **Bei Rong Hua Co., Ltd** on September 30, 2024, BEORVA represents the pinnacle of "Quality Manufacturing." Backed by **15 years of industrial deep-dive** and serving Fortune 500 giants, we own 3 smart factories and 12 international-standard production lines.</p>
+                <p><strong>Be:</strong> Represents User-centric Selection. <br>
+                   <strong>Ori:</strong> Anchors our Oriental Craftsmanship gene. <br>
+                   <strong>R:</strong> Signifies Industrial Glory (Rong). <br>
+                   <strong>Va:</strong> Reflects Vast (Hua) brilliance of high-quality life.</p>
+                <p>We strictly follow the **"Three No Principles"**: No false-spec products, No compromise on safety, and No soulless designs. We are here to deliver international-tier quality directly to the consumer.</p>
             </div>
         </section>
 
-        <h2 class="section-title">Digital Storage Solutions</h2>
+        <h2 class="section-title">Professional Storage Solutions</h2>
         <div class="grid" id="storage-grid"></div>
 
-        <h2 class="section-title">Intellectual Play</h2>
+        <h2 class="section-title">Advanced Intellectual Play</h2>
         <div class="grid" id="play-grid"></div>
     </div>
 
@@ -170,110 +122,36 @@
 <footer>
     <div class="container footer-grid">
         <div class="footer-item">
-            <h4>HEADQUARTERS</h4>
-            <p>Guangdong, China</p>
+            <h4>Global Headquarters</h4>
+            <p>Room 1001, 10th Floor, No. 26, Lane 1289, Gongyuan East Road, Qingpu District, Shanghai, China</p>
         </div>
         <div class="footer-item">
-            <h4>CERTIFICATION</h4>
-            <p>FCC, CPC, CE, RoHS, EN71, BSCI, GCC, 3C Compliant.</p>
+            <h4>Industrial Compliance</h4>
+            <p>Full suite of certifications: FCC, CPC, CE, RoHS, GCC, and National 3C. Strictly verified for global reliability.</p>
         </div>
         <div class="footer-item">
-            <h4>CONTACT</h4>
-            <p>info@beorva.com</p>
+            <h4>Business Connect</h4>
+            <p>Email: info@beorva.com<br>Support: 183-xxxx-xxxx<br>Owner: Bei Rong Hua Co., Ltd</p>
         </div>
     </div>
+    <div class="footer-bottom">&copy; 2026 BEORVA. All Rights Reserved. Representing the elite standard of China Manufacturing.</div>
 </footer>
 
 <script>
     const products = {
-        'm1': { 
-            cat: 's', 
-            name: "M1 Portable SSD", 
-            img: "https://via.placeholder.com/600x400/f5f5f5/cccccc?text=M1+Portable+SSD", 
-            desc: "Aerospace-grade aluminum storage with 2000MB/s extreme speed logic.", 
-            specs: [
-                ["Speed","2000MB/s"],
-                ["Interface","Type-C/USB-A"],
-                ["Build","Alloy Case"]
-            ] 
-        },
-        'otg': { 
-            cat: 's', 
-            name: "Crystal Mini OTG", 
-            img: "https://via.placeholder.com/600x400/f5f5f5/cccccc?text=Crystal+Mini+OTG", 
-            desc: "Dual USB 3.2 & Type-C connectivity. Grade A Flash for data security.", 
-            specs: [
-                ["Dual Port","USB 3.2 + Type-C"],
-                ["Protection","Water/Shockproof"],
-                ["Standard","UDP 3.0"]
-            ] 
-        },
-        'hub': { 
-            cat: 's', 
-            name: "12-in-1 Pro Hub", 
-            img: "https://via.placeholder.com/600x400/f5f5f5/cccccc?text=12-in-1+Pro+Hub", 
-            desc: "Precision command center with reinforced 10cm data cable.", 
-            specs: [
-                ["Ports","12-in-1"],
-                ["Transmission","5Gbps"],
-                ["Cable","10cm Reinforced"]
-            ] 
-        },
-        'camera': { 
-            cat: 'p', 
-            name: "4K Campus Camera", 
-            img: "https://via.placeholder.com/600x400/f5f5f5/cccccc?text=4K+Campus+Camera", 
-            desc: "Student 4K imaging system with flip selfie screen and LED fill light.", 
-            specs: [
-                ["Res","4K Ultra HD"],
-                ["Screen","Flip Selfie"],
-                ["Modes","LED Fill Light"]
-            ] 
-        },
-        'car': { 
-            cat: 'p', 
-            name: "Spray RC Racer", 
-            img: "https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/3cb78164fa2a46249d7f1eccbfbfdd49.jpeg~tplv-noop.image?lk3s=8e244e95&rcl=20260320205248AD31571E08DFF52301AB&rrcfp=68002718&x-expires=2089371172&x-signature=Bd83Dex0GMu7GutuLhWr7UE0DsY%3D", 
-            desc: "这款BEORVA遥控跑车以白色概念跑车外观为核心，结合手势+手柄双控、喷雾+灯光特效和全向漂移特技，兼具科技感与操控乐趣，2.4GHz抗干扰遥控与长续航设计，为玩家带来沉浸式的操控体验。",
-            features: [
-                {title: "双控制模式", desc: "手柄遥控器 + 手表手势遥控器，支持重力感应操控"},
-                {title: "喷雾特效", desc: "车尾喷雾功能，漂移时自动触发冷雾效果"},
-                {title: "动感灯光", desc: "4种灯光模式，车头带炫酷灯光效果"},
-                {title: "全向特技", desc: "360°旋转、漂移、45°斜角漂移等特技动作"}
-            ],
-            specs: [
-                ["适用年龄","14+"],
-                ["遥控频率","2.4GHz"],
-                ["产品比例","1:16"],
-                ["产品颜色","白色"],
-                ["遥控距离","约50米"],
-                ["使用时间","约25-30分钟"],
-                ["充电时间","约2.5-3小时"],
-                ["车身电池","3.7V 1200mAh锂电池"],
-                ["遥控器电池","AA*2 (不包电)"],
-                ["产品尺寸","25*13*7cm"],
-                ["产品重量","裸车481g / 遥控器90g / 电池32g"],
-                ["装箱数","18箱/CTN"]
-            ] 
-        },
-        'magtoy': { 
-            cat: 'p', 
-            name: "Magnetic Discovery", 
-            img: "https://via.placeholder.com/600x400/f5f5f5/cccccc?text=Magnetic+Discovery", 
-            desc: "STEAM certified spatial engineering logic building system.", 
-            specs: [
-                ["Material","ABS BPA-Free"],
-                ["Standard","National 3C"],
-                ["Skills","Spatial Logic"]
-            ] 
-        }
+        'm1': { cat: 's', name: "M1 Portable SSD", img: "ssd1.jpg", desc: "Flagship 2000MB/s performance powered by Grade A original flash hardware. Built with aerospace-grade aluminum and laser-etched mecha textures. Truly extreme speed meets industrial aesthetic.", specs: [["Performance","2000MB/s R/W"],["Interface","Type-C + USB 3.2"],["Body","Aerospace Aluminum"],["Protection","Shock/Vibration Resistant"]] },
+        'otg': { cat: 's', name: "Crystal Mini OTG", img: "usb1.jpg", desc: "Universal dual-interface architecture supporting USB 3.2 and Type-C. Industrial UDP packaging ensures your data is waterproof, dustproof, and shockproof. A隨身轻奢 companion for data security.", specs: [["Dual Port","USB-A & Type-C"],["Standard","UDP 3.0 Waterproof"],["Capacity","128GB - 1TB Opt."],["Security","Grade A Original Flash"]] },
+        'hub': { cat: 's', name: "12-in-1 Pro Hub", img: "hub1.jpg", desc: "The ultimate digital command center. Features 12 high-performance expansion ports and a specialized 10cm reinforced data cable. Precision engineered for high-load industrial or creative tasks.", specs: [["Ports","12-in-1 Full Station"],["Cable","10cm Reinforced"],["Output","5Gbps Data Link"],["Heat Sync","Aluminum Heat Dissipation"]] },
+        'camera': { cat: 'p', name: "4K Campus Camera", img: "camera.jpg", desc: "A professional-tier digital imaging system for students. 4K Ultra HD dual lenses, 180° flip selfie screen, and built-in LED fill lights. High-aesthetic architecture meets high-resolution capture.", specs: [["Resolution","4K Ultra HD Capture"],["Display","Flip Selfie Screen"],["Modes","LED Fill / Filters"],["Focus","Auto-Focus System"]] },
+        'car': { cat: 'p', name: "Spray RC Racer", img: "car.jpg", desc: "A futuristic concept mecha racer featuring dual-control logic (Gesture Watch + 2.4GHz Remote). Equipped with dynamic cold mist exhaust, 4 light modes, and 360° omnidirectional drift technology.", specs: [["Control","Gesture + Remote"],["Exhaust","Dynamic Cold Mist"],["Drift","360° Omnidirectional"],["Battery","1200mAh / 30m Play"]] },
+        'magtoy': { cat: 'p', name: "Magnetic Discovery", img: "toy1.jpg", desc: "STEAM-certified spatial engineering logic system. High-grade ABS (BPA-free) materials and precision magnets. Designed to foster logic reasoning and spatial coordination in future engineers.", specs: [["Material","Eco-ABS BPA-Free"],["Standard","National 3C Certified"],["Skill","Spatial Logic Reasoning"],["Safety","Anti-Swallow Tested"]] }
     };
 
     function renderGrids() {
         let sHtml = '', pHtml = '';
         for (let id in products) {
             let p = products[id];
-            let html = `<div class="card" onclick="showDetail('${id}')"><img src="${p.img}"><h3>${p.name}</h3><div class="btn-view">View Specs ›</div></div>`;
+            let html = `<div class="card" onclick="showDetail('${id}')"><img src="${p.img}"><h3>${p.name}</h3><div class="btn-view">Access Data Sheet ›</div></div>`;
             if (p.cat === 's') sHtml += html; else pHtml += html;
         }
         document.getElementById('storage-grid').innerHTML = sHtml;
@@ -282,44 +160,27 @@
 
     function showDetail(id) {
         const p = products[id];
-        let featuresHtml = '';
-        if (p.features) {
-            featuresHtml = `
-                <div class="features-grid">
-                    ${p.features.map(f => `
-                        <div class="feature-item">
-                            <h4>${f.title}</h4>
-                            <p>${f.desc}</p>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-        }
-        
         let specsHtml = p.specs.map(s => `<tr><td class="label">${s[0]}</td><td class="val">${s[1]}</td></tr>`).join('');
-        
         document.getElementById('detail-content').innerHTML = `
-            <div class="detail-left">
-                <img src="${p.img}" alt="${p.name}">
-            </div>
+            <div class="detail-left"><img src="${p.img}"></div>
             <div class="detail-right">
                 <h2>${p.name}</h2>
                 <p class="desc">${p.desc}</p>
-                ${featuresHtml}
                 <table class="specs-table">${specsHtml}</table>
             </div>
         `;
-        
         document.getElementById('home-page').style.display = 'none';
         document.getElementById('detail-page').style.display = 'block';
-        document.querySelector('.back-btn').style.display = 'block';
+        document.getElementById('nav-links').style.display = 'none';
+        document.getElementById('back-btn').style.display = 'block';
         window.scrollTo(0,0);
     }
 
     function showHome() {
         document.getElementById('home-page').style.display = 'block';
         document.getElementById('detail-page').style.display = 'none';
-        document.querySelector('.back-btn').style.display = 'none';
+        document.getElementById('nav-links').style.display = 'block';
+        document.getElementById('back-btn').style.display = 'none';
         window.scrollTo(0,0);
     }
 
