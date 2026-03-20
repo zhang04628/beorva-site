@@ -10,18 +10,18 @@
             --primary-dark: #0f0f0f;  
             --accent-green: #002b1b; 
             --accent-gold: #b8934d;  
-            --bg-body: #f0f2f5;     /* 高级工业冷灰色 */
+            --bg-body: #ffffff;      /* 修正：彻底回到高级白 */
             --bg-card: #ffffff;      
         }
 
         body { font-family: 'Inter', sans-serif; margin: 0; background-color: var(--bg-body); color: #1a1a1a; line-height: 1.6; }
         .container { max-width: 1200px; margin: auto; padding: 0 25px; }
         
-        /* 1. 恢复：右上角导航栏 */
-        header { padding: 25px 0; background: rgba(255,255,255,0.98); border-bottom: 1px solid #ddd; position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); }
+        /* 导航栏：保持白底灰线 */
+        header { padding: 25px 0; background: rgba(255,255,255,0.98); border-bottom: 1px solid #f0f0f0; position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); }
         .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-weight: 800; font-size: 28px; color: var(--accent-green); text-decoration: none; letter-spacing: 2px; }
-        .nav-links a { margin-left: 30px; text-decoration: none; color: #333; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .nav-links a { margin-left: 30px; text-decoration: none; color: #333; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
         .nav-links a:hover { color: var(--accent-gold); }
         .back-btn { display: none; cursor: pointer; color: var(--accent-gold); font-weight: 700; font-size: 14px; text-transform: uppercase; }
 
@@ -29,9 +29,9 @@
         .hero h1 { font-size: 52px; font-weight: 800; margin-bottom: 20px; color: var(--primary-dark); }
         .hero p { color: #666; font-size: 18px; max-width: 800px; margin: auto; font-weight: 300; }
 
-        /* 2. 品牌来历：加回浓缩精华文案 */
-        .brand-story { background: #fff; border: 1px solid #eee; display: flex; flex-wrap: wrap; margin-bottom: 80px; border-radius: 4px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.04); }
-        .story-img { flex: 1; min-height: 480px; background: #eee url('company.jpg') center/cover no-repeat; }
+        /* 品牌故事板块：纯白极简 */
+        .brand-story { background: #fff; border: 1px solid #f0f0f0; display: flex; flex-wrap: wrap; margin-bottom: 80px; border-radius: 4px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.02); }
+        .story-img { flex: 1; min-height: 480px; background: #f9f9f9 url('company.jpg') center/cover no-repeat; }
         .story-content { flex: 1.2; padding: 70px; }
         .story-content h2 { font-size: 36px; margin-bottom: 25px; font-weight: 700; color: var(--primary-dark); }
         .story-content p { color: #444; font-size: 16px; margin-bottom: 20px; text-align: justify; }
@@ -39,28 +39,28 @@
 
         .section-title { font-size: 32px; font-weight: 700; margin: 100px 0 50px; text-align: center; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
-        .card { background: #fff; border: 1px solid #eee; padding: 35px; border-radius: 4px; transition: 0.4s; cursor: pointer; text-align: center; }
-        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 45px rgba(0,0,0,0.08); border-color: var(--accent-gold); }
+        .card { background: #fff; border: 1px solid #f0f0f0; padding: 35px; border-radius: 4px; transition: 0.4s; cursor: pointer; text-align: center; }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.06); border-color: #ddd; }
         .card img { width: 100%; height: 280px; object-fit: contain; margin-bottom: 25px; }
         .card h3 { font-size: 22px; margin-bottom: 12px; font-weight: 700; }
         .card .btn-view { color: var(--accent-gold); font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* 3. 产品详情页布局：修复图文并茂 */
+        /* 详情页：纯白背景 */
         #detail-page { display: none; padding: 100px 0; background: #fff; min-height: 80vh; animation: fadeIn 0.4s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .detail-container { display: flex; flex-direction: row; gap: 80px; align-items: flex-start; }
         .detail-left { flex: 1; position: sticky; top: 120px; }
-        .detail-left img { width: 100%; height: auto; border-radius: 4px; border: 1px solid #f0f0f0; background: #fcfcfc; }
+        .detail-left img { width: 100%; height: auto; border-radius: 4px; border: 1px solid #f0f0f0; background: #fff; }
         .detail-right { flex: 1.3; }
         .detail-right h2 { font-size: 42px; color: var(--primary-dark); margin-top: 0; margin-bottom: 30px; border-left: 8px solid var(--accent-gold); padding-left: 25px; line-height: 1.1; }
         .detail-right .desc { font-size: 18px; color: #555; margin-bottom: 50px; line-height: 2; text-align: justify; }
         
-        .specs-table { width: 100%; border-collapse: collapse; background: #fcfcfc; border: 1px solid #eee; }
-        .specs-table td { padding: 22px; border-bottom: 1px solid #eee; font-size: 15px; }
+        .specs-table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #f0f0f0; }
+        .specs-table td { padding: 22px; border-bottom: 1px solid #f0f0f0; font-size: 15px; }
         .specs-table .label { font-weight: 700; color: #999; width: 180px; text-transform: uppercase; letter-spacing: 1.5px; }
         .specs-table .val { color: #222; font-weight: 600; }
 
-        /* 4. 恢复：页脚地址与品牌信息 */
+        /* 页脚：保持深色，对比度更高 */
         footer { background: #000; color: #888; padding: 100px 0 50px; margin-top: 120px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; }
         .footer-item h4 { color: #fff; margin-bottom: 25px; font-size: 18px; font-weight: 700; text-transform: uppercase; }
@@ -81,7 +81,7 @@
             <a href="javascript:void(0)" onclick="showHome()" class="logo">BEORVA</a>
             <div class="nav-links" id="nav-links">
                 <a href="javascript:void(0)" onclick="showHome()">Overview</a>
-                <a href="#about-section">Factory & Brand</a>
+                <a href="#about-section">Manufacturing</a>
                 <a href="mailto:info@beorva.com">Inquiry</a>
             </div>
             <span class="back-btn" id="back-btn" onclick="showHome()">← Back To Index</span>
@@ -91,19 +91,16 @@
     <div id="home-page">
         <section class="hero">
             <h1>Industrial Legacy. <br>Refined Engineering.</h1>
-            <p>Direct from our 20,000㎡ manufacturing base. Bridging 15 years of ODM/OEM mastery with advanced Intellectual Play & 3C Technology.</p>
+            <p>15 years of industry mastery in advanced storage & intellectual discovery.</p>
         </section>
 
         <section class="brand-story" id="about-section">
             <div class="story-img"></div>
             <div class="story-content">
                 <h2>The Heritage of <strong>BEORVA</strong></h2>
-                <p>Founded by **Bei Rong Hua Co., Ltd** on September 30, 2024, BEORVA represents the pinnacle of "Quality Manufacturing." Backed by **15 years of industrial deep-dive** and serving Fortune 500 giants, we own 3 smart factories and 12 international-standard production lines.</p>
-                <p><strong>Be:</strong> Represents User-centric Selection. <br>
-                   <strong>Ori:</strong> Anchors our Oriental Craftsmanship gene. <br>
-                   <strong>R:</strong> Signifies Industrial Glory (Rong). <br>
-                   <strong>Va:</strong> Reflects Vast (Hua) brilliance of high-quality life.</p>
-                <p>We strictly follow the **"Three No Principles"**: No false-spec products, No compromise on safety, and No soulless designs. We are here to deliver international-tier quality directly to the consumer.</p>
+                <p>Owned by **Bei Rong Hua Co., Ltd**, BEORVA represents the pinnacle of "Quality Manufacturing." With 3 dedicated factories and 12 production lines, we bridge the gap between industrial power and consumer aesthetic.</p>
+                <p><strong>Be:</strong> User Selection | <strong>Ori:</strong> Craftsmanship | <strong>R:</strong> Glory | <strong>Va:</strong> Brilliance.</p>
+                <p>Our foundation rests on the **"Three No Principles"**: No false-spec products, No compromise on safety, and No soulless designs.</p>
             </div>
         </section>
 
@@ -127,11 +124,11 @@
         </div>
         <div class="footer-item">
             <h4>Industrial Compliance</h4>
-            <p>Full suite of certifications: FCC, CPC, CE, RoHS, GCC, and National 3C. Strictly verified for global reliability.</p>
+            <p>Certified by FCC, CPC, CE, RoHS, GCC, and National 3C. Strictly verified for reliability.</p>
         </div>
         <div class="footer-item">
-            <h4>Business Connect</h4>
-            <p>Email: info@beorva.com<br>Support: 183-xxxx-xxxx<br>Owner: Bei Rong Hua Co., Ltd</p>
+            <h4>Connect</h4>
+            <p>Email: info@beorva.com<br>Brand: Bei Rong Hua Co., Ltd</p>
         </div>
     </div>
     <div class="footer-bottom">&copy; 2026 BEORVA. All Rights Reserved. Representing the elite standard of China Manufacturing.</div>
@@ -139,12 +136,12 @@
 
 <script>
     const products = {
-        'm1': { cat: 's', name: "M1 Portable SSD", img: "ssd1.jpg", desc: "Flagship 2000MB/s performance powered by Grade A original flash hardware. Built with aerospace-grade aluminum and laser-etched mecha textures. Truly extreme speed meets industrial aesthetic.", specs: [["Performance","2000MB/s R/W"],["Interface","Type-C + USB 3.2"],["Body","Aerospace Aluminum"],["Protection","Shock/Vibration Resistant"]] },
-        'otg': { cat: 's', name: "Crystal Mini OTG", img: "usb1.jpg", desc: "Universal dual-interface architecture supporting USB 3.2 and Type-C. Industrial UDP packaging ensures your data is waterproof, dustproof, and shockproof. A隨身轻奢 companion for data security.", specs: [["Dual Port","USB-A & Type-C"],["Standard","UDP 3.0 Waterproof"],["Capacity","128GB - 1TB Opt."],["Security","Grade A Original Flash"]] },
-        'hub': { cat: 's', name: "12-in-1 Pro Hub", img: "hub1.jpg", desc: "The ultimate digital command center. Features 12 high-performance expansion ports and a specialized 10cm reinforced data cable. Precision engineered for high-load industrial or creative tasks.", specs: [["Ports","12-in-1 Full Station"],["Cable","10cm Reinforced"],["Output","5Gbps Data Link"],["Heat Sync","Aluminum Heat Dissipation"]] },
-        'camera': { cat: 'p', name: "4K Campus Camera", img: "camera.jpg", desc: "A professional-tier digital imaging system for students. 4K Ultra HD dual lenses, 180° flip selfie screen, and built-in LED fill lights. High-aesthetic architecture meets high-resolution capture.", specs: [["Resolution","4K Ultra HD Capture"],["Display","Flip Selfie Screen"],["Modes","LED Fill / Filters"],["Focus","Auto-Focus System"]] },
-        'car': { cat: 'p', name: "Spray RC Racer", img: "car.jpg", desc: "A futuristic concept mecha racer featuring dual-control logic (Gesture Watch + 2.4GHz Remote). Equipped with dynamic cold mist exhaust, 4 light modes, and 360° omnidirectional drift technology.", specs: [["Control","Gesture + Remote"],["Exhaust","Dynamic Cold Mist"],["Drift","360° Omnidirectional"],["Battery","1200mAh / 30m Play"]] },
-        'magtoy': { cat: 'p', name: "Magnetic Discovery", img: "toy1.jpg", desc: "STEAM-certified spatial engineering logic system. High-grade ABS (BPA-free) materials and precision magnets. Designed to foster logic reasoning and spatial coordination in future engineers.", specs: [["Material","Eco-ABS BPA-Free"],["Standard","National 3C Certified"],["Skill","Spatial Logic Reasoning"],["Safety","Anti-Swallow Tested"]] }
+        'm1': { cat: 's', name: "M1 Portable SSD", img: "ssd1.jpg", desc: "Flagship 2000MB/s performance powered by Grade A original flash hardware. Built with aerospace-grade aluminum and laser-etched mecha textures. Truly extreme speed meets industrial aesthetic.", specs: [["Performance","2000MB/s R/W"],["Interface","Type-C + USB 3.2"],["Body","Aerospace Aluminum"]] },
+        'otg': { cat: 's', name: "Crystal Mini OTG", img: "usb1.jpg", desc: "Universal dual-interface architecture supporting USB 3.2 and Type-C. Industrial UDP packaging ensures your data is waterproof, dustproof, and shockproof.", specs: [["Dual Port","USB-A & Type-C"],["Standard","UDP 3.0 Waterproof"],["Security","Grade A Original Flash"]] },
+        'hub': { cat: 's', name: "12-in-1 Pro Hub", img: "hub1.jpg", desc: "The ultimate digital command center. Features 12 high-performance expansion ports and a specialized 10cm reinforced data cable. Precision engineered.", specs: [["Ports","12-in-1 Full Station"],["Cable","10cm Reinforced"],["Output","5Gbps Data Link"]] },
+        'camera': { cat: 'p', name: "4K Campus Camera", img: "camera.jpg", desc: "A professional-tier digital imaging system for students. 4K Ultra HD dual lenses, 180° flip selfie screen, and built-in LED fill lights.", specs: [["Resolution","4K Ultra HD Capture"],["Display","Flip Selfie Screen"],["Modes","LED Fill Light"]] },
+        'car': { cat: 'p', name: "Spray RC Racer", img: "car.jpg", desc: "A futuristic concept mecha racer featuring dual-control logic (Gesture Watch + 2.4GHz Remote). Equipped with dynamic cold mist exhaust and drift tech.", specs: [["Control","Gesture + Remote"],["Exhaust","Dynamic Cold Mist"],["Drift","360° Omnidirectional"]] },
+        'magtoy': { cat: 'p', name: "Magnetic Discovery", img: "toy1.jpg", desc: "STEAM-certified spatial engineering logic system. High-grade ABS (BPA-free) materials and precision magnets for logic reasoning.", specs: [["Material","Eco-ABS BPA-Free"],["Standard","National 3C Certified"],["Safety","Anti-Swallow Tested"]] }
     };
 
     function renderGrids() {
