@@ -3,295 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beorva Official | Premium Quality & Innovation</title>
+    <title>BEORVA Official | Premium Quality & Innovation</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* 全局样式 - 追求现代感与留白 */
-        :root {
-            --primary-color: #004a2d; /* Beorva 深绿 */
-            --accent-color: #c1a35f;  /* 品牌金色点缀 */
-            --text-color: #333;
-            --light-bg: #f9f9f9;
-        }
+        :root { --primary: #004a2d; --accent: #c1a35f; --text: #333; }
+        body { font-family: 'Poppins', sans-serif; margin: 0; color: var(--text); line-height: 1.8; font-weight: 300; }
+        .container { max-width: 1200px; margin: auto; padding: 0 40px; }
+        
+        /* Navigation */
+        header { background: rgba(255, 255, 255, 0.95); padding: 20px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.05); backdrop-filter: blur(10px); }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 700; font-size: 24px; color: var(--primary); letter-spacing: 2px; }
+        .nav-links { display: flex; gap: 30px; list-style: none; margin: 0; }
+        .nav-links a { text-decoration: none; color: var(--text); font-size: 14px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            color: var(--text-color);
-            line-height: 1.8;
-            background-color: #fff;
-            font-weight: 300;
-        }
+        /* Hero Section */
+        .hero { text-align: center; padding: 120px 0 80px; background: #f9f9f9; }
+        .hero h1 { font-size: 48px; color: var(--primary); margin: 0; font-weight: 700; }
+        .hero p { max-width: 800px; margin: 20px auto; font-size: 18px; color: #666; }
 
-        /* 提升档次的核心：增加留白 (Spacing) */
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 0 40px;
-        }
+        /* Core Values Section */
+        .values { padding: 60px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center; }
+        .value-card h3 { color: var(--primary); margin-bottom: 10px; }
 
-        /* 1. 毛玻璃效果导航栏 */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-            backdrop-filter: blur(10px); /* 毛玻璃效果 */
-        }
+        /* Products Section */
+        .section-title { text-align: center; font-size: 32px; margin: 80px 0 40px; position: relative; padding-bottom: 15px; }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 3px; background: var(--accent); }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .product-card { border: 1px solid #eee; padding: 30px; border-radius: 12px; transition: 0.4s; text-align: center; }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
+        .product-card img { max-width: 100%; height: 250px; object-fit: contain; margin-bottom: 20px; }
 
-        .nav-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        /* Brand Story Section */
+        .story { background: var(--primary); color: white; padding: 100px 0; margin-top: 80px; }
+        .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        @media (max-width: 768px) { .story-grid { grid-template-columns: 1fr; } }
 
-        /* 2. Logo 区域 - 替换为图片 */
-        .logo-container img {
-            height: 50px; /* 您可以根据Logo形状调整高度 */
-            width: auto;
-            display: block;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 400;
-            font-size: 15px;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-
-        /* 3. Hero 区域 - 品牌初印象 */
-        .hero {
-            text-align: center;
-            padding: 150px 0 100px;
-            background-color: var(--light-bg);
-            margin-bottom: 80px;
-        }
-
-        .hero h2 {
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin: 0 0 20px;
-            letter-spacing: -1px;
-        }
-
-        .hero p {
-            max-width: 700px;
-            margin: 0 auto;
-            color: #666;
-            font-size: 19px;
-            font-weight: 300;
-        }
-
-        /* 4. 产品展示区域 - 升级卡片设计 */
-        .products {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            font-weight: 600;
-            margin-bottom: 60px;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background-color: var(--accent-color);
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-        }
-
-        .product-card {
-            background: #fff;
-            border-radius: 12px;
-            padding: 30px;
-            text-align: center;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-            border: 1px solid #eee;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px); /* 悬停浮起效果 */
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-        }
-
-        .product-card img {
-            max-width: 100%;
-            height: 280px;
-            object-fit: contain;
-            margin-bottom: 25px;
-        }
-
-        .product-card h3 {
-            font-size: 22px;
-            font-weight: 600;
-            color: #222;
-            margin: 10px 0 5px;
-        }
-
-        .product-card p {
-            color: #888;
-            font-size: 15px;
-            margin: 0;
-        }
-
-        /* 5. 品牌授权声明区 - 提升权威感 */
-        .authorization {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 100px 0;
-            margin-top: 100px;
-            text-align: center;
-        }
-
-        .authorization h2 {
-            font-size: 32px;
-            font-weight: 600;
-            margin-bottom: 30px;
-        }
-
-        .authorization p {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 17px;
-            opacity: 0.85;
-            font-weight: 300;
-        }
-
-        /* 6. Footer - 深色大气 */
-        footer {
-            background: #111;
-            color: rgba(255,255,255,0.6);
-            padding: 80px 0 50px;
-            font-size: 14px;
-            font-weight: 300;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-
-        .footer-section h4 {
-            color: #fff;
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 30px;
-            color: rgba(255,255,255,0.4);
-        }
-
-        .footer-bottom strong {
-            color: rgba(255,255,255,0.8);
-        }
+        /* Footer */
+        footer { background: #111; color: rgba(255,255,255,0.6); padding: 80px 0 40px; font-size: 14px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; margin-top: 50px; }
     </style>
 </head>
 <body>
 
 <header>
     <div class="container nav-wrapper">
-        <div class="logo-container">
-            <img src="logo.png" alt="Beorva Official Logo">
-        </div>
+        <div class="logo">BEORVA</div>
         <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">Our Story</a></li>
+            <li><a href="#products">Collections</a></li>
+            <li><a href="#compliance">Compliance</a></li>
         </ul>
     </div>
 </header>
 
-<section class="hero" id="about">
+<section class="hero">
     <div class="container">
-        <h2>Redefining Quality for Modern Living</h2>
-        <p>Beorva is a global brand committed to excellence. We specialize in bringing innovative, high-quality lifestyle products and toys to the Saudi Arabian market, ensuring safety, durability, and joy for every customer.</p>
+        <h1>Craftsmanship with Soul, Luxury with Moderation</h1>
+        <p>A phenomenal premium consumer brand bridging world-class supply chains, original design, and extreme user reputation across 3C digital, educational toys, and light luxury home decor.</p>
     </div>
 </section>
 
 <div class="container">
-    <section class="products" id="products">
-        <h2 class="section-title">Our Featured Collection</h2>
+    <div class="values">
+        <div class="value-card"><h3>No Substandard</h3><p>Rejecting low-quality traffic products.</p></div>
+        <div class="value-card"><h3>No Compromise</h3><p>Absolute safety and data security.</p></div>
+        <div class="value-card"><h3>No Imitation</h3><p>Original design with oriental DNA.</p></div>
+    </div>
+
+    <section id="products">
+        <h2 class="section-title">Core Series</h2>
         <div class="product-grid">
             <div class="product-card">
-                <img src="product1.jpg" alt="Beorva Elite Series">
-                <h3>Beorva Elite Series</h3>
-                <p>Sophisticated Design, Uncompromising Quality</p>
+                <img src="product1.jpg" alt="Elite Series">
+                <h3>Elite Series (晶曜)</h3>
+                <p>High-speed luxury customized USB drives. Original Grade-A chips, aviation-grade aluminum, and 150MB/s performance.</p>
             </div>
             <div class="product-card">
-                <img src="product2.jpg" alt="Beorva Innovation Lab">
-                <h3>Beorva Innovation Lab</h3>
-                <p>Smart Solutions for Everyday Challenges</p>
+                <img src="product2.jpg" alt="Star-Start Series">
+                <h3>Star-Start Series (星启)</h3>
+                <p>Age-appropriate STEAM toys. Food-grade ABS, scientific enlightenment, and co-developed by education experts.</p>
             </div>
             <div class="product-card">
-                <img src="product3.jpg" alt="Beorva Classic Collection">
-                <h3>Beorva Classic Collection</h3>
-                <p>Timeless Essentials for Your Lifestyle</p>
+                <img src="product3.jpg" alt="Minimalist Series">
+                <h3>Minimalist Series (简奢)</h3>
+                <p>Full-scene home essentials. Minimalist geometric design with food-grade eco-friendly materials for a unified lifestyle.</p>
             </div>
         </div>
     </section>
 </div>
 
-<section class="authorization">
+<section class="story" id="about">
     <div class="container">
-        <h2>Official Brand Declaration</h2>
-        <p>The <strong>BEORVA</strong> brand is officially owned and operated by <strong>Bei Rong Hua</strong>. All products displayed on this site represent our commitment to original design and strict quality control, specifically tailored for Middle Eastern consumers. We ensure authenticity and premium service for our valued clients in Saudi Arabia.</p>
+        <div class="story-grid">
+            <div>
+                <h2 style="color: var(--accent);">BEORVA: Be-Ori-R-Va</h2>
+                <p>Our name anchors our core: <strong>Be</strong> (User-centric selection), <strong>Ori</strong> (Oriental craftsmanship), <strong>R</strong> (Glory of China's intelligent manufacturing), and <strong>Va</strong> (Vast brilliance). Founded by industry veterans with 15+ years of experience in global supply chain management.</p>
+            </div>
+            <div>
+                <h2 style="color: var(--accent);">Our Manufacturing Power</h2>
+                <p>Owned and operated by <strong>Bei Rong Hua</strong>. We manage 3 exclusive smart factories and 12 international standard production lines. Quality control standards that far exceed industry norms, ensuring premium value directly to consumers.</p>
+            </div>
+        </div>
     </div>
 </section>
 
-<footer id="contact">
+<footer id="compliance">
     <div class="container">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>About Us</h4>
-                <p>Beorva is dedicated to enhancing lives through innovation and quality. We are proud to serve the Saudi Arabian market.</p>
+        <div class="footer-grid">
+            <div>
+                <h4 style="color:white;">Global Standards</h4>
+                <p>All products are certified by National 3C, RoHS, and exceed GCC safety requirements for the Saudi market.</p>
             </div>
-            <div class="footer-section">
-                <h4>Contact Info</h4>
-                <p><strong>Email:</strong> info@beorva.com</p>
-                <p><strong>Parent Company:</strong> Bei Rong Hua</p>
-                <p><strong>Headquarters:</strong> [10 Ceng, 26 Hao, 1289 Long, Gongyuan Dong Lu, Qingpu Qu, Shanghai Shi]</p>
+            <div>
+                <h4 style="color:white;">Headquarters</h4>
+                <p>Room 1001, 10th Floor, No. 26, Lane 1289, Gongyuan East Road, Qingpu District, Shanghai, China</p>
+            </div>
+            <div>
+                <h4 style="color:white;">Contact</h4>
+                <p>Email: info@beorva.com<br>Brand Owner: Bei Rong Hua</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 <strong>BEORVA</strong>. All Rights Reserved.</p>
+            <p>&copy; 2026 <strong>BEORVA</strong>. All Rights Reserved. Honored with Kapok Design Award.</p>
         </div>
     </div>
 </footer>
