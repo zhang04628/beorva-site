@@ -13,7 +13,7 @@
         /* 导航栏 */
         header { padding: 20px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-weight: 700; font-size: 24px; color: var(--primary); text-decoration: none; }
-        .back-btn { display: none; cursor: pointer; color: var(--accent); font-weight: 600; }
+        .back-btn { display: none; cursor: pointer; color: var(--accent); font-weight: 600; text-decoration: none; }
 
         /* 首页布局 */
         #home-page { display: block; padding: 60px 0; }
@@ -25,7 +25,7 @@
         .card img { width: 100%; height: 250px; object-fit: contain; margin-bottom: 15px; }
         .card h3 { margin: 10px 0; font-size: 18px; }
 
-        /* 详情页布局 (默认隐藏) */
+        /* 详情页布局 */
         #detail-page { display: none; padding: 60px 0; animation: fadeIn 0.4s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
@@ -39,7 +39,6 @@
         .specs-table td { padding: 12px 10px; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
         .specs-table .label { font-weight: 600; color: #888; width: 150px; }
 
-        /* 页脚 */
         footer { background: #111; color: #666; padding: 50px 0; margin-top: 80px; text-align: center; font-size: 13px; }
     </style>
 </head>
@@ -47,82 +46,90 @@
 
 <div class="container">
     <header>
-        <a href="index.html" class="logo">BEORVA</a>
+        <a href="javascript:void(0)" onclick="showHome()" class="logo">BEORVA</a>
         <div id="nav-right">
-            <span class="back-btn" onclick="showHome()">← Back to List</span>
+            <span class="back-btn" onclick="showHome()">← Back to Products</span>
         </div>
     </header>
 
     <div id="home-page">
-        <h2 class="section-title">High-Performance Technology</h2>
+        <h2 class="section-title">Data Storage & Technology</h2>
         <div class="grid">
             <div class="card" onclick="showDetail('m1')">
                 <img src="ssd1.jpg" alt="BEORVA M1">
                 <h3>BEORVA M1 Portable SSD</h3>
-                <p style="color:#888; font-size:14px;">2000MB/s Mecha Flagship</p>
+                <p style="color:#888; font-size:14px;">2000MB/s Mecha Design</p>
+                <span style="color:var(--accent); font-weight:600;">View Details ›</span>
+            </div>
+            <div class="card" onclick="showDetail('otg')">
+                <img src="usb1.jpg" alt="BEORVA Mini OTG">
+                <h3>BEORVA Mini OTG Flash Drive</h3>
+                <p style="color:#888; font-size:14px;">Dual Type-C Interface | Metal Body</p>
                 <span style="color:var(--accent); font-weight:600;">View Details ›</span>
             </div>
             <div class="card">
-                <img src="https://via.placeholder.com/400x400?text=Tech+Product+2" alt="TBD">
-                <h3>Next-Gen Storage</h3>
-                <p>Coming Soon</p>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/400x400?text=Tech+Product+3" alt="TBD">
-                <h3>High-Speed Link</h3>
-                <p>Coming Soon</p>
+                <img src="https://via.placeholder.com/400x400?text=Coming+Soon" alt="TBD">
+                <h3>High-Speed Link Hub</h3>
+                <p>New Arrival Soon</p>
             </div>
         </div>
 
-        <h2 class="section-title">Educational Learning</h2>
+        <h2 class="section-title">Educational Discovery</h2>
         <div class="grid">
             <div class="card"><img src="https://via.placeholder.com/400x400?text=Toy+1" alt="TBD"><h3>Logic Builder</h3></div>
             <div class="card"><img src="https://via.placeholder.com/400x400?text=Toy+2" alt="TBD"><h3>Creative Set</h3></div>
-            <div class="card"><img src="https://via.placeholder.com/400x400?text=Toy+3" alt="TBD"><h3>Science Discovery</h3></div>
+            <div class="card"><img src="https://via.placeholder.com/400x400?text=Toy+3" alt="TBD"><h3>Science Kit</h3></div>
         </div>
     </div>
 
     <div id="detail-page">
-        <div class="detail-flex" id="detail-content">
-            </div>
+        <div class="detail-flex" id="detail-content"></div>
     </div>
 </div>
 
 <footer>
     <div class="container">
         <p>Shanghai Office: Room 1001, No. 26, Gongyuan East Road, Qingpu District, Shanghai, China</p>
-        <p>Owned by Bei Rong Hua | 15+ Years Industrial Excellence</p>
+        <p>Global Standards: National 3C, RoHS, and GCC Safety Compliant</p>
         <p>&copy; 2026 BEORVA. All Rights Reserved.</p>
     </div>
 </footer>
 
 <script>
-    // 产品数据库
     const products = {
         'm1': {
             name: "BEORVA M1 Portable SSD",
             img: "ssd1.jpg",
-            desc: "The BEORVA M1 is a high-speed mobile solid-state drive featuring a premium aluminum alloy casing with a rugged mecha texture and a portable integrated lanyard hook.",
+            desc: "The BEORVA M1 is a professional-grade mobile solid-state drive featuring a premium aluminum alloy casing with a rugged mecha texture. Built for speed and extreme durability.",
             specs: [
                 ["Model", "BEORVA M1"],
                 ["Dimensions", "85 × 50 × 12 mm"],
-                ["Weight", "Approx. 100g"],
                 ["Material", "Aluminum Alloy (Mecha Texture)"],
                 ["Read Speed", "1800 - 2000 MB/s"],
                 ["Write Speed", "1500 - 1800 MB/s"],
                 ["Interface", "Type-C + USB-A Dual Port"],
-                ["Capacity", "512GB / 1TB"],
-                ["System", "Windows, Mac OS 10.X+, Android (OTG Support)"]
+                ["Capacity", "512GB / 1TB"]
+            ]
+        },
+        'otg': {
+            name: "BEORVA Mini OTG Flash Drive",
+            img: "usb1.jpg",
+            desc: "A compact, high-performance flash drive designed for seamless data transfer between mobile phones and computers. Featuring a durable zinc-alloy body and advanced UDP packaging for water and shock resistance.",
+            specs: [
+                ["Model", "BEORVA OTG-X1"],
+                ["Interface", "Type-C (OTG Support)"],
+                ["Material", "Zinc Alloy (Anti-fingerprint)"],
+                ["Key Feature", "UDP Integrated Packaging"],
+                ["Durability", "Waterproof, Anti-shock, Dustproof"],
+                ["Capacity", "Up to 1TB Options"],
+                ["System", "Windows, MacOS, Android (Plug & Play)"]
             ]
         }
     };
 
     function showDetail(id) {
         const p = products[id];
-        if(!p) return;
-
         let specsHtml = p.specs.map(s => `<tr><td class="label">${s[0]}</td><td>${s[1]}</td></tr>`).join('');
-        
         document.getElementById('detail-content').innerHTML = `
             <div class="detail-img"><img src="${p.img}"></div>
             <div class="detail-info">
@@ -131,7 +138,6 @@
                 <table class="specs-table">${specsHtml}</table>
             </div>
         `;
-
         document.getElementById('home-page').style.display = 'none';
         document.getElementById('detail-page').style.display = 'block';
         document.querySelector('.back-btn').style.display = 'inline';
@@ -144,6 +150,5 @@
         document.querySelector('.back-btn').style.display = 'none';
     }
 </script>
-
 </body>
 </html>
