@@ -3,41 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BEORVA Official | Tech Innovation & Quality Play</title>
+    <title>BEORVA Official | Premium Tech & Intelligence Play</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #004a2d; --accent: #c1a35f; --text: #333; }
-        body { font-family: 'Poppins', sans-serif; margin: 0; color: var(--text); background: #fff; }
+        :root { --primary: #004a2d; --accent: #c1a35f; --text: #333; --light-bg: #f9f9f9; }
+        body { font-family: 'Poppins', sans-serif; margin: 0; color: var(--text); background: #fff; line-height: 1.6; }
         .container { max-width: 1100px; margin: auto; padding: 0 20px; }
         
-        header { padding: 20px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 700; font-size: 24px; color: var(--primary); text-decoration: none; }
+        /* Navigation */
+        header { padding: 20px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; background: #fff; position: sticky; top: 0; z-index: 100; }
+        .logo { font-weight: 700; font-size: 26px; color: var(--primary); text-decoration: none; letter-spacing: 1px; }
+        .nav-links a { margin-left: 25px; text-decoration: none; color: var(--text); font-size: 14px; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
         .back-btn { display: none; cursor: pointer; color: var(--accent); font-weight: 600; }
 
-        #home-page { display: block; padding: 60px 0; }
-        .section-title { font-size: 28px; margin-bottom: 40px; text-align: center; color: var(--primary); }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 60px; }
-        
-        .card { border: 1px solid #eee; border-radius: 12px; padding: 20px; text-align: center; cursor: pointer; transition: 0.3s; }
-        .card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .card img { width: 100%; height: 250px; object-fit: contain; margin-bottom: 15px; }
-        .card h3 { margin: 10px 0; font-size: 18px; }
+        /* Hero Section */
+        #home-page { display: block; padding: 40px 0; }
+        .brand-intro { text-align: center; padding: 60px 0; background: var(--light-bg); border-radius: 20px; margin-bottom: 60px; }
+        .brand-intro h1 { color: var(--primary); font-size: 36px; margin-bottom: 20px; }
+        .brand-intro p { max-width: 800px; margin: auto; color: #666; font-size: 16px; }
 
-        #detail-page { display: none; padding: 60px 0; animation: fadeIn 0.4s; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* Product Grids */
+        .section-title { font-size: 28px; margin: 50px 0 30px; text-align: center; color: var(--primary); position: relative; }
+        .section-title::after { content: ''; display: block; width: 50px; height: 3px; background: var(--accent); margin: 10px auto; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         
-        .detail-flex { display: flex; gap: 50px; flex-wrap: wrap; align-items: flex-start; }
-        .detail-img { flex: 1; min-width: 300px; }
-        .detail-img img { width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .detail-info { flex: 1.2; min-width: 300px; }
-        .detail-info h2 { font-size: 32px; color: var(--primary); margin-top: 0; }
-        
-        .specs-table { width: 100%; border-collapse: collapse; margin-top: 30px; }
-        .specs-table td { padding: 12px 10px; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
-        .specs-table .label { font-weight: 600; color: #888; width: 160px; }
+        .card { border: 1px solid #eee; border-radius: 15px; padding: 25px; text-align: center; cursor: pointer; transition: 0.4s; background: #fff; }
+        .card:hover { border-color: var(--accent); transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+        .card img { width: 100%; height: 260px; object-fit: contain; margin-bottom: 20px; border-radius: 10px; }
+        .card h3 { margin: 10px 0; font-size: 20px; color: var(--primary); }
+        .card p { color: #888; font-size: 14px; margin-bottom: 15px; }
+        .view-link { color: var(--accent); font-weight: 600; font-size: 14px; }
 
-        footer { background: #111; color: #888; padding: 60px 0; margin-top: 80px; text-align: center; font-size: 13px; line-height: 2; }
-        footer strong { color: #fff; }
+        /* Detail Page */
+        #detail-page { display: none; padding: 60px 0; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .detail-flex { display: flex; gap: 60px; flex-wrap: wrap; align-items: flex-start; }
+        .detail-img { flex: 1; min-width: 350px; }
+        .detail-img img { width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .detail-info { flex: 1.2; min-width: 350px; }
+        .detail-info h2 { font-size: 34px; color: var(--primary); margin-top: 0; }
+        .specs-table { width: 100%; border-collapse: collapse; margin-top: 30px; background: #fff; }
+        .specs-table td { padding: 15px; border-bottom: 1px solid #f0f0f0; font-size: 15px; }
+        .specs-table .label { font-weight: 600; color: #999; width: 160px; }
+
+        /* Footer */
+        footer { background: #111; color: #aaa; padding: 80px 0 40px; margin-top: 100px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 50px; text-align: left; }
+        .footer-item h4 { color: #fff; margin-bottom: 20px; font-size: 18px; }
+        .footer-bottom { border-top: 1px solid #222; padding-top: 30px; text-align: center; font-size: 12px; }
     </style>
 </head>
 <body>
@@ -45,37 +59,47 @@
 <div class="container">
     <header>
         <a href="javascript:void(0)" onclick="showHome()" class="logo">BEORVA</a>
-        <span class="back-btn" onclick="showHome()">← Back to Products</span>
+        <div class="nav-links">
+            <span class="back-btn" onclick="showHome()">← Back to Overview</span>
+            <a href="javascript:void(0)" onclick="showHome()">Products</a>
+            <a href="#footer-info">About Us</a>
+            <a href="mailto:18376781936@163.com">Contact</a>
+        </div>
     </header>
 
     <div id="home-page">
-        <h2 class="section-title">Core Technology</h2>
+        <section class="brand-intro">
+            <h1>Craftsmanship & Innovation</h1>
+            <p>BEORVA (Be-Ori-R-Va) anchors its core in User-centric selection (Be), Oriental craftsmanship (Ori), and the Glory of China’s intelligent manufacturing (R-Va). We provide high-end 3C storage and STEAM-certified educational toys to global markets.</p>
+        </section>
+
+        <h2 class="section-title">Professional Tech & Storage</h2>
         <div class="grid">
             <div class="card" onclick="showDetail('m1')">
                 <img src="ssd1.jpg" alt="M1 SSD">
-                <h3>BEORVA M1 Portable SSD</h3>
-                <p style="color:#888; font-size:14px;">2000MB/s Extreme Speed</p>
-                <span style="color:var(--accent); font-weight:600;">Explore ›</span>
+                <h3>M1 Portable SSD</h3>
+                <p>Flagship performance with mecha-textured alloy body.</p>
+                <span class="view-link">View Tech Specs ›</span>
             </div>
             <div class="card" onclick="showDetail('otg')">
                 <img src="usb1.jpg" alt="Mini OTG">
-                <h3>BEORVA Mini OTG Drive</h3>
-                <p style="color:#888; font-size:14px;">Zinc Alloy Dual Interface</p>
-                <span style="color:var(--accent); font-weight:600;">Explore ›</span>
+                <h3>Crystal Mini OTG</h3>
+                <p>Dual-interface zinc alloy drive with UDP protection.</p>
+                <span class="view-link">View Tech Specs ›</span>
             </div>
             <div class="card" onclick="showDetail('hub')">
                 <img src="hub1.jpg" alt="12-in-1 Hub">
-                <h3>BEORVA 12-in-1 Hub</h3>
-                <p style="color:#888; font-size:14px;">5Gbps Multi-function Dock</p>
-                <span style="color:var(--accent); font-weight:600;">Explore ›</span>
+                <h3>12-in-1 Multi-Station</h3>
+                <p>Professional docking for full-scale connectivity.</p>
+                <span class="view-link">View Tech Specs ›</span>
             </div>
         </div>
 
-        <h2 class="section-title">Smart Toys</h2>
+        <h2 class="section-title">Educational Learning & Play</h2>
         <div class="grid">
-            <div class="card"><img src="https://via.placeholder.com/400x400?text=Toy+1" alt="TBD"><h3>Logic Discovery</h3></div>
-            <div class="card"><img src="https://via.placeholder.com/400x400?text=Toy+2" alt="TBD"><h3>Creative Builder</h3></div>
-            <div class="card"><img src="https://via.placeholder.com/400x400?text=Toy+3" alt="TBD"><h3>Active Play</h3></div>
+            <div class="card"><img src="https://via.placeholder.com/400?text=Logic+Builder" alt="Toy 1"><h3>Logic Builder Set</h3><p>STEAM Certified Learning</p></div>
+            <div class="card"><img src="https://via.placeholder.com/400?text=Creative+Kit" alt="Toy 2"><h3>Creative Engineering</h3><p>Ages 6-12 Development</p></div>
+            <div class="card"><img src="https://via.placeholder.com/400?text=Science+Discovery" alt="Toy 3"><h3>Science Discovery</h3><p>Safe & Non-Toxic Materials</p></div>
         </div>
     </div>
 
@@ -84,12 +108,29 @@
     </div>
 </div>
 
-<footer>
+<footer id="footer-info">
     <div class="container">
-        <strong>BEORVA Electronic Technology Co., Ltd.</strong><br>
-        Address: Room 1001, 10th Floor, No. 26, Lane 1289, Gongyuan East Road, Qingpu District, Shanghai, China<br>
-        Email: 18376781936@163.com | Owner: Bei Rong Hua<br>
-        &copy; 2026 BEORVA. Certified National 3C, RoHS & GCC Compliant.
+        <div class="footer-grid">
+            <div class="footer-item">
+                <h4>About BEORVA</h4>
+                <p style="font-size:13px;">Founded by industry veterans with 15+ years of experience, BEORVA represents the pinnacle of "Quality Made in China." We operate 3 smart factories and 12 international production lines.</p>
+            </div>
+            <div class="footer-item">
+                <h4>Global Standards</h4>
+                <p style="font-size:13px;">Our products are certified by National 3C, RoHS, and exceed GCC safety requirements for the Saudi and global markets.</p>
+            </div>
+            <div class="footer-item">
+                <h4>Contact HQ</h4>
+                <p style="font-size:13px;">
+                    <strong>Email:</strong> 18376781936@163.com<br>
+                    <strong>Address:</strong> Room 1001, 10th Floor, No. 26, Lane 1289, Gongyuan East Road, Qingpu District, Shanghai, China<br>
+                    <strong>Owner:</strong> Bei Rong Hua
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 BEORVA (Bei Rong Hua Co., Ltd). All Rights Reserved.
+        </div>
     </div>
 </footer>
 
@@ -98,27 +139,20 @@
         'm1': {
             name: "BEORVA M1 Portable SSD",
             img: "ssd1.jpg",
-            desc: "Ultra-fast mobile storage with a premium mecha-textured aluminum shell and lanyard hook.",
-            specs: [["Model","BEORVA M1"],["Read Speed","1800-2000 MB/s"],["Write Speed","1500-1800 MB/s"],["Interface","Type-C + USB-A"],["Material","Aluminum Alloy"]]
+            desc: "The M1 series defines high-speed storage. Featuring a premium mecha-texture aluminum alloy shell, it offers up to 2000MB/s speeds for elite professionals.",
+            specs: [["Model","BEORVA M1"],["Read Speed","1800-2000 MB/s"],["Write Speed","1500-1800 MB/s"],["Interface","Type-C + USB-A"],["Material","Aero-grade Aluminum Alloy"]]
         },
         'otg': {
-            name: "BEORVA Mini OTG Flash Drive",
+            name: "Crystal Mini OTG Drive",
             img: "usb1.jpg",
-            desc: "Durable zinc-alloy dual-interface drive with UDP technology for extreme water and shock resistance.",
-            specs: [["Model","BEORVA OTG-X1"],["Durability","UDP Waterproof/Anti-shock"],["Material","Zinc Alloy"],["Interface","Type-C OTG Support"],["Systems","Android, iOS, Windows, Mac"]]
+            desc: "Seamless dual-interface data transfer for mobile and PC. Built with advanced UDP packaging for maximum water, shock, and dust resistance.",
+            specs: [["Model","Crystal OTG-X1"],["Capacity","Up to 1TB"],["Material","Zinc Alloy (Anti-fingerprint)"],["Protection","UDP Waterproof/Shockproof"],["Compatibility","Android, Windows, MacOS, iOS"]]
         },
         'hub': {
-            name: "BEORVA 12-in-1 Station",
+            name: "12-in-1 Professional Hub",
             img: "hub1.jpg",
-            desc: "A powerful multi-functional Type-C docking station supporting 12 simultaneous connections for professional workstations.",
-            specs: [
-                ["Model", "BEORVA-LXSN701C"],
-                ["Interface", "Type-C 12-in-1 Expansion"],
-                ["Transfer Rate", "5Gbps (5000Mbps)"],
-                ["Cable Length", "18 cm"],
-                ["Power", "Supports external power input"],
-                ["Type", "Cross-border export optimized"]
-            ]
+            desc: "The ultimate connectivity solution for modern workstations. Supports 5Gbps transfer speeds and 12 concurrent ports for high-efficiency workflows.",
+            specs: [["Model","BEORVA-LXSN701C"],["Ports","12-in-1 Multi-function"],["Speed","5Gbps (5000Mbps)"],["Cable","18cm Reinforced Type-C"],["Standards","CE / RoHS / FCC Certified"]]
         }
     };
 
@@ -136,6 +170,7 @@
         document.getElementById('home-page').style.display = 'none';
         document.getElementById('detail-page').style.display = 'block';
         document.querySelector('.back-btn').style.display = 'inline';
+        document.querySelector('.nav-links a:first-of-type').style.display = 'none';
         window.scrollTo(0,0);
     }
 
@@ -143,6 +178,7 @@
         document.getElementById('home-page').style.display = 'block';
         document.getElementById('detail-page').style.display = 'none';
         document.querySelector('.back-btn').style.display = 'none';
+        document.querySelector('.nav-links a:first-of-type').style.display = 'inline';
     }
 </script>
 </body>
