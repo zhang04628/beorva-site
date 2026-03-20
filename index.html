@@ -26,7 +26,11 @@
 
         body { 
             font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; 
-            background-color: var(--bg-body); 
+            background: linear-gradient(135deg, #fcfcfc 0%, #f5f5f5 100%);
+            background-image: 
+                radial-gradient(#e5e5e5 0.5px, transparent 0.5px),
+                linear-gradient(135deg, #fcfcfc 0%, #f5f5f5 100%);
+            background-size: 24px 24px, 100% 100%;
             color: #1a1a1a; 
             line-height: 1.6;
             opacity: 0;
@@ -118,7 +122,13 @@
             overflow: hidden; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.02);
         }
-        .story-img { flex: 1; min-height: 400px; background: #f9f9f9 url('company.jpg') center/cover no-repeat; }
+        .story-img { flex: 1; min-height: 400px; background: #f9f9f9 url('company.jpg') center/cover no-repeat; position: relative; }
+        .story-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.05) 100%);
+        }
         .story-content { flex: 1.2; padding: 60px; }
         .story-content h2 { font-size: 32px; margin-bottom: 20px; font-weight: 700; }
         .story-content p { color: #555; font-size: 16px; margin-bottom: 20px; line-height: 1.8; }
@@ -285,10 +295,13 @@
         .back-to-top.visible { opacity: 1; visibility: visible; }
         .back-to-top:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(184, 147, 77, 0.4); }
 
-        /* 模态框 */
+        /* 模态框 - 修复弹窗位置 */
         .modal {
             position: fixed;
-            inset: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0,0,0,0.9);
             z-index: 2000;
             display: none;
@@ -319,10 +332,12 @@
         /* 询价表单模态框 */
         .inquiry-modal .modal-content {
             background: #fff;
-            padding: 50px;
+            padding: 40px;
             border-radius: 12px;
             max-width: 500px;
             width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
         }
         .inquiry-modal h3 { margin-top: 0; font-size: 24px; margin-bottom: 30px; }
         .form-group { margin-bottom: 20px; }
@@ -385,60 +400,58 @@
 
     <div id="home-page">
         <section class="hero">
-            <h1 id="hero-title">Industrial Precision & Smart Play.</h1>
-            <p id="hero-desc">20 years of manufacturing excellence in Digital Storage & Intellectual Play.</p>
+            <h1 id="hero-title">工业精度 · 智能玩乐</h1>
+            <p id="hero-desc">专注数字存储与益智玩具领域，20年制造经验</p>
         </section>
 
         <section class="brand-story" id="about-section">
             <div class="story-img"></div>
             <div class="story-content">
-                <h2 id="brand-title">BEORVA Heritage</h2>
-                <p id="brand-text">Founded in 2024, BEORVA is a brand under <strong>Shanghai Beironghua Network Technology Co., Ltd.</strong>, focusing on smart electronic products and intellectual toys. We adhere to "Quality First" and provide reliable products for global customers.</p>
-                <p id="brand-slogan"><strong>Be:</strong> User Selection | <strong>Ori:</strong> Craftsmanship | <strong>R:</strong> Reliability | <strong>Va:</strong> Value.</p>
+                <h2 id="brand-title">BEORVA 品牌故事</h2>
+                <p id="brand-text">BEORVA 隶属于<strong>上海贝荣华网络科技有限公司</strong>，成立于2024年，专注智能电子产品与益智玩具研发、生产与销售。我们坚持「品质优先」，为全球客户提供可靠的产品与服务。</p>
+                <p id="brand-slogan"><strong>Be:</strong> 用户之选 | <strong>Ori:</strong> 匠心工艺 | <strong>R:</strong> 可靠品质 | <strong>Va:</strong> 价值创造。</p>
             </div>
         </section>
 
         <section class="business-info">
             <div class="business-card">
-                <h2 id="business-title" class="section-title" style="margin-top: 0;">Business Information</h2>
+                <h2 id="business-title" class="section-title" style="margin-top: 0;">企业信息</h2>
                 <div class="business-grid">
                     <div class="business-item">
-                        <h3 id="biz-company">Company Info</h3>
+                        <h3 id="biz-company">公司信息</h3>
                         <p id="biz-company-desc">
-                            Name: 上海贝荣华网络科技有限公司<br>
-                            Unified Social Credit Code: 91310118MAE1T09H87<br>
-                            License No.: 29000000202409300084<br>
-                            Type: Limited Liability Company (Sole Proprietorship)<br>
-                            Legal Representative: Zhu Zhen<br>
-                            Established: 2024-09-30<br>
-                            Address: 10th Floor, No. 26, Lane 1289, Gongyuan East Road, Qingpu District, Shanghai
+                            名称：上海贝荣华网络科技有限公司<br>
+                            统一社会信用代码：91310118MAE1T09H87<br>
+                            类型：有限责任公司（自然人独资）<br>
+                            成立日期：2024年09月30日<br>
+                            地址：上海市青浦区公园东路1289弄26号10层
                         </p>
                     </div>
                     <div class="business-item">
-                        <h3 id="biz-brand">Brand Info</h3>
+                        <h3 id="biz-brand">品牌信息</h3>
                         <p id="biz-brand-desc">
-                            Brand Name: BEORVA<br>
-                            Registration: In progress (China)<br>
-                            Business Scope: Smart electronic products, intellectual toys, digital storage devices<br>
-                            Factory: Shenzhen, Guangdong (OEM/ODM capacity)
+                            品牌名称：BEORVA<br>
+                            注册状态：中国境内注册中<br>
+                            经营范围：智能电子产品、益智玩具、数字存储设备<br>
+                            生产基地：广东深圳（具备OEM/ODM能力）
                         </p>
                     </div>
                     <div class="business-item">
-                        <h3 id="biz-cert">Certifications</h3>
+                        <h3 id="biz-cert">产品认证</h3>
                         <p id="biz-cert-desc">
-                            Products comply with FCC, CE, RoHS, 3C and other international safety standards.<br>
-                            All products pass 100% quality inspection before shipment.<br>
-                            ISO 9001 quality management system in place.
+                            产品符合 FCC、CE、RoHS、3C 等国际安全标准<br>
+                            所有产品出货前100%质检<br>
+                            已建立 ISO 9001 质量管理体系
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <h2 id="storage-title" class="section-title">Digital Storage Solutions</h2>
+        <h2 id="storage-title" class="section-title">数字存储解决方案</h2>
         <div class="grid" id="storage-grid"></div>
 
-        <h2 id="play-title" class="section-title">Intellectual Play</h2>
+        <h2 id="play-title" class="section-title">益智玩具系列</h2>
         <div class="grid" id="play-grid"></div>
     </div>
 
@@ -457,25 +470,25 @@
 <div class="modal inquiry-modal" id="inquiryModal">
     <div class="modal-content">
         <span class="close-modal" onclick="closeInquiryModal()" style="top:15px; right:15px; color:#333; background:#f0f0f0;">&times;</span>
-        <h3 id="inquiry-title">Send Us an Inquiry</h3>
+        <h3 id="inquiry-title">发送询价</h3>
         <form id="inquiryForm" onsubmit="submitInquiry(event)">
             <div class="form-group">
-                <label id="inquiry-name">Your Name</label>
+                <label id="inquiry-name">您的姓名</label>
                 <input type="text" required placeholder="John Doe">
             </div>
             <div class="form-group">
-                <label id="inquiry-company">Company</label>
+                <label id="inquiry-company">公司名称</label>
                 <input type="text" placeholder="Your Company Ltd.">
             </div>
             <div class="form-group">
-                <label id="inquiry-email">Email</label>
+                <label id="inquiry-email">电子邮箱</label>
                 <input type="email" required placeholder="you@company.com">
             </div>
             <div class="form-group">
-                <label id="inquiry-message">Message</label>
+                <label id="inquiry-message">留言内容</label>
                 <textarea required placeholder="Tell us about your requirements..."></textarea>
             </div>
-            <button type="submit" class="submit-btn" id="inquiry-submit">Send Inquiry</button>
+            <button type="submit" class="submit-btn" id="inquiry-submit">提交询价</button>
         </form>
     </div>
 </div>
@@ -483,19 +496,19 @@
 <footer>
     <div class="container footer-grid">
         <div class="footer-item">
-            <h4 id="footer-headquarters">HEADQUARTERS</h4>
-            <p id="footer-address">Shanghai, China</p>
+            <h4 id="footer-headquarters">总部地址</h4>
+            <p id="footer-address">中国上海</p>
         </div>
         <div class="footer-item">
-            <h4 id="footer-cert">CERTIFICATION</h4>
-            <p id="footer-cert-desc">FCC, CPC, CE, RoHS, 3C Compliant.</p>
+            <h4 id="footer-cert">产品认证</h4>
+            <p id="footer-cert-desc">FCC、CPC、CE、RoHS、3C 合规认证</p>
         </div>
         <div class="footer-item">
-            <h4 id="footer-contact">CONTACT</h4>
+            <h4 id="footer-contact">联系方式</h4>
             <p id="footer-contact-desc">18376781936@163.com | +86 18376781936</p>
         </div>
     </div>
-    <div class="footer-bottom" id="footer-copyright">&copy; 2026 BEORVA. All Rights Reserved.</div>
+    <div class="footer-bottom" id="footer-copyright">© 2026 BEORVA 上海贝荣华网络科技有限公司 保留所有权利</div>
 </footer>
 
 <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
@@ -510,7 +523,7 @@
             "brand-slogan": "<strong>Be:</strong> 用户之选 | <strong>Ori:</strong> 匠心工艺 | <strong>R:</strong> 可靠品质 | <strong>Va:</strong> 价值创造。",
             "business-title": "企业信息",
             "biz-company": "公司信息",
-            "biz-company-desc": "名称：上海贝荣华网络科技有限公司<br>统一社会信用代码：91310118MAE1T09H87<br>证照编号：29000000202409300084<br>类型：有限责任公司（自然人独资）<br>法定代表人：朱珍<br>成立日期：2024年09月30日<br>地址：上海市青浦区公园东路1289弄26号10层",
+            "biz-company-desc": "名称：上海贝荣华网络科技有限公司<br>统一社会信用代码：91310118MAE1T09H87<br>类型：有限责任公司（自然人独资）<br>成立日期：2024年09月30日<br>地址：上海市青浦区公园东路1289弄26号10层",
             "biz-brand": "品牌信息",
             "biz-brand-desc": "品牌名称：BEORVA<br>注册状态：中国境内注册中<br>经营范围：智能电子产品、益智玩具、数字存储设备<br>生产基地：广东深圳（具备OEM/ODM能力）",
             "biz-cert": "产品认证",
@@ -539,7 +552,7 @@
             "brand-slogan": "<strong>Be:</strong> User Selection | <strong>Ori:</strong> Craftsmanship | <strong>R:</strong> Reliability | <strong>Va:</strong> Value.",
             "business-title": "Business Information",
             "biz-company": "Company Info",
-            "biz-company-desc": "Name: Shanghai Beironghua Network Technology Co., Ltd.<br>Unified Social Credit Code: 91310118MAE1T09H87<br>License No.: 29000000202409300084<br>Type: Limited Liability Company (Sole Proprietorship)<br>Legal Representative: Zhu Zhen<br>Established: 2024-09-30<br>Address: 10th Floor, No. 26, Lane 1289, Gongyuan East Road, Qingpu District, Shanghai",
+            "biz-company-desc": "Name: Shanghai Beironghua Network Technology Co., Ltd.<br>Unified Social Credit Code: 91310118MAE1T09H87<br>Type: Limited Liability Company (Sole Proprietorship)<br>Established: 2024-09-30<br>Address: 10th Floor, No. 26, Lane 1289, Gongyuan East Road, Qingpu District, Shanghai",
             "biz-brand": "Brand Info",
             "biz-brand-desc": "Brand Name: BEORVA<br>Registration: In progress (China)<br>Business Scope: Smart electronic products, intellectual toys, digital storage devices<br>Factory: Shenzhen, Guangdong (OEM/ODM capacity)",
             "biz-cert": "Certifications",
