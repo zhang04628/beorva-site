@@ -3,131 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BEORVA Official | Premium Quality & Innovation</title>
+    <title>BEORVA Official | Premium Global Quality & Innovation</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #004a2d; --accent: #c1a35f; --text: #333; }
-        body { font-family: 'Poppins', sans-serif; margin: 0; color: var(--text); line-height: 1.8; font-weight: 300; }
+        :root { --primary: #004a2d; --accent: #c1a35f; --text: #333; --bg-light: #fdfdfd; }
+        html { scroll-behavior: smooth; } /* 实现点击图片后平滑滚动 */
+        body { font-family: 'Poppins', sans-serif; margin: 0; color: var(--text); line-height: 1.8; background: #fff; }
         .container { max-width: 1200px; margin: auto; padding: 0 40px; }
         
         /* Navigation */
         header { background: rgba(255, 255, 255, 0.95); padding: 20px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.05); backdrop-filter: blur(10px); }
         .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 700; font-size: 24px; color: var(--primary); letter-spacing: 2px; }
+        .logo { font-weight: 700; font-size: 26px; color: var(--primary); letter-spacing: 2px; text-decoration: none; }
         .nav-links { display: flex; gap: 30px; list-style: none; margin: 0; }
         .nav-links a { text-decoration: none; color: var(--text); font-size: 14px; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
         /* Hero Section */
-        .hero { text-align: center; padding: 120px 0 80px; background: #f9f9f9; }
+        .hero { text-align: center; padding: 120px 0 80px; background: var(--bg-light); }
         .hero h1 { font-size: 48px; color: var(--primary); margin: 0; font-weight: 700; }
         .hero p { max-width: 800px; margin: 20px auto; font-size: 18px; color: #666; }
 
-        /* Core Values Section */
-        .values { padding: 60px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center; }
-        .value-card h3 { color: var(--primary); margin-bottom: 10px; }
+        /* Product Grid (Main Menu) */
+        .section-title { text-align: center; font-size: 32px; margin: 80px 0 40px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .product-card { background: #fff; border: 1px solid #eee; padding: 30px; border-radius: 15px; text-align: center; transition: 0.4s; cursor: pointer; text-decoration: none; color: inherit; display: block; }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.08); border-color: var(--accent); }
+        .product-card img { max-width: 100%; height: 220px; object-fit: contain; margin-bottom: 20px; }
+        .product-card strong { color: var(--accent); display: block; margin-top: 10px; }
 
-        /* Products Section */
-        .section-title { text-align: center; font-size: 32px; margin: 80px 0 40px; position: relative; padding-bottom: 15px; }
-        .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 3px; background: var(--accent); }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .product-card { border: 1px solid #eee; padding: 30px; border-radius: 12px; transition: 0.4s; text-align: center; }
-        .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
-        .product-card img { max-width: 100%; height: 250px; object-fit: contain; margin-bottom: 20px; }
+        /* Detail Sections (Jump Targets) */
+        .detail-section { padding: 100px 0; border-top: 1px solid #eee; }
+        .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .detail-img { width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .specs-box { background: #f9f9f9; padding: 30px; border-radius: 12px; margin-top: 20px; text-align: left; }
+        .specs-box h4 { margin-top: 0; color: var(--primary); border-bottom: 2px solid var(--accent); display: inline-block; margin-bottom: 15px; }
+        .specs-box ul { padding-left: 20px; margin-bottom: 0; }
+        .specs-box li { margin-bottom: 8px; font-size: 15px; }
 
-        /* Brand Story Section */
-        .story { background: var(--primary); color: white; padding: 100px 0; margin-top: 80px; }
-        .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        @media (max-width: 768px) { .story-grid { grid-template-columns: 1fr; } }
-
-        /* Footer */
-        footer { background: #111; color: rgba(255,255,255,0.6); padding: 80px 0 40px; font-size: 14px; }
+        /* Heritage & Footer */
+        .heritage { background: var(--primary); color: white; padding: 100px 0; text-align: center; }
+        footer { background: #111; color: rgba(255,255,255,0.5); padding: 80px 0 40px; font-size: 14px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; margin-top: 50px; }
+        
+        @media (max-width: 768px) { .detail-grid { grid-template-columns: 1fr; text-align: center; } .hero h1 { font-size: 32px; } }
     </style>
 </head>
 <body>
 
 <header>
     <div class="container nav-wrapper">
-        <div class="logo">BEORVA</div>
+        <a href="#" class="logo">BEORVA</a>
         <ul class="nav-links">
-            <li><a href="#about">Our Story</a></li>
+            <li><a href="#about">Heritage</a></li>
             <li><a href="#products">Collections</a></li>
-            <li><a href="#compliance">Compliance</a></li>
+            <li><a href="#global">Supply Chain</a></li>
         </ul>
     </div>
 </header>
 
 <section class="hero">
     <div class="container">
-        <h1>Craftsmanship with Soul, Luxury with Moderation</h1>
-        <p>A phenomenal premium consumer brand bridging world-class supply chains, original design, and extreme user reputation across 3C digital, educational toys, and light luxury home decor.</p>
+        <h1>Craftsmanship for Global Living</h1>
+        <p>A premier global brand integrating high-end original design with world-class manufacturing expertise. BEORVA redefines the standards for modern lifestyles.</p>
     </div>
 </section>
 
-<div class="container">
-    <div class="values">
-        <div class="value-card"><h3>No Substandard</h3><p>Rejecting low-quality traffic products.</p></div>
-        <div class="value-card"><h3>No Compromise</h3><p>Absolute safety and data security.</p></div>
-        <div class="value-card"><h3>No Imitation</h3><p>Original design with oriental DNA.</p></div>
+<div class="container" id="products">
+    <h2 class="section-title">Featured Collections</h2>
+    <div class="product-grid">
+        <a href="#crystal-detail" class="product-card">
+            <img src="product1.jpg" alt="Crystal Series">
+            <h3>Crystal Series (晶曜)</h3>
+            <p>Luxury high-speed storage solutions.</p>
+            <strong>[Click for Technical Details]</strong>
+        </a>
+        <a href="#star-detail" class="product-card">
+            <img src="product2.jpg" alt="Star-Start Series">
+            <h3>Star-Start Series (星启)</h3>
+            <p>Premium STEAM educational toys.</p>
+            <strong>[Click for Safety Standards]</strong>
+        </a>
+        <a href="#mini-detail" class="product-card">
+            <img src="product3.jpg" alt="Minimalist Series">
+            <h3>Minimalist Series (简奢)</h3>
+            <p>Eco-friendly home lifestyle essentials.</p>
+            <strong>[Click for Design Philosophy]</strong>
+        </a>
     </div>
-
-    <section id="products">
-        <h2 class="section-title">Core Series</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="product1.jpg" alt="Elite Series">
-                <h3>Elite Series (晶曜)</h3>
-                <p>High-speed luxury customized USB drives. Original Grade-A chips, aviation-grade aluminum, and 150MB/s performance.</p>
-            </div>
-            <div class="product-card">
-                <img src="product2.jpg" alt="Star-Start Series">
-                <h3>Star-Start Series (星启)</h3>
-                <p>Age-appropriate STEAM toys. Food-grade ABS, scientific enlightenment, and co-developed by education experts.</p>
-            </div>
-            <div class="product-card">
-                <img src="product3.jpg" alt="Minimalist Series">
-                <h3>Minimalist Series (简奢)</h3>
-                <p>Full-scene home essentials. Minimalist geometric design with food-grade eco-friendly materials for a unified lifestyle.</p>
-            </div>
-        </div>
-    </section>
 </div>
 
-<section class="story" id="about">
+<section id="crystal-detail" class="detail-section">
     <div class="container">
-        <div class="story-grid">
+        <div class="detail-grid">
+            <img src="product1.jpg" alt="Crystal Details" class="detail-img">
             <div>
-                <h2 style="color: var(--accent);">BEORVA: Be-Ori-R-Va</h2>
-                <p>Our name anchors our core: <strong>Be</strong> (User-centric selection), <strong>Ori</strong> (Oriental craftsmanship), <strong>R</strong> (Glory of China's intelligent manufacturing), and <strong>Va</strong> (Vast brilliance). Founded by industry veterans with 15+ years of experience in global supply chain management.</p>
-            </div>
-            <div>
-                <h2 style="color: var(--accent);">Our Manufacturing Power</h2>
-                <p>Owned and operated by <strong>Bei Rong Hua</strong>. We manage 3 exclusive smart factories and 12 international standard production lines. Quality control standards that far exceed industry norms, ensuring premium value directly to consumers.</p>
+                <h2 style="color: var(--primary);">Crystal Series: Professional Storage</h2>
+                <p>Designed for the digital era, the BEORVA Crystal Series combines aerospace-grade aluminum durability with lightning-fast data transfer speeds. It's more than a tool; it's a professional accessory.</p>
+                <div class="specs-box">
+                    <h4>Technical Highlights</h4>
+                    <ul>
+                        <li>High Speed: 150MB/s Read & 120MB/s Write.</li>
+                        <li>Hardware: Original Tier-1 A-grade Flash Memory.</li>
+                        <li>Durability: Waterproof, Dustproof, and Shockproof.</li>
+                        <li>Connectivity: Universal USB 3.2 & Type-C Support.</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<footer id="compliance">
+<section id="star-detail" class="detail-section" style="background: #fafafa;">
+    <div class="container">
+        <div class="detail-grid">
+            <div>
+                <h2 style="color: var(--primary);">Star-Start Series: STEAM Toys</h2>
+                <p>Nurturing curiosity and intelligence. Our Star-Start series provides age-appropriate STEAM challenges that combine play with scientific enlightenment for global families.</p>
+                <div class="specs-box">
+                    <h4>Safety & Innovation</h4>
+                    <ul>
+                        <li>Material: Food-grade ABS, 100% BPA-free.</li>
+                        <li>Expertise: Co-developed by child education specialists.</li>
+                        <li>Compliance: Meets EN71, GCC, and CCC standards.</li>
+                        <li>Benefit: Focus on Logic, Mechanics, and Creativity.</li>
+                    </ul>
+                </div>
+            </div>
+            <img src="product2.jpg" alt="Toy Details" class="detail-img">
+        </div>
+    </div>
+</section>
+
+<section id="mini-detail" class="detail-section">
+    <div class="container">
+        <div class="detail-grid">
+            <img src="product3.jpg" alt="Home Details" class="detail-img">
+            <div>
+                <h2 style="color: var(--primary);">Minimalist Series: Home Essentials</h2>
+                <p>Redefining domestic spaces. We believe high-end home products should be both aesthetically pleasing and exceptionally durable. Less is more, quality is everything.</p>
+                <div class="specs-box">
+                    <h4>Product Integrity</h4>
+                    <ul>
+                        <li>Design: Unified matte geometric aesthetic.</li>
+                        <li>Safety: FDA-approved eco-friendly materials.</li>
+                        <li>Innovation: Modular space-saving configurations.</li>
+                        <li>Quality: 3x durability over industry average.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="heritage" id="about">
+    <div class="container">
+        <h2 style="color: var(--accent);">15 Years of Industrial Excellence</h2>
+        <p style="max-width: 850px; margin: auto; opacity: 0.9; font-size: 17px;">
+            While the brand <strong>BEORVA</strong> was established in 2024 by <strong>Bei Rong Hua</strong>, our manufacturing foundation spans over 15 years. With 3 proprietary smart factories and 12 international production lines, we bridge the gap between world-class engineering and the modern consumer.
+        </p>
+    </div>
+</section>
+
+<footer id="global">
     <div class="container">
         <div class="footer-grid">
             <div>
-                <h4 style="color:white;">Global Standards</h4>
-                <p>All products are certified by National 3C, RoHS, and exceed GCC safety requirements for the Saudi market.</p>
+                <h4 style="color:white;">Global Supply Chain</h4>
+                <p>Direct management of the entire supply chain from our headquarters in Shanghai, ensuring consistent quality for global distribution.</p>
             </div>
             <div>
-                <h4 style="color:white;">Headquarters</h4>
+                <h4>Corporate Headquarters</h4>
                 <p>Room 1001, 10th Floor, No. 26, Lane 1289, Gongyuan East Road, Qingpu District, Shanghai, China</p>
             </div>
             <div>
-                <h4 style="color:white;">Contact</h4>
-                <p>Email: info@beorva.com<br>Brand Owner: Bei Rong Hua</p>
+                <h4>Certifications</h4>
+                <p>CE, RoHS, CCC, and GCC Compliant. <br>Committed to international safety standards.</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 <strong>BEORVA</strong>. All Rights Reserved. Honored with Kapok Design Award.</p>
+            <p>&copy; 2026 <strong>BEORVA Official</strong>. All Rights Reserved. Winner of the Kapok Design Award.</p>
         </div>
     </div>
 </footer>
