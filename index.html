@@ -68,7 +68,7 @@
             box-shadow: 0 2px 15px rgba(0,0,0,0.03);
         }
         .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
-        /* LOGO样式修改 - 核心新增 */
+        /* LOGO样式修改 - 核心调整：100×100px正方形、高清显示 */
         .logo { 
             display: flex;
             align-items: center;
@@ -76,14 +76,18 @@
             letter-spacing: 1px; 
         }
         .logo-img {
-            height: 40px; /* PC端LOGO高度 */
-            width: auto;  /* 宽高比自适应 */
-            object-fit: contain;
+            width: 100px !important;    /* 固定宽度100px */
+            height: 100px !important;   /* 固定高度100px */
+            object-fit: contain !important;  /* 保持比例不拉伸 */
+            object-position: center !important; /* 居中显示 */
+            image-rendering: -webkit-optimize-contrast !important; /* 高清优化 */
+            image-rendering: crisp-edges !important; /* 边缘清晰 */
             transition: all 0.3s ease;
         }
-        /* 滚动时LOGO缩小 */
+        /* 滚动时LOGO缩小到80px（保持正方形） */
         header.scrolled .logo-img {
-            height: 32px;
+            width: 80px !important;
+            height: 80px !important;
         }
         .nav-links { display: flex; list-style: none; }
         .nav-links a { 
@@ -478,7 +482,7 @@
         }
         .submit-btn:hover { background: #a68343; }
 
-        /* 手机端适配 */
+        /* 手机端适配（LOGO调整为80px正方形） */
         @media (max-width: 900px) {
             .detail-container { flex-direction: column; }
             .detail-left { position: static; }
@@ -493,9 +497,10 @@
             #privacy-page { padding: 20px; margin: 30px 15px; }
             #privacy-page h2 { font-size: 24px; }
             #privacy-page h3 { font-size: 18px; }
-            /* 移动端LOGO适配 */
+            /* 移动端LOGO适配：80px正方形 */
             .logo-img {
-                height: 32px !important;
+                width: 80px !important;
+                height: 80px !important;
             }
             
             /* 移动端询价弹窗适配 */
@@ -510,7 +515,7 @@
 <div class="container">
     <header>
         <div class="nav-wrapper">
-            <!-- LOGO部分修改 - 核心新增 -->
+            <!-- LOGO部分 - 点击返回首页 -->
             <a href="javascript:void(0)" onclick="showHome()" class="logo">
                 <img src="logo.png" alt="BEORVA Logo" class="logo-img">
             </a>
