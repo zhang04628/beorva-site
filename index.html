@@ -666,6 +666,9 @@
 <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
 
 <script>
+    // 全局当前语言变量
+    let currentLang = 'zh';
+    
     const langData = {
         zh: {
             "hero-title": "工业精度 · 智能玩乐",
@@ -711,12 +714,19 @@
             "privacy-update-desc": "我们可能会根据业务发展或法律法规变化更新本隐私政策，更新后的政策将在网站上公示。",
             "privacy-contact": "6. 联系方式",
             "privacy-contact-desc": '如您对本隐私政策有任何疑问，可通过以下方式联系我们：<br>电子邮箱：<a href="mailto:18376781936@163.com">18376781936@163.com</a><br>联系电话：<a href="tel:+8618376781936">+86 18376781936</a>',
-            // 新增导航栏中文文本
+            // 导航栏文本
             "nav-home": "首页",
             "nav-about": "关于我们",
             "nav-inquiry": "在线询价",
             "nav-privacy": "隐私政策",
-            "back-btn-text": "← 返回"
+            "back-btn-text": "← 返回",
+            // 产品查看按钮文本
+            "view-specs": "查看规格 ›",
+            // 表单占位符
+            "placeholder-name": "请输入您的姓名",
+            "placeholder-company": "请输入公司名称",
+            "placeholder-email": "请输入您的邮箱",
+            "placeholder-message": "请描述您的需求..."
         },
         en: {
             "hero-title": "Industrial Precision & Smart Play.",
@@ -762,17 +772,297 @@
             "privacy-update-desc": "We may update this Privacy Policy according to business development or changes in laws and regulations. The updated policy will be posted on the website.",
             "privacy-contact": "6. Contact Information",
             "privacy-contact-desc": 'If you have any questions about this Privacy Policy, you can contact us through the following methods:<br>Email: <a href="mailto:18376781936@163.com">18376781936@163.com</a><br>Phone: <a href="tel:+8618376781936">+86 18376781936</a>',
-            // 导航栏英文文本
+            // 导航栏文本
             "nav-home": "Home",
             "nav-about": "About",
             "nav-inquiry": "Inquiry",
             "nav-privacy": "Privacy",
-            "back-btn-text": "← Back"
+            "back-btn-text": "← Back",
+            // 产品查看按钮文本
+            "view-specs": "View Specs ›",
+            // 表单占位符
+            "placeholder-name": "John Doe",
+            "placeholder-company": "Your Company Ltd.",
+            "placeholder-email": "you@company.com",
+            "placeholder-message": "Tell us about your requirements..."
+        }
+    };
+
+    // 多语言产品数据（补充了更丰富的规格参数）
+    const products = {
+        'm1': { 
+            cat: 's', 
+            zh: {
+                name: "M1 便携式固态硬盘", 
+                desc: "航空级铝合金存储，2000MB/s 极速传输，稳定可靠。", 
+                specs: [
+                    ["传输速度","2000MB/s (读取) / 1800MB/s (写入)"],
+                    ["接口类型","Type-C 3.2 Gen2 / USB-A 3.2 Gen2"],
+                    ["机身材质","全合金外壳 (6061航空铝)"],
+                    ["容量选项","256GB / 512GB / 1TB / 2TB / 4TB"],
+                    ["尺寸规格","89 x 53 x 8.8mm"],
+                    ["产品重量","42克"],
+                    ["工作温度","0°C 至 40°C"],
+                    ["存储温度","-20°C 至 70°C"],
+                    ["兼容系统","Windows/macOS/Linux/Android/iOS"],
+                    ["防护等级","IP54 (防尘防水)"],
+                    ["质保期限","3年有限质保"]
+                ]
+            },
+            en: {
+                name: "M1 Portable SSD", 
+                desc: "Aerospace-grade aluminum storage with 2000MB/s extreme speed logic.", 
+                specs: [
+                    ["Speed","2000MB/s (Read) / 1800MB/s (Write)"],
+                    ["Interface","Type-C 3.2 Gen2 / USB-A 3.2 Gen2"],
+                    ["Build","Alloy Case (6061 Aviation Aluminum)"],
+                    ["Capacity","256GB / 512GB / 1TB / 2TB / 4TB"],
+                    ["Dimensions","89 x 53 x 8.8mm"],
+                    ["Weight","42g"],
+                    ["Operating Temp","0°C to 40°C"],
+                    ["Storage Temp","-20°C to 70°C"],
+                    ["Compatibility","Windows/macOS/Linux/Android/iOS"],
+                    ["Protection","IP54 (Dust/Water Resistant)"],
+                    ["Warranty","3-Year Limited Warranty"]
+                ]
+            },
+            img: "ssd1.jpg"
+        },
+        'otg': { 
+            cat: 's', 
+            zh: {
+                name: "水晶迷你OTG读卡器", 
+                desc: "双USB 3.2和Type-C接口，A级闪存芯片，数据安全有保障。", 
+                specs: [
+                    ["双接口","USB 3.2 Gen1 + Type-C 3.2 Gen1"],
+                    ["防护等级","IP67 防水/防震/防尘"],
+                    ["标准规格","UDP 3.0 一体化封装"],
+                    ["支持卡型","Micro SD/TF卡 (支持UHS-I)"],
+                    ["传输速度","最高170MB/s (读取)"],
+                    ["尺寸规格","38 x 18 x 8mm"],
+                    ["产品重量","6克"],
+                    ["工作电压","DC 5V/0.5A"],
+                    ["材质工艺","高透PC外壳 + 镀金接口"],
+                    ["兼容系统","Windows/macOS/Android/iOS"],
+                    ["质保期限","2年有限质保"]
+                ]
+            },
+            en: {
+                name: "Crystal Mini OTG", 
+                desc: "Dual USB 3.2 & Type-C connectivity. Grade A Flash for data security.", 
+                specs: [
+                    ["Dual Port","USB 3.2 Gen1 + Type-C 3.2 Gen1"],
+                    ["Protection","IP67 Water/Shock/Dustproof"],
+                    ["Standard","UDP 3.0 Integrated Package"],
+                    ["Card Support","Micro SD/TF (UHS-I Compatible)"],
+                    ["Transfer Speed","Up to 170MB/s (Read)"],
+                    ["Dimensions","38 x 18 x 8mm"],
+                    ["Weight","6g"],
+                    ["Voltage","DC 5V/0.5A"],
+                    ["Material","Transparent PC + Gold-plated Port"],
+                    ["Compatibility","Windows/macOS/Android/iOS"],
+                    ["Warranty","2-Year Limited Warranty"]
+                ]
+            },
+            img: "usb1.jpg"
+        },
+        'hub': { 
+            cat: 's', 
+            zh: {
+                name: "12合1 专业扩展坞", 
+                desc: "精密工艺打造，配备10cm加固数据线，稳定传输不卡顿。", 
+                specs: [
+                    ["接口数量","12合1 全功能扩展"],
+                    ["具体接口","HDMI 4K@60Hz x1, USB3.0 x3, USB2.0 x2, RJ45千兆网口 x1, SD/TF读卡器 x1, 3.5mm音频口 x1, PD100W快充口 x1, Type-C数据口 x1"],
+                    ["传输速率","USB3.0: 5Gbps / RJ45: 1000Mbps"],
+                    ["数据线","10cm 加固编织线 (抗拉扯)"],
+                    ["视频输出","HDMI 2.0 (4K@60Hz/2K@144Hz/1080P@240Hz)"],
+                    ["供电能力","PD 100W 反向快充"],
+                    ["尺寸规格","118 x 60 x 15mm"],
+                    ["产品重量","85克"],
+                    ["材质工艺","铝合金外壳 (散热佳)"],
+                    ["兼容设备","笔记本/平板/手机 (Type-C接口)"],
+                    ["质保期限","2年有限质保"]
+                ]
+            },
+            en: {
+                name: "12-in-1 Pro Hub", 
+                desc: "Precision command center with reinforced 10cm data cable.", 
+                specs: [
+                    ["Ports","12-in-1 Full Function"],
+                    ["Port Details","HDMI 4K@60Hz x1, USB3.0 x3, USB2.0 x2, RJ45 Gigabit x1, SD/TF Reader x1, 3.5mm Audio x1, PD100W x1, Type-C Data x1"],
+                    ["Transmission","USB3.0: 5Gbps / RJ45: 1000Mbps"],
+                    ["Cable","10cm Reinforced Braided Cable"],
+                    ["Video Output","HDMI 2.0 (4K@60Hz/2K@144Hz/1080P@240Hz)"],
+                    ["Power Delivery","PD 100W Reverse Charging"],
+                    ["Dimensions","118 x 60 x 15mm"],
+                    ["Weight","85g"],
+                    ["Material","Aluminum Alloy (Heat Dissipation)"],
+                    ["Compatibility","Laptop/Tablet/Phone (Type-C)"],
+                    ["Warranty","2-Year Limited Warranty"]
+                ]
+            },
+            img: "hub1.jpg"
+        },
+        'camera': { 
+            cat: 'p', 
+            zh: {
+                name: "4K 校园相机", 
+                desc: "学生专用4K成像系统，翻转自拍屏，自带LED补光灯。", 
+                specs: [
+                    ["分辨率","4K 超高清 (3840×2160)"],
+                    ["屏幕配置","2.4英寸IPS翻转屏 (180°旋转)"],
+                    ["补光系统","内置LED补光灯 (3档亮度可调)"],
+                    ["图像传感器","1/3.2英寸 CMOS (1600万像素)"],
+                    ["焦距范围","定焦 80cm-无限远"],
+                    ["存储扩展","支持Micro SD卡 (最大128GB)"],
+                    ["拍摄模式","拍照/录像/延时/连拍/美颜"],
+                    ["视频帧率","4K@30fps / 1080P@60fps / 720P@120fps"],
+                    ["电池容量","内置1000mAh锂电池"],
+                    ["续航时间","约2.5小时连续拍摄"],
+                    ["尺寸规格","98 x 60 x 28mm"],
+                    ["产品重量","120克"],
+                    ["充电接口","Type-C (5V/1A)"],
+                    ["适用年龄","8岁以上"],
+                    ["质保期限","1年有限质保"]
+                ]
+            },
+            en: {
+                name: "4K Campus Camera", 
+                desc: "Student 4K imaging system with flip selfie screen and LED fill light.", 
+                specs: [
+                    ["Res","4K Ultra HD (3840×2160)"],
+                    ["Screen","2.4\" IPS Flip Screen (180° Rotation)"],
+                    ["Lighting","Built-in LED Fill Light (3 Brightness Levels)"],
+                    ["Sensor","1/3.2\" CMOS (16MP)"],
+                    ["Focal Length","Fixed 80cm-Infinity"],
+                    ["Storage","Micro SD Support (Max 128GB)"],
+                    ["Modes","Photo/Video/Time-lapse/Burst/Beauty"],
+                    ["Video Frame Rate","4K@30fps / 1080P@60fps / 720P@120fps"],
+                    ["Battery","Built-in 1000mAh Li-ion"],
+                    ["Battery Life","~2.5hrs Continuous Shooting"],
+                    ["Dimensions","98 x 60 x 28mm"],
+                    ["Weight","120g"],
+                    ["Charging","Type-C (5V/1A)"],
+                    ["Age Range","8+"],
+                    ["Warranty","1-Year Limited Warranty"]
+                ]
+            },
+            img: "camera.jpg"
+        },
+        'car': { 
+            cat: 'p', 
+            zh: {
+                name: "喷雾遥控赛车", 
+                desc: "手势控制机甲赛车，冷雾排气效果，漂移黑科技。",
+                features: [
+                    {title: "双控模式", desc: "手柄+手表遥控，重力感应操作"},
+                    {title: "冷雾喷雾", desc: "漂移时自动触发冷雾效果"},
+                    {title: "动感灯光", desc: "4种灯光模式，酷炫车头灯"},
+                    {title: "全向特技", desc: "360°旋转 + 45°斜向漂移"}
+                ],
+                specs: [
+                    ["适用年龄","14岁以上"],
+                    ["遥控频率","2.4GHz (抗干扰，多车同玩)"],
+                    ["比例尺寸","1:16 仿真比例"],
+                    ["车身颜色","白色 (支持定制)"],
+                    ["遥控距离","约50米 (无遮挡)"],
+                    ["玩耍时长","约25-30分钟 (强劲模式约20分钟)"],
+                    ["充电时间","约2.5-3小时 (Type-C快充)"],
+                    ["电池规格","3.7V 1200mAh 可充电锂电池 (车身)"],
+                    ["遥控器电池","AA*2节 (不含，约可使用3个月)"],
+                    ["电机配置","高速四驱电机 x4"],
+                    ["行驶速度","约15km/h (平地) / 10km/h (越野)"],
+                    ["车身尺寸","25*13*7厘米"],
+                    ["产品重量","车481克 / 遥控器90克 / 电池32克"],
+                    ["包装尺寸","38*22*15厘米"],
+                    ["整箱重量","毛重12kg / 净重10kg"],
+                    ["材质工艺","ABS高强度塑料 + 金属传动轴"],
+                    ["防水等级","IPX4 (防泼溅)"],
+                    ["装箱数量","18台/箱"],
+                    ["质保期限","1年有限质保 (易损件除外)"]
+                ]
+            },
+            en: {
+                name: "Spray RC Racer", 
+                desc: "Gesture-control mecha racer with cold mist exhaust and drift tech.",
+                features: [
+                    {title: "Dual Control Mode", desc: "Handle + Watch remote with gravity sensing"},
+                    {title: "Cold Mist Spray", desc: "Auto-trigger cold mist when drifting"},
+                    {title: "Dynamic Lighting", desc: "4 lighting modes with cool headlight"},
+                    {title: "Omni Stunts", desc: "360° rotation & 45° oblique drift"}
+                ],
+                specs: [
+                    ["Age Limit","14+"],
+                    ["Remote Freq","2.4GHz (Anti-interference, Multi-car Play)"],
+                    ["Scale","1:16 Simulation Scale"],
+                    ["Color","White (Customizable)"],
+                    ["Remote Range","~50 Meters (Unobstructed)"],
+                    ["Play Time","~25-30 Mins (20 Mins in Boost Mode)"],
+                    ["Charge Time","~2.5-3 Hours (Type-C Fast Charge)"],
+                    ["Battery","3.7V 1200mAh Rechargeable Li-ion (Car)"],
+                    ["Remote Battery","AA*2 (Not Included, ~3 Months Use)"],
+                    ["Motor","4 x High-speed 4WD Motors"],
+                    ["Speed","~15km/h (Flat) / 10km/h (Off-road)"],
+                    ["Dimensions","25*13*7cm"],
+                    ["Weight","Car 481g / Remote 90g / Battery 32g"],
+                    ["Package Size","38*22*15cm"],
+                    ["Carton Weight","G.W 12kg / N.W 10kg"],
+                    ["Material","High-strength ABS + Metal Drive Shaft"],
+                    ["Waterproof","IPX4 (Splash Resistant)"],
+                    ["Qty/CTN","18 PCS/CTN"],
+                    ["Warranty","1-Year Limited Warranty (Excluding Consumables)"]
+                ]
+            },
+            img: "car.jpg"
+        },
+        'magtoy': { 
+            cat: 'p', 
+            zh: {
+                name: "磁力探索积木", 
+                desc: "STEAM认证空间工程逻辑搭建系统，锻炼空间思维能力。", 
+                specs: [
+                    ["材质工艺","ABS 食品级材质 (不含BPA/邻苯二甲酸酯)"],
+                    ["磁力强度","800GS 稀土永磁 (安全磁力)"],
+                    ["认证标准","国家3C认证 / ASTM F963 / EN71"],
+                    ["培养能力","空间逻辑思维/动手能力/创造力/团队协作"],
+                    ["套装配置","88件 (含正方形/三角形/梯形/车轮等组件)"],
+                    ["适用年龄","3-12岁 (3岁以下需成人监护)"],
+                    ["单块尺寸","正方形7.5*7.5cm / 三角形7.5*8.7cm"],
+                    ["套装重量","1.2kg (含收纳箱)"],
+                    ["包装尺寸","45*30*18cm (环保彩盒+收纳箱)"],
+                    ["磁力寿命","≥10万次吸附 (不衰减)"],
+                    ["安全设计","圆角打磨 (无毛刺) / 防吞咽尺寸"],
+                    ["质保期限","1年质保 (非人为损坏)"],
+                    ["教育认证","STEAM教育推荐教具"]
+                ]
+            },
+            en: {
+                name: "Magnetic Discovery", 
+                desc: "STEAM certified spatial engineering logic building system.", 
+                specs: [
+                    ["Material","ABS BPA-Free/Phthalate-Free Food Grade"],
+                    ["Magnet Strength","800GS Rare Earth Magnet (Safe Magnetic)"],
+                    ["Standard","3C Certified / ASTM F963 / EN71"],
+                    ["Skills","Spatial Logic/Hands-on/Creativity/Teamwork"],
+                    ["Set Content","88PCS (Square/Triangle/Trapezoid/Wheel etc.)"],
+                    ["Age Range","3-12Y (Adult Supervision for Under 3Y)"],
+                    ["Piece Size","Square 7.5*7.5cm / Triangle 7.5*8.7cm"],
+                    ["Set Weight","1.2kg (Including Storage Box)"],
+                    ["Package Size","45*30*18cm (Eco Box + Storage Case)"],
+                    ["Magnet Life","≥100,000 Adsorptions (No Attenuation)"],
+                    ["Safety Design","Rounded Edge / Anti-choking Size"],
+                    ["Warranty","1-Year Warranty (Non-human Damage)"],
+                    ["Education Cert","STEAM Recommended Teaching Aids"]
+                ]
+            },
+            img: "toy1.jpg"
         }
     };
 
     // 切换语言
     function switchLang(lang) {
+        currentLang = lang;
         document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
         document.querySelector(`.lang-btn[onclick="switchLang('${lang}')"]`).classList.add('active');
         document.documentElement.lang = lang;
@@ -786,7 +1076,7 @@
             document.querySelector('meta[name="description"]').content = "BEORVA（上海贝荣华网络科技有限公司）专注数字存储解决方案与益智玩具研发生产，提供OEM/ODM服务，产品符合FCC/CE/3C等国际认证。";
         }
 
-        // 更新所有文本（包括新增的导航栏）
+        // 更新所有文本
         for (let key in langData[lang]) {
             const el = document.getElementById(key);
             if (el) {
@@ -804,80 +1094,43 @@
         
         // 更新返回按钮文本
         document.getElementById('back-btn').textContent = langData[lang]['back-btn-text'];
-    }
-
-    // 产品数据
-    const products = {
-        'm1': { 
-            cat: 's', 
-            name: "M1 Portable SSD", 
-            img: "ssd1.jpg", 
-            desc: "Aerospace-grade aluminum storage with 2000MB/s extreme speed logic.", 
-            specs: [["Speed","2000MB/s"],["Interface","Type-C/USB-A"],["Build","Alloy Case"]] 
-        },
-        'otg': { 
-            cat: 's', 
-            name: "Crystal Mini OTG", 
-            img: "usb1.jpg", 
-            desc: "Dual USB 3.2 & Type-C connectivity. Grade A Flash for data security.", 
-            specs: [["Dual Port","USB 3.2 + Type-C"],["Protection","Water/Shockproof"],["Standard","UDP 3.0"]] 
-        },
-        'hub': { 
-            cat: 's', 
-            name: "12-in-1 Pro Hub", 
-            img: "hub1.jpg", 
-            desc: "Precision command center with reinforced 10cm data cable.", 
-            specs: [["Ports","12-in-1"],["Transmission","5Gbps"],["Cable","10cm Reinforced"]] 
-        },
-        'camera': { 
-            cat: 'p', 
-            name: "4K Campus Camera", 
-            img: "camera.jpg", 
-            desc: "Student 4K imaging system with flip selfie screen and LED fill light.", 
-            specs: [["Res","4K Ultra HD"],["Screen","Flip Selfie"],["Modes","LED Fill Light"]] 
-        },
-        'car': { 
-            cat: 'p', 
-            name: "Spray RC Racer", 
-            img: "car.jpg", 
-            desc: "Gesture-control mecha racer with cold mist exhaust and drift tech.",
-            features: [
-                {title: "Dual Control Mode", desc: "Handle + Watch remote with gravity sensing"},
-                {title: "Cold Mist Spray", desc: "Auto-trigger cold mist when drifting"},
-                {title: "Dynamic Lighting", desc: "4 lighting modes with cool headlight"},
-                {title: "Omni Stunts", desc: "360° rotation & 45° oblique drift"}
-            ],
-            specs: [
-                ["Age Limit","14+"],
-                ["Remote Freq","2.4GHz"],
-                ["Scale","1:16"],
-                ["Color","White"],
-                ["Remote Range","~50 Meters"],
-                ["Play Time","~25-30 Mins"],
-                ["Charge Time","~2.5-3 Hours"],
-                ["Battery","3.7V 1200mAh Li-ion"],
-                ["Remote Battery","AA*2 (Not Included)"],
-                ["Dimensions","25*13*7cm"],
-                ["Weight","Car 481g / Remote 90g / Battery 32g"],
-                ["Qty/CTN","18 PCS/CTN"]
-            ] 
-        },
-        'magtoy': { 
-            cat: 'p', 
-            name: "Magnetic Discovery", 
-            img: "toy1.jpg", 
-            desc: "STEAM certified spatial engineering logic building system.", 
-            specs: [["Material","ABS BPA-Free"],["Standard","National 3C"],["Skills","Spatial Logic"]] 
+        
+        // 更新表单占位符
+        document.getElementById('name-input').placeholder = langData[lang]['placeholder-name'];
+        document.getElementById('company-input').placeholder = langData[lang]['placeholder-company'];
+        document.getElementById('email-input').placeholder = langData[lang]['placeholder-email'];
+        document.getElementById('message-input').placeholder = langData[lang]['placeholder-message'];
+        
+        // 重新渲染产品列表（关键修复）
+        renderGrids();
+        
+        // 如果当前在产品详情页，重新渲染详情
+        if (document.getElementById('detail-page').style.display === 'block') {
+            // 获取当前显示的产品ID
+            const detailContent = document.getElementById('detail-content');
+            if (detailContent && detailContent.dataset.productId) {
+                showDetail(detailContent.dataset.productId);
+            }
         }
-    };
+    }
 
     // 渲染产品网格
     function renderGrids() {
         let sHtml = '', pHtml = '';
+        const viewSpecsText = langData[currentLang]['view-specs'];
+        
         for (let id in products) {
             let p = products[id];
-            let html = `<div class="card" onclick="showDetail('${id}')"><img src="${p.img}"><h3>${p.name}</h3><div class="btn-view">View Specs ›</div></div>`;
-            if (p.cat === 's') sHtml += html; else pHtml += html;
+            let html = `<div class="card" onclick="showDetail('${id}')">
+                <img src="${p.img}" alt="${p[currentLang].name}">
+                <h3>${p[currentLang].name}</h3>
+                <div class="btn-view">${viewSpecsText}</div>
+            </div>`;
+            if (p.cat === 's') {
+                sHtml += html;
+            } else {
+                pHtml += html;
+            }
         }
         document.getElementById('storage-grid').innerHTML = sHtml;
         document.getElementById('play-grid').innerHTML = pHtml;
@@ -886,9 +1139,14 @@
     // 显示产品详情
     function showDetail(id) {
         const p = products[id];
-        let featuresHtml = p.features ? `
+        const langProduct = p[currentLang];
+        
+        // 存储当前产品ID，用于语言切换时重新渲染
+        document.getElementById('detail-content').dataset.productId = id;
+        
+        let featuresHtml = langProduct.features ? `
             <div class="features-grid">
-                ${p.features.map(f => `
+                ${langProduct.features.map(f => `
                     <div class="feature-item">
                         <h4>${f.title}</h4>
                         <p>${f.desc}</p>
@@ -896,18 +1154,24 @@
                 `).join('')}
             </div>
         ` : '';
-        let specsHtml = p.specs.map(s => `<tr><td class="label">${s[0]}</td><td class="val">${s[1]}</td></tr>`).join('');
+        
+        let specsHtml = langProduct.specs.map(s => `<tr>
+            <td class="label">${s[0]}</td>
+            <td class="val">${s[1]}</td>
+        </tr>`).join('');
+        
         document.getElementById('detail-content').innerHTML = `
             <div class="detail-left">
-                <img src="${p.img}" onclick="openImageModal('${p.img}')" alt="${p.name}">
+                <img src="${p.img}" onclick="openImageModal('${p.img}')" alt="${langProduct.name}">
             </div>
             <div class="detail-right">
-                <h2>${p.name}</h2>
-                <p class="desc">${p.desc}</p>
+                <h2>${langProduct.name}</h2>
+                <p class="desc">${langProduct.desc}</p>
                 ${featuresHtml}
                 <table class="specs-table">${specsHtml}</table>
             </div>
         `;
+        
         document.getElementById('home-page').style.display = 'none';
         document.getElementById('detail-page').style.display = 'block';
         document.getElementById('privacy-page').style.display = 'none';
@@ -982,28 +1246,47 @@
         const email = document.getElementById('email-input').value;
         const message = document.getElementById('message-input').value;
         
-        // 构造邮件内容
-        const subject = `BEORVA 询价 - ${name} ${company ? '(' + company + ')' : ''}`;
-        const body = `
+        // 根据当前语言构造邮件内容
+        let subject, body;
+        if (currentLang === 'zh') {
+            subject = `BEORVA 询价 - ${name} ${company ? '(' + company + ')' : ''}`;
+            body = `
 姓名：${name}
 公司：${company || '无'}
 邮箱：${email}
 留言内容：
 ${message}
-        `.trim();
+            `.trim();
+        } else {
+            subject = `BEORVA Inquiry - ${name} ${company ? '(' + company + ')' : ''}`;
+            body = `
+Name: ${name}
+Company: ${company || 'N/A'}
+Email: ${email}
+Message:
+${message}
+            `.trim();
+        }
         
         // 打开邮件客户端
         const mailtoLink = `mailto:18376781936@163.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         window.location.href = mailtoLink;
         
-        // 提示信息
-        alert('请在弹出的邮件客户端中确认并发送询价邮件，我们会尽快回复您！');
+        // 根据当前语言显示提示信息
+        if (currentLang === 'zh') {
+            alert('请在弹出的邮件客户端中确认并发送询价邮件，我们会尽快回复您！');
+        } else {
+            alert('Please confirm and send the inquiry email in the pop-up email client, we will reply to you as soon as possible!');
+        }
+        
         closeInquiryModal();
         e.target.reset();
     }
 
     // 回到顶部
-    function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function scrollToTop() { 
+        window.scrollTo({ top: 0, behavior: 'smooth' }); 
+    }
 
     // 滚动事件监听
     window.addEventListener('scroll', function() {
