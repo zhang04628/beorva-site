@@ -365,7 +365,7 @@
         .back-to-top.visible { opacity: 1; visibility: visible; }
         .back-to-top:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(184, 147, 77, 0.4); }
 
-        /* 模态框 - 彻底修复弹窗位置 */
+        /* 模态框 - 修复弹窗位置，确保绝对居中 */
         .modal {
             position: fixed !important;
             top: 0 !important;
@@ -379,8 +379,14 @@
             justify-content: center;
             padding: 20px;
             margin: 0 !important;
+            /* 确保弹窗在所有元素之上 */
+            overflow-y: auto;
         }
-        .modal.active { display: flex; }
+        .modal.active { 
+            display: flex; 
+            /* 防止页面滚动 */
+            position: fixed;
+        }
         .modal img { max-width: 90%; max-height: 90%; border-radius: 8px; }
         .modal .close-modal {
             position: absolute;
@@ -397,10 +403,16 @@
             border-radius: 50%;
             background: rgba(255,255,255,0.1);
             transition: all 0.3s ease;
+            z-index: 10001;
         }
         .modal .close-modal:hover { background: rgba(255,255,255,0.2); }
 
-        /* 询价表单模态框 */
+        /* 询价表单模态框 - 关键修复 */
+        .inquiry-modal {
+            /* 确保覆盖整个视口 */
+            align-items: center;
+            justify-content: center;
+        }
         .inquiry-modal .modal-content {
             background: #fff;
             padding: 40px;
@@ -411,6 +423,18 @@
             overflow-y: auto;
             position: relative;
             z-index: 10000;
+            /* 确保表单居中显示 */
+            margin: auto;
+            transform: translateY(0);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+        }
+        /* 询价弹窗关闭按钮样式调整 */
+        .inquiry-modal .close-modal {
+            top: 15px !important;
+            right: 15px !important;
+            color: #333 !important;
+            background: #f0f0f0 !important;
+            z-index: 10001 !important;
         }
         .inquiry-modal h3 { margin-top: 0; font-size: 24px; margin-bottom: 30px; }
         .form-group { margin-bottom: 20px; }
@@ -453,6 +477,12 @@
             #privacy-page { padding: 20px; margin: 30px 15px; }
             #privacy-page h2 { font-size: 24px; }
             #privacy-page h3 { font-size: 18px; }
+            
+            /* 移动端询价弹窗适配 */
+            .inquiry-modal .modal-content {
+                padding: 30px 20px;
+                max-width: 95%;
+            }
         }
     </style>
 </head>
@@ -462,10 +492,10 @@
         <div class="nav-wrapper">
             <a href="javascript:void(0)" onclick="showHome()" class="logo">BEORVA</a>
             <div class="nav-links" id="nav-links">
-                <a href="javascript:void(0)" onclick="showHome()">Home</a>
-                <a href="#about-section">About</a>
-                <a href="javascript:void(0)" onclick="openInquiryModal()">Inquiry</a>
-                <a href="javascript:void(0)" onclick="showPrivacyPage()">Privacy</a>
+                <a href="javascript:void(0)" onclick="showHome()" id="nav-home">Home</a>
+                <a href="#about-section" id="nav-about">About</a>
+                <a href="javascript:void(0)" onclick="openInquiryModal()" id="nav-inquiry">Inquiry</a>
+                <a href="javascript:void(0)" onclick="showPrivacyPage()" id="nav-privacy">Privacy</a>
             </div>
             <div class="lang-switch">
                 <button class="lang-btn active" onclick="switchLang('zh')">中文</button>
@@ -585,7 +615,7 @@
 <!-- 询价表单模态框 -->
 <div class="modal inquiry-modal" id="inquiryModal">
     <div class="modal-content">
-        <span class="close-modal" onclick="closeInquiryModal()" style="top:15px; right:15px; color:#333; background:#f0f0f0;">&times;</span>
+        <span class="close-modal" onclick="closeInquiryModal()">&times;</span>
         <h3 id="inquiry-title">发送询价</h3>
         <form id="inquiryForm" onsubmit="submitInquiry(event)">
             <div class="form-group">
@@ -680,7 +710,13 @@
             "privacy-update": "5. 政策更新",
             "privacy-update-desc": "我们可能会根据业务发展或法律法规变化更新本隐私政策，更新后的政策将在网站上公示。",
             "privacy-contact": "6. 联系方式",
-            "privacy-contact-desc": '如您对本隐私政策有任何疑问，可通过以下方式联系我们：<br>电子邮箱：<a href="mailto:18376781936@163.com">18376781936@163.com</a><br>联系电话：<a href="tel:+8618376781936">+86 18376781936</a>'
+            "privacy-contact-desc": '如您对本隐私政策有任何疑问，可通过以下方式联系我们：<br>电子邮箱：<a href="mailto:18376781936@163.com">18376781936@163.com</a><br>联系电话：<a href="tel:+8618376781936">+86 18376781936</a>',
+            // 新增导航栏中文文本
+            "nav-home": "首页",
+            "nav-about": "关于我们",
+            "nav-inquiry": "在线询价",
+            "nav-privacy": "隐私政策",
+            "back-btn-text": "← 返回"
         },
         en: {
             "hero-title": "Industrial Precision & Smart Play.",
@@ -725,7 +761,13 @@
             "privacy-update": "5. Policy Updates",
             "privacy-update-desc": "We may update this Privacy Policy according to business development or changes in laws and regulations. The updated policy will be posted on the website.",
             "privacy-contact": "6. Contact Information",
-            "privacy-contact-desc": 'If you have any questions about this Privacy Policy, you can contact us through the following methods:<br>Email: <a href="mailto:18376781936@163.com">18376781936@163.com</a><br>Phone: <a href="tel:+8618376781936">+86 18376781936</a>'
+            "privacy-contact-desc": 'If you have any questions about this Privacy Policy, you can contact us through the following methods:<br>Email: <a href="mailto:18376781936@163.com">18376781936@163.com</a><br>Phone: <a href="tel:+8618376781936">+86 18376781936</a>',
+            // 导航栏英文文本
+            "nav-home": "Home",
+            "nav-about": "About",
+            "nav-inquiry": "Inquiry",
+            "nav-privacy": "Privacy",
+            "back-btn-text": "← Back"
         }
     };
 
@@ -744,16 +786,24 @@
             document.querySelector('meta[name="description"]').content = "BEORVA（上海贝荣华网络科技有限公司）专注数字存储解决方案与益智玩具研发生产，提供OEM/ODM服务，产品符合FCC/CE/3C等国际认证。";
         }
 
+        // 更新所有文本（包括新增的导航栏）
         for (let key in langData[lang]) {
             const el = document.getElementById(key);
             if (el) {
                 if (key.includes('list')) {
                     el.innerHTML = langData[lang][key];
                 } else {
-                    el.innerHTML = langData[lang][key];
+                    el.textContent = langData[lang][key];
+                    // 特殊处理包含HTML的元素
+                    if (['brand-text', 'brand-slogan', 'privacy-contact-desc', 'footer-contact-desc', 'biz-company-desc', 'biz-brand-desc', 'biz-cert-desc'].includes(key)) {
+                        el.innerHTML = langData[lang][key];
+                    }
                 }
             }
         }
+        
+        // 更新返回按钮文本
+        document.getElementById('back-btn').textContent = langData[lang]['back-btn-text'];
     }
 
     // 产品数据
@@ -897,14 +947,29 @@
         document.body.style.overflow = '';
     }
 
-    // 询价模态框
+    // 询价模态框 - 修复核心逻辑
     function openInquiryModal() {
-        document.getElementById('inquiryModal').classList.add('active');
+        // 1. 获取询价弹窗元素
+        const modal = document.getElementById('inquiryModal');
+        // 2. 显示弹窗
+        modal.classList.add('active');
+        // 3. 锁定页面滚动（关键修复）
         document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+        // 4. 确保弹窗聚焦
+        modal.focus();
+        // 5. 滚动到弹窗位置（确保可见）
+        modal.scrollTop = 0;
     }
+    
     function closeInquiryModal() {
+        // 1. 隐藏弹窗
         document.getElementById('inquiryModal').classList.remove('active');
+        // 2. 恢复页面滚动（关键修复）
         document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
     }
 
     // 提交询价表单（自动生成邮件）
@@ -952,13 +1017,34 @@ ${message}
 
     // 模态框点击外部关闭
     document.querySelectorAll('.modal').forEach(modal => {
-        modal.addEventListener('click', e => e.target === modal && (modal.classList.remove('active'), document.body.style.overflow = ''));
+        modal.addEventListener('click', e => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                // 恢复页面滚动
+                document.body.style.overflow = '';
+                document.body.style.position = '';
+                document.body.style.width = '';
+            }
+        });
     });
+    
     // ESC键关闭模态框
-    document.addEventListener('keydown', e => e.key === 'Escape' && document.querySelectorAll('.modal.active').forEach(m => (m.classList.remove('active'), document.body.style.overflow = '')));
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.modal.active').forEach(m => {
+                m.classList.remove('active');
+                // 恢复页面滚动
+                document.body.style.overflow = '';
+                document.body.style.position = '';
+                document.body.style.width = '';
+            });
+        }
+    });
 
     // 初始化渲染
     renderGrids();
+    // 初始化导航栏文本（默认中文）
+    switchLang('zh');
 </script>
 </body>
 </html>
